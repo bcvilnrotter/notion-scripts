@@ -1,0 +1,31 @@
+name: Steam Playtime Sync
+
+on:
+    schedule:
+        - cron: "0 0 */14 * *"
+    workflow_dispatch:
+
+jobs:
+    sync_steam_to_notion:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+            
+            - name: Setup Python
+              uses: actions/setup-python@v4
+              with:
+                python-version: "3.10"
+            
+            - name: Install dependencies
+              run: pip install -r requirements.txt
+
+            - name: Run Steam Playtime Script
+              env:
+                STEAM_KEY: ${{ secrets.STEAM_KEY }}
+                STEAM_USER: ${{ secrets.STEAM_USER }}
+                NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+                NOTION_RAW_PLAYTIME_DBID: ${{ secrets.NOTION_RAW_PLAYTIME_DBID }}
+              run:
+                python add_2week_playtime.py
