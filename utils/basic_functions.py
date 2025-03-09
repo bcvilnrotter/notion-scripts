@@ -1,5 +1,6 @@
 #%%
 import requests,os,json
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
 # %%
@@ -40,16 +41,21 @@ def get_all_page_atts(headers,database_id):
         return {}
 
 # %%
-def add_image_cover_all_records():
-    print('collecting keys.')
-    keys = ['NOTION_TOKEN','NOTION_VIDEO_GAME_STATS_DBID']
-    key_chain = {key:get_secret(key) for key in keys}
+def get_keychain(keys):
+    return {key:get_secret(key) for key in keys}
 
-    headers = {
+def get_notion_header(key_chain):
+    return {
         'Authorization': f"Bearer {key_chain['NOTION_TOKEN']}",
         'Content-Type': 'application/json',
         'Notion-Version': '2022-06-28'
     }
+
+def add_image_cover_all_records():
+    print('collecting keys.')
+    key_chain = get_keychain(['NOTION_TOKEN','NOTION_VIDEO_GAME_STATS_DBID'])
+    print('generate header')
+    headers = get_notion_header(key_chain)
 
     #print(get_all_page_atts(headers,key_chain['NOTION_VIDEO_GAME_STATS_DBID']))
     for page_id,appId in get_all_page_atts(headers,key_chain['NOTION_VIDEO_GAME_STATS_DBID']).items():
@@ -69,5 +75,46 @@ def add_image_cover_all_records():
             print(f'Updated cover for page: {page_id}')
         else:
             print(f'Error updated page {page_id}:', response.json())
+
+# %%
+def pull_data_from_steam():
+    steam_url = f"https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key={get_secret('STEAM_KEY')}&steamid={get_secret('STEAM_USER')}&format=json"
+    recent_playtime = requests.get(steam_url)
+    return recent_playtime.json()
+
+# %%
+def format_2week_playtime_to_notion_data(game_data):
+    today = datetime.utcnow().strftime('%Y-%m-%d')
+    two_weeks_ago = (datetime.utcnow() - timedelta(days=14)).strftime('%Y-%m-%d')
+    properties = {
+        "Title": {"title": [{"text": {"content": game_data['name']}}]},
+        "AppId": {"rich_text": [{"text": {"content": str(game_data['appid'])}}]},
+        "Date Range": {"date": {"start": two_weeks_ago, "end":today}},
+        "playtime_2weeks": {"number": game_data['playtime_2weeks']},
+        "playtime_forever": {"number": game_data['playtime_forever']},
+        "img_icon_url": {"rich_text":[{"text": {"content": game_data['img_icon_url']}}]},
+        "playtime_windows_forever": {"number": game_data['playtime_windows_forever']},
+        "playtime_mac_forever": {"number": game_data['playtime_mac_forever']},
+        "playtime_linux_forever": {"number": game_data['playtime_linux_forever']},
+        "playtime_deck_forever": {"number": game_data['playtime_deck_forever']}
+    }
+
+    return {
+        "parent": {"database_id": get_secret('NOTION_RAW_PLAYTIME_DBID')},
+        "properties": properties
+    }
+
+# %%
+def upload_2week_playtime_to_notion_database():
+    print('collecting keys.')
+    key_chain = get_keychain(['NOTION_TOKEN','NOTION_RAW_PLAYTIME_DBID'])
+    print('generate header')
+    headers = get_notion_header(key_chain)    
+    for record in pull_data_from_steam().get('response').get('games'):
+        response = requests.post('https://api.notion.com/v1/pages',headers=headers, data=json.dumps(format_2week_playtime_to_notion_data(record)))
+        if response.status_code == 200:
+            print(f"successfully added {record.get('name')} to Notion.")
+        else:
+            print(f"failed to add {record.get('name')} - {response.json()}")
 
 # %%
