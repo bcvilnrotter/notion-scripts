@@ -1,5 +1,4 @@
-name: Steam Playtime Sync
-
+name: Duolingo daily sync
 on:
     schedule:
         - cron: "0 0 * * *"
