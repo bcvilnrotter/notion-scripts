@@ -1,0 +1,31 @@
+name: Steam Playtime Sync
+
+on:
+    schedule:
+        - cron: "0 0 * * *"
+    workflow_dispatch:
+
+jobs:
+    sync_steam_to_notion:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+            
+            - name: Setup Python
+              uses: actions/setup-python@v4
+              with:
+                python-version: "3.10"
+            
+            - name: Install dependencies
+              run: pip install -r requirements.txt
+
+            - name: Run Steam Playtime Script
+              env:
+                NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+                DUOLINGO_USER: ${{ secrets.DUOLINGO_USER }}
+                DUOLINGO_STREAK_DATA_DBID: ${{ secrets.DUOLINGO_STREAK_DATA_DBID }}
+                DUOLINGO_COURSES_DBID: ${{ secrets.DUOLINGO_COURSES_DBID }}
+              run:
+                python add_duolingo_daily.py
