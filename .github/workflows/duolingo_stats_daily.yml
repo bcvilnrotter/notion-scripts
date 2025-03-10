@@ -20,10 +20,11 @@ jobs:
             - name: Install dependencies
               run: pip install -r requirements.txt
 
-            - name: Run Steam Playtime Script
+            - name: Run Duolingo sync script
               env:
                 NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
                 DUOLINGO_USER: ${{ secrets.DUOLINGO_USER }}
+                DUOLINGO_COURSES_PAGEID: ${{ secrets.DUOLINGO_COURSES_PAGEID }}
                 DUOLINGO_STREAK_DATA_DBID: ${{ secrets.DUOLINGO_STREAK_DATA_DBID }}
                 DUOLINGO_COURSES_DBID: ${{ secrets.DUOLINGO_COURSES_DBID }}
               run:
