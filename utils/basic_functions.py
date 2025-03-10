@@ -118,3 +118,100 @@ def upload_2week_playtime_to_notion_database():
             print(f"failed to add {record.get('name')} - {response.json()}")
 
 # %%
+def get_duolingo_api():
+    duolingo_url = f"https://www.duolingo.com/2017-06-30/users/{get_secret('DUOLINGO_USER')}"
+    headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+    "Referer": "https://www.duolingo.com/",
+    "X-Requested-With": "XMLHttpRequest"
+    }
+    responses = requests.get(duolingo_url,headers=headers)
+    duolingo_list=[
+        'totalXp',
+        'picture',
+        'courses',
+        'streak',
+        'streakData',
+        'subscriberLevel'
+    ]
+    return {content:responses.json().get(content) for content in duolingo_list}
+
+# %%
+def duolingo_data_notion_format(data):
+    page_properties = {
+        'totalXp': {"number": data['totalXp']},
+        'picture': {"rich_text": [{"text": {"content": data['picture']}}]},
+        'streak': {"number": data['streak']},
+        'subscriberLevel':{"rich_text": [{"text": {"content": data['subscriberLevel']}}]}
+    }
+    return {"properties": page_properties},data['courses'],data['streakData']
+
+def duolingo_data_notion_courses_format(dbid,data):
+    return {
+        'parent': {'database_id': dbid},
+        'properties': {
+            "Name": {"title": [{"text": {"content": data['title']}}]},
+            'authorId': {"rich_text": [{"text": {"content": data['authorId']}}]},
+            'fromLanguage': {"rich_text": [{"text": {"content": data['fromLanguage']}}]},
+            'healthEnabled': {"checkbox": data['healthEnabled']},
+            'id': {"rich_text": [{"text": {"content": data['id']}}]},
+            'learningLanguage': {"rich_text": [{"text": {"content": data['learningLanguage']}}]},
+            'placementTestAvailable': {"checkbox": data['placementTestAvailable']},
+            'preload': {"checkbox": data['preload']},
+            'xp': {"number": data['xp']},
+            'crowns': {"number": data['crowns']}
+        }
+    }
+
+def search_for_notion_page_by_title(headers,dbid,title):
+    query_url = f"https://api.notion.com/v1/databases/{dbid}/query"
+
+    payload = {
+        "filter": {
+            "property": "Name",
+            "title": {
+                "equals": title
+            }
+        }
+    }
+
+    response = requests.post(query_url,headers=headers,json=payload)
+    if response.status_code == 200:
+        return response.json()["results"][0]["id"]
+    else:
+        return False
+
+def upload_duolingo_data_to_notion():
+    key_list=[
+        'NOTION_TOKEN',
+        'DUOLINGO_USER',
+        'DUOLINGO_COURSES_PAGEID',
+        'DUOLINGO_STREAK_DATA_DBID',
+        'DUOLINGO_COURSES_DBID'
+    ]
+    keychain = get_keychain(key_list)
+    headers = get_notion_header(keychain)
+    page_json,courses,streakData = duolingo_data_notion_format(get_duolingo_api())
+
+    # update the information on the Duolingo courses page
+    response = requests.patch(f"https://api.notion.com/v1/pages/{keychain['DUOLINGO_COURSES_PAGEID']}",headers=headers, json=page_json)
+    if response.status_code != 200:
+        print(f"error occured while uploaded page data: {response.text}")
+    
+    # update the infromation for all Duolingo courses
+    for course in courses:
+        notion_format = duolingo_data_notion_courses_format(keychain['DUOLINGO_COURSES_DBID'],course)        
+        page_id = search_for_notion_page_by_title(headers,keychain['DUOLINGO_COURSES_DBID'],course.get('title'))
+        if page_id:
+            response = requests.patch(f"https://api.notion.com/v1/pages/{page_id}",headers=headers,json=notion_format)
+        else:
+            response = requests.post(f"https://api.notion.com/v1/pages",headers=headers,json=notion_format)
+        print(f"{response.status_code} : {response.json().get('message')}")
+
+    # update the information for all Duolingo streak data
+    #for streak in streakData:
+    #    print((streak,streakData[streak]))
+
+upload_duolingo_data_to_notion()
+# %%
