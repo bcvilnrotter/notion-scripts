@@ -317,5 +317,4 @@ def upload_duolingo_data_to_notion():
     #for streak in streakData:
     #    print((streak,streakData[streak]))
 
-upload_duolingo_data_to_notion()
 # %%
