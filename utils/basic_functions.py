@@ -83,7 +83,7 @@ def pull_data_from_steam():
     return recent_playtime.json()
 
 # %%
-def format_2week_playtime_to_notion_data(game_data):
+def format_2week_playtime_to_notion_data(key_chain,game_data):
     today = datetime.utcnow().strftime('%Y-%m-%d')
     two_weeks_ago = (datetime.utcnow() - timedelta(days=14)).strftime('%Y-%m-%d')
     properties = {
@@ -100,23 +100,144 @@ def format_2week_playtime_to_notion_data(game_data):
     }
 
     return {
-        "parent": {"database_id": get_secret('NOTION_RAW_PLAYTIME_DBID')},
+        "parent": {"database_id": key_chain['NOTION_RAW_PLAYTIME_DBID']},
         "properties": properties
     }
 
-# %%
+#%%
+def format_notion_number(number):
+    return {"number": number}
+
+def format_notion_text(text):
+    return {"rich_text": [{"text": {"content": text}}]}
+
+def format_notion_date(start, end=None, patterns=None):
+    if patterns:
+        for pattern in patterns:
+            try:
+                start = datetime.strptime(start, pattern).strftime('%Y-%m-%d')
+                if end: 
+                    end = datetime.strptime(end, pattern).strftime('%Y-%m-%d')
+            except:
+                continue
+    return {"date": {"start": start, "end": end}}
+
+def format_notion_single_relation(page_id):
+    return {"relation": [{"id": page_id}]}
+
+def format_notion_multi_relation(page_ids):
+    return {"relation": [{"id": page_id} for page_id in page_ids]}
+
+def format_notion_multi_select(selections):
+    return {"multi_select": [{"name": selection} for selection in [v.replace(',','') for v in selections]]}
+
+def format_notion_checkbox(checked):
+    return {"checkbox": checked}
+
+def search_for_notion_page_by_title(headers,dbid,title):
+    query_url = f"https://api.notion.com/v1/databases/{dbid}/query"
+
+    payload = {
+        "filter": {
+            "property": "Name",
+            "title": {
+                "equals": title
+            }
+        }
+    }
+
+    response = requests.post(query_url,headers=headers,json=payload)
+    if response.status_code == 200 and response.json()['results'] != []:
+        return response.json()["results"][0]["id"]
+    else:
+        return False
+
+def update_entry_to_notion_database(headers,data,page_id):
+    response = requests.patch(f'https://api.notion.com/v1/pages/{page_id}',headers=headers, data=json.dumps(data))
+    return response
+
+def new_entry_to_notion_database(headers,data):
+    response = requests.post('https://api.notion.com/v1/pages',headers=headers, data=json.dumps(data))
+    return response
+
+def adjust_notion_video_game_stat_data(key_chain,headers,data):
+    # initialize data from JSON data
+    page_id = data.get('id')
+    title = data.get('properties').get('Title').get('title')[0].get('text').get('content')
+    appid = data.get('properties').get('AppId').get('rich_text')[0].get('text').get('content')
+    
+    # get game data
+    game_data_response = requests.get(f"https://store.steampowered.com/api/appdetails?appids={appid}")
+    
+    # search to see if a video game stats page exists
+    video_game_stats_page = search_for_notion_page_by_title(headers,key_chain['NOTION_VIDEO_GAME_STATS_DBID'],title)
+    print(video_game_stats_page)
+
+    # get a list of the relation properties based on whether a page exists
+    if video_game_stats_page:
+        video_game_page = requests.get(f"https://api.notion.com/v1/pages/{video_game_stats_page}",headers=headers).json()
+        relation_list = video_game_page.get('properties').get('🎳 Raw Playtime').get('relation')
+        relation_list.append({"id": page_id})
+    else:
+        relation_list = [{"id": page_id}]
+
+    # format the data to update the notion page
+    update_data = {
+        "parent": {
+            "database_id": key_chain['NOTION_VIDEO_GAME_STATS_DBID']
+        },
+        "cover": {
+            "type": "external",
+            "external": {
+                "url": get_banner_url_from_appid(appid)
+            }
+        },
+        "properties": {
+            "Name": {"title": [{"text": {"content": title}}]},
+            "🎳 Raw Playtime": {"relation": relation_list},
+        }
+    }
+
+    # add conditional properties
+    if game_data_response.json().get(appid).get('data').get('price_overview'):
+        update_data['properties']['price_overview_initial'] = format_notion_number(game_data_response.json().get(appid).get('data').get('price_overview').get('initial'))
+    if game_data_response.json().get(appid).get('data').get('metacritic'):
+        update_data['properties']['metacritic_score'] = format_notion_number(game_data_response.json().get(appid).get('data').get('metacritic').get('score'))
+    if game_data_response.json().get(appid).get('data').get('publishers'):
+        update_data['properties']['Raw Publishers'] = format_notion_multi_select(game_data_response.json().get(appid).get('data').get('publishers'))
+    if game_data_response.json().get(appid).get('data').get('developers'):
+        update_data['properties']['Raw Developers'] = format_notion_multi_select(game_data_response.json().get(appid).get('data').get('developers'))
+    if game_data_response.json().get(appid).get('data').get('genres'):  
+        update_data['properties']['Raw Genres'] = format_notion_multi_select([tag.get('description') for tag in game_data_response.json().get(appid).get('data').get('genres') if tag])
+    if game_data_response.json().get(appid).get('data').get('categories'):
+        update_data['properties']['Raw Categories'] = format_notion_multi_select([tag.get('description') for tag in game_data_response.json().get(appid).get('data').get('categories') if tag])
+    if game_data_response.json().get(appid).get('data').get('release_date'):
+        update_data['properties']['Raw Release Date'] = format_notion_date(game_data_response.json().get(appid).get('data').get('release_date').get('date'),patterns=['%b %d, %Y','%d %b, %Y'])
+
+    print(update_data)
+
+    # update or create a new page as needed
+    if video_game_stats_page:
+        update_response = update_entry_to_notion_database(headers,update_data,video_game_stats_page)
+        print(f"{update_response.status_code} : {update_response.json().get('message')}: updated game page: {title}")
+    else:
+        new_response = new_entry_to_notion_database(headers,update_data)
+        print(f"{new_response.status_code} : {new_response.json().get('message')}: made a new game page: {title}")
+
 def upload_2week_playtime_to_notion_database():
     print('collecting keys.')
-    key_chain = get_keychain(['NOTION_TOKEN','NOTION_RAW_PLAYTIME_DBID'])
+    key_chain = get_keychain(['NOTION_TOKEN','NOTION_RAW_PLAYTIME_DBID','NOTION_VIDEO_GAME_STATS_DBID'])
     print('generate header')
     headers = get_notion_header(key_chain)    
     for record in pull_data_from_steam().get('response').get('games'):
-        response = requests.post('https://api.notion.com/v1/pages',headers=headers, data=json.dumps(format_2week_playtime_to_notion_data(record)))
+        response = requests.post('https://api.notion.com/v1/pages',headers=headers, data=json.dumps(format_2week_playtime_to_notion_data(key_chain,record)))
         if response.status_code == 200:
-            print(f"successfully added {record.get('name')} to Notion.")
+            print(f"successfully added {record.get('name')} to Notion Raw Playtime.")
+            adjust_notion_video_game_stat_data(key_chain,headers,response.json())
         else:
             print(f"failed to add {record.get('name')} - {response.json()}")
 
+upload_2week_playtime_to_notion_database()
 # %%
 def get_duolingo_api():
     duolingo_url = f"https://www.duolingo.com/2017-06-30/users/{get_secret('DUOLINGO_USER')}"
@@ -164,23 +285,6 @@ def duolingo_data_notion_courses_format(dbid,data):
         }
     }
 
-def search_for_notion_page_by_title(headers,dbid,title):
-    query_url = f"https://api.notion.com/v1/databases/{dbid}/query"
-
-    payload = {
-        "filter": {
-            "property": "Name",
-            "title": {
-                "equals": title
-            }
-        }
-    }
-
-    response = requests.post(query_url,headers=headers,json=payload)
-    if response.status_code == 200:
-        return response.json()["results"][0]["id"]
-    else:
-        return False
 
 def upload_duolingo_data_to_notion():
     key_list=[
