@@ -5,7 +5,7 @@ on:
     workflow_dispatch:
 
 jobs:
-    sync_steam_to_notion:
+    sync_duolingo_update:
         runs-on: ubuntu-latest
 
         steps:
