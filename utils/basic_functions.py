@@ -224,6 +224,51 @@ def adjust_notion_video_game_stat_data(key_chain,headers,data):
         new_response = new_entry_to_notion_database(headers,update_data)
         print(f"{new_response.status_code} : {new_response.json().get('message')}: made a new game page: {title}")
 
+def adjust_notion_video_game_stat_data_outa_sync(key_chain,headers,appid,page_id):
+    # get game data
+    game_data_response = requests.get(f"https://store.steampowered.com/api/appdetails?appids={appid}")
+    if game_data_response.json().get(appid).get('success'):
+        # search to see if a video game stats page exists
+        video_game_page = requests.get(f"https://api.notion.com/v1/pages/{page_id}",headers=headers).json()        
+        title = video_game_page.get('properties').get('Name').get('title')[0].get('text').get('content')
+        # format the data to update the notion page
+        update_data = {
+            "parent": {
+                "database_id": key_chain['NOTION_VIDEO_GAME_STATS_DBID']
+            },
+            "cover": {
+                "type": "external",
+                "external": {
+                    "url": get_banner_url_from_appid(appid)
+                }
+            },
+            "properties": {
+            "Name": {"title": [{"text": {"content": title }}]}
+            }
+        }
+
+        # add conditional properties
+        if game_data_response.json().get(appid).get('data').get('price_overview'):
+            update_data['properties']['price_overview_initial'] = format_notion_number(game_data_response.json().get(appid).get('data').get('price_overview').get('initial'))
+        if game_data_response.json().get(appid).get('data').get('metacritic'):
+            update_data['properties']['metacritic_score'] = format_notion_number(game_data_response.json().get(appid).get('data').get('metacritic').get('score'))
+        if game_data_response.json().get(appid).get('data').get('publishers'):
+            update_data['properties']['Raw Publishers'] = format_notion_multi_select(game_data_response.json().get(appid).get('data').get('publishers'))
+        if game_data_response.json().get(appid).get('data').get('developers'):
+            update_data['properties']['Raw Developers'] = format_notion_multi_select(game_data_response.json().get(appid).get('data').get('developers'))
+        if game_data_response.json().get(appid).get('data').get('genres'):  
+            update_data['properties']['Raw Genres'] = format_notion_multi_select([tag.get('description') for tag in game_data_response.json().get(appid).get('data').get('genres') if tag])
+        if game_data_response.json().get(appid).get('data').get('categories'):
+            update_data['properties']['Raw Categories'] = format_notion_multi_select([tag.get('description') for tag in game_data_response.json().get(appid).get('data').get('categories') if tag])
+        if game_data_response.json().get(appid).get('data').get('release_date'):
+            update_data['properties']['Raw Release Date'] = format_notion_date(game_data_response.json().get(appid).get('data').get('release_date').get('date'),patterns=['%b %d, %Y','%d %b, %Y'])
+
+        # update or create a new page as needed
+        update_response = update_entry_to_notion_database(headers,update_data,page_id)
+        print(f"{update_response.status_code} : {update_response.json().get('message')}: updated game page: {page_id}")
+    else:
+        print(f"{game_data_response}")
+
 def upload_2week_playtime_to_notion_database():
     print('collecting keys.')
     key_chain = get_keychain(['NOTION_TOKEN','NOTION_RAW_PLAYTIME_DBID','NOTION_VIDEO_GAME_STATS_DBID'])
