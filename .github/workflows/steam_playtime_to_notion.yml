@@ -27,5 +27,6 @@ jobs:
                 STEAM_USER: ${{ secrets.STEAM_USER }}
                 NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
                 NOTION_RAW_PLAYTIME_DBID: ${{ secrets.NOTION_RAW_PLAYTIME_DBID }}
+                NOTION_VIDEO_GAME_STATS_DBID: ${{ secrets.NOTION_VIDEO_GAME_STATS_DBID }}
               run:
                 python add_2week_playtime.py
