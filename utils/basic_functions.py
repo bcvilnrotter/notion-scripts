@@ -237,7 +237,6 @@ def upload_2week_playtime_to_notion_database():
         else:
             print(f"failed to add {record.get('name')} - {response.json()}")
 
-upload_2week_playtime_to_notion_database()
 # %%
 def get_duolingo_api():
     duolingo_url = f"https://www.duolingo.com/2017-06-30/users/{get_secret('DUOLINGO_USER')}"
