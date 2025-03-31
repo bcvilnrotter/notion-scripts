@@ -86,23 +86,26 @@ def pull_data_from_steam():
 def format_2week_playtime_to_notion_data(key_chain,game_data):
     today = datetime.utcnow().strftime('%Y-%m-%d')
     two_weeks_ago = (datetime.utcnow() - timedelta(days=14)).strftime('%Y-%m-%d')
-    properties = {
-        "Title": {"title": [{"text": {"content": game_data['name']}}]},
-        "AppId": {"rich_text": [{"text": {"content": str(game_data['appid'])}}]},
-        "Date Range": {"date": {"start": two_weeks_ago, "end":today}},
-        "playtime_2weeks": {"number": game_data['playtime_2weeks']},
-        "playtime_forever": {"number": game_data['playtime_forever']},
-        "img_icon_url": {"rich_text":[{"text": {"content": game_data['img_icon_url']}}]},
-        "playtime_windows_forever": {"number": game_data['playtime_windows_forever']},
-        "playtime_mac_forever": {"number": game_data['playtime_mac_forever']},
-        "playtime_linux_forever": {"number": game_data['playtime_linux_forever']},
-        "playtime_deck_forever": {"number": game_data['playtime_deck_forever']}
-    }
+    if game_data['name']:
+        properties = {
+            "Title": {"title": [{"text": {"content": game_data['name']}}]},
+            "AppId": {"rich_text": [{"text": {"content": str(game_data['appid'])}}]},
+            "Date Range": {"date": {"start": two_weeks_ago, "end":today}},
+            "playtime_2weeks": {"number": game_data['playtime_2weeks']},
+            "playtime_forever": {"number": game_data['playtime_forever']},
+            "img_icon_url": {"rich_text":[{"text": {"content": game_data['img_icon_url']}}]},
+            "playtime_windows_forever": {"number": game_data['playtime_windows_forever']},
+            "playtime_mac_forever": {"number": game_data['playtime_mac_forever']},
+            "playtime_linux_forever": {"number": game_data['playtime_linux_forever']},
+            "playtime_deck_forever": {"number": game_data['playtime_deck_forever']}
+        }
 
-    return {
-        "parent": {"database_id": key_chain['NOTION_RAW_PLAYTIME_DBID']},
-        "properties": properties
-    }
+        return {
+            "parent": {"database_id": key_chain['NOTION_RAW_PLAYTIME_DBID']},
+            "properties": properties
+        }
+    else:
+        return None
 
 #%%
 def format_notion_number(number):
@@ -275,12 +278,15 @@ def upload_2week_playtime_to_notion_database():
     print('generate header')
     headers = get_notion_header(key_chain)    
     for record in pull_data_from_steam().get('response').get('games'):
-        response = requests.post('https://api.notion.com/v1/pages',headers=headers, data=json.dumps(format_2week_playtime_to_notion_data(key_chain,record)))
-        if response.status_code == 200:
-            print(f"successfully added {record.get('name')} to Notion Raw Playtime.")
-            adjust_notion_video_game_stat_data(key_chain,headers,response.json())
-        else:
-            print(f"failed to add {record.get('name')} - {response.json()}")
+        try:
+            response = requests.post('https://api.notion.com/v1/pages',headers=headers, data=json.dumps(format_2week_playtime_to_notion_data(key_chain,record)))
+            if response.status_code == 200:
+                print(f"successfully added {record.get('name')} to Notion Raw Playtime.")
+                adjust_notion_video_game_stat_data(key_chain,headers,response.json())
+            else:
+                print(f"failed to add {record.get('name')} - {response.json()}")
+        except Exception as e:
+            print(f"Error processing: {record}: {e}")
 
 # %%
 def get_duolingo_api():
