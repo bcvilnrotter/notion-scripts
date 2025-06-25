@@ -1,5 +1,5 @@
 #%%
-import requests,os,json
+import requests,os,json,csv
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
@@ -15,6 +15,11 @@ def get_secret(secret_key):
         ValueError(f"Secret '{secret_key} not found.")
     
     return value
+
+os.environ["KAGGLE_USERNAME"] = get_secret('KAGGLE_USERNAME')
+os.environ["KAGGLE_KEY"] = get_secret('KAGGLE_API')
+
+from kaggle import api
 
 # %%
 def get_banner_url_from_appid(appid):
@@ -44,9 +49,15 @@ def get_all_page_atts(headers,database_id):
 def get_keychain(keys):
     return {key:get_secret(key) for key in keys}
 
-def get_notion_header(key_chain):
+def get_notion_header(key_chain=None,notion_token=None):
+    if notion_token and key_chain is None:
+        token = notion_token
+    elif key_chain and notion_token is None:
+        token = key_chain.get('NOTION_TOKEN')
+    else:
+        raise ValueError("Either key_chain or notion_token must be provided.")
     return {
-        'Authorization': f"Bearer {key_chain['NOTION_TOKEN']}",
+        'Authorization': f"Bearer {token}",
         'Content-Type': 'application/json',
         'Notion-Version': '2022-06-28'
     }
@@ -368,3 +379,124 @@ def upload_duolingo_data_to_notion():
     #    print((streak,streakData[streak]))
 
 # %%
+def prepare_output_folder(folder="kaggle_upload"):
+    os.makedirs(folder, exist_ok=True)
+    return folder
+
+def fetch_notion_database(database_id,notion_token=None):
+    if not notion_token:
+        notion_token = get_secret('NOTION_TOKEN')
+    headers = get_notion_header(notion_token=notion_token)
+    response = requests.post(f"https://api.notion.com/v1/databases/{database_id}/query", headers=headers)
+    if response.status_code == 200:
+        return response.json()['results']
+    else:
+        print(f"Error fetching database schema: {response.text}")
+        return None
+
+def fetch_notion_database_schema(database_id,notion_token=None):
+    if not notion_token:
+        notion_token = get_secret('NOTION_TOKEN')
+    headers = get_notion_header(notion_token=notion_token)
+    response = requests.get(f"https://api.notion.com/v1/databases/{database_id}", headers=headers)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f"Error fetching database schema: {response.text}")
+        return None
+
+def extract_formula_value(f_val):
+    typ = f_val.get('type')
+    return f_val.get(typ,"")
+
+def extract_nested_rollup_value(item):
+    if item.get("type") == "title":
+        return "".join([t['plain_text'] for t in item['title']])
+    elif item.get('type') == 'rich_text':
+        return "".join([t["plain_text"] for t in item['rich_text']])
+    return "[item]"
+
+def extract_rollup_value(r_val):
+    typ = r_val.get('type')
+    if typ == "number":
+        return r_val['number']
+    elif typ == "date":
+        return r_val['date'].get('start','') if r_val['date'] else ''
+    elif typ == "array":
+        return "; ".join(
+            [extract_nested_rollup_value(item) for item in r_val.get('array',[])]
+        )
+    return ""
+
+def extract_notion_property_value(prop_val, prop_type):
+    val = prop_val.get(prop_type)
+    if not val:
+        return ""
+
+    if prop_type == 'title':
+        return "".join([t["plain_text"] for t in val])
+    elif prop_type == 'rich_text':
+        return "".join([t["plain_text"] for t in val])
+    elif prop_type == "select":
+        return val.get("name", "")
+    elif prop_type == "multi_select":
+        return ", ".join([v["name"] for v in val])
+    elif prop_type == "number":
+        return val
+    elif prop_type == "checkbox":
+        return val
+    elif prop_type == "date":
+        return val.get('start', '')
+    elif prop_type == "url":
+        return val
+    elif prop_type == "email":
+        return val
+    elif prop_type == "phone_number":
+        return val
+    elif prop_type == "formula":
+        f_val = val.get('formula',{})
+        return extract_formula_value(f_val)
+    elif prop_type == "rollup":
+        r_val = val.get('rollup',{})
+        return extract_formula_value(r_val)
+    else:
+        return f"[{prop_type}]"
+
+def flatten_notion_rows_with_schema(rows,schema,outfile="notion_data.csv"):
+    columns = schema['properties']
+    headers = list(columns.keys())
+
+    parsed_rows = []
+    for row in rows:
+        props = row['properties']
+        parsed_row = {}
+        for column in columns:
+            prop_def = columns[column]
+            prop_val = props.get(column, {})
+            parsed_row[column] = extract_notion_property_value(prop_val, prop_def.get('type'))
+        parsed_rows.append(parsed_row)
+    
+    with open(outfile,'w',newline='',encoding='utf-8') as f:
+        writer = csv.DictWriter(f, fieldnames=headers)
+        writer.writeheader()
+        writer.writerows(parsed_rows)
+    
+    print((f"Flattened {len(parsed_rows)} rows using schema into {outfile}"))
+
+def write_kaggle_metadata(folder,data_slug="notion-synced-dataset",title='Notion Synced Dataset'):
+    metadata = {
+        "title":title,
+        "id":f"{get_secret('KAGGLE_USERNAME')}/{data_slug}",
+        "licenses": [{"name": "CC0-1.0"}]
+    }
+    with open(os.path.join(folder,'dataset-metadata.json'), 'w', encoding='utf-8') as f:
+        json.dump(metadata, f, ensure_ascii=False, indent=4)
+
+def upload_to_kaggle(folder="kaggle_upload"):
+    try:
+        api.dataset_create_new(folder,public=False)
+        print("Created new Kaggle dataset.")
+    except Exception as e:
+        print(f"Dataset exists - updating instead: {e}")
+        api.dataset_create_version(folder,version_notes="Updated from Notion")
+        print("Updated existing dataset version.")
