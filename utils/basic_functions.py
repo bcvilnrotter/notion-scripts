@@ -336,7 +336,7 @@ def duolingo_data_notion_calendar_skills_format(dbid,data):
             "skill_id": format_notion_text(data['skill_id']),
             "improvement":format_notion_number(data['improvement']),
             "event_type":format_notion_select(data['event_type']),
-            "datetime":format_notion_date(dt.datetime.fromtimestamp(data['datetime']/1000)),
+            "datetime":format_notion_date(dt.datetime.fromtimestamp(data['datetime']/1000),is_datetime=True),
             "language_string":format_notion_select(data['language_string']),
             "dependencies_name":format_notion_multi_select(data['dependencies_name']),
             "practice_recommended":format_notion_checkbox(data['practice_recommended']),
