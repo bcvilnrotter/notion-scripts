@@ -422,7 +422,7 @@ def upload_duolingo_data_to_notion():
     session = requests.Session()
     show = session.get(f"https://www.duolingo.com/api/1/users/show", 
         params={"username":keychain['DUOLINGO_USER']}, 
-        headers={'Authorization': f'Bearer {keychain['DUOLINGO_COOKIE']}'})
+        headers={'Authorization': f"Bearer {keychain['DUOLINGO_COOKIE']}"})
     show.raise_for_status()
 
     # code for pulling the calendar per language from langauge_data
