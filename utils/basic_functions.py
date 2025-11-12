@@ -449,11 +449,13 @@ def upload_duolingo_data_to_notion():
     for calendar in skills_calendar:
         notion_format = duolingo_data_notion_calendar_skills_format(
             keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],calendar)
+        print('page formatted to notion.')
         page_id = search_for_notion_page_by_datetime(
             headers,keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],calendar["datetime"])
         if page_id:
             response = requests.patch(f"https://api.notion.com/v1/pages{page_id}",headers=headers,json=notion_format)
         else:
             response = requests.post(f"https://api.notion.com/v1/pages",headers=headers,json=notion_format)
+        print(response.text)
 
 # %%
