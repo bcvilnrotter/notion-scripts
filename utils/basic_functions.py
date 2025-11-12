@@ -395,7 +395,7 @@ def upload_duolingo_data_to_notion():
         'NOTION_TOKEN',
         'DUOLINGO_USER',
         'DUOLINGO_COURSES_PAGEID',
-        'DUOLINGO_CALENDAR_SKILLS_DBID'
+        'DUOLINGO_CALENDAR_SKILLS_DBID',
         'DUOLINGO_COURSES_DBID',
         'DUOLINGO_COOKIE'
     ]
