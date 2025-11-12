@@ -396,9 +396,7 @@ def upload_duolingo_data_to_notion():
         'DUOLINGO_COURSES_PAGEID',
         'DUOLINGO_CALENDAR_SKILLS_DBID',
         'DUOLINGO_COURSES_DBID',
-        'DUOLINGO_COOKIE',
-        'DUOLINGO_EMAIL',
-        'DUOLINGO_PASSWORD'
+        'DUOLINGO_COOKIE'
     ]
     keychain = get_keychain(key_list)
     headers = get_notion_header(keychain)
@@ -420,20 +418,10 @@ def upload_duolingo_data_to_notion():
             response = requests.post(f"https://api.notion.com/v1/pages",headers=headers,json=notion_format)
 
     # code for pulling daily calendar skills
-    LOGIN_URL = "https://www.duolingo.com/2017-06-30/login"
-    USER = keychain['DUOLINGO_EMAIL']
-    PASS = keychain['DUOLINGO_PASSWORD']
     session = requests.Session()
-    resp = session.post(
-        LOGIN_URL, json={'login':USER,'password':PASS})
-    if resp.status_code == 200:
-        data = resp.json()
-        print("Logged in as: ", data.get('username'))
-    else:
-        print("Login failed: ",resp.status_code, resp.text)
-    
     show = session.get(f"https://www.duolingo.com/api/1/users/show", 
-        params={"username":data.get('username')})
+        params={"username":keychain['DUOLINGO_USER']}, 
+        headers={'Authorization': f"Bearer {keychain['DUOLINGO_COOKIE']}"})
     show.raise_for_status()
 
     # code for pulling the calendar per language from langauge_data

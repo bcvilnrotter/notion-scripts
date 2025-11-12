@@ -29,7 +29,5 @@ jobs:
                 DUOLINGO_COURSES_DBID: ${{ secrets.DUOLINGO_COURSES_DBID }}
                 DUOLINGO_COOKIE: ${{ secrets.DUOLINGO_COOKIE}}
                 DUOLINGO_CALENDAR_SKILLS_DBID: ${{ secrets.DUOLINGO_CALENDAR_SKILLS_DBID}}
-                DUOLINGO_EMAIL: ${{ secrets.DUOLINGO_EMAIL }}
-                DUOLINGO_PASSWORD: ${{ secrets.DUOLINGO_PASSWORD}}
               run:
                 python add_duolingo_daily.py
