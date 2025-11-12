@@ -455,8 +455,10 @@ def upload_duolingo_data_to_notion():
             headers,keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],dt.datetime.fromtimestamp(calendar['datetime']/1000).strftime('%Y-%m-%d'))
         print('page searched in notion.')
         if page_id:
+            print('updated existing page to notion.')
             response = requests.patch(f"https://api.notion.com/v1/pages{page_id}",headers=headers,json=notion_format)
         else:
+            print('posting new page to notion.')
             response = requests.post(f"https://api.notion.com/v1/pages",headers=headers,json=notion_format)
         print(response.text)
 
