@@ -389,7 +389,6 @@ def duolingo_data_notion_calendar_skills_format(dbid,data):
         }
     }
 
-
 def upload_duolingo_data_to_notion():
     key_list=[
         'NOTION_TOKEN',
