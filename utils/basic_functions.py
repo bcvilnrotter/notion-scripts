@@ -389,6 +389,7 @@ def duolingo_data_notion_calendar_skills_format(dbid,data):
         }
     }
 
+# %%
 def upload_duolingo_data_to_notion():
     key_list=[
         'NOTION_TOKEN',
@@ -420,6 +421,13 @@ def upload_duolingo_data_to_notion():
 
     # code for pulling daily calendar skills
     session = requests.Session()
+    session.headers.update = [{
+        "Authorization": f"Bearer {keychain['DUOLINGO_COOKIE']}", 
+        "User-Agent": "Duolingo/5.152.4 (Android 13)",
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+    }]
+
     show = session.get(f"https://www.duolingo.com/api/1/users/show", 
         params={"username":keychain['DUOLINGO_PROFILE_USER']}, 
         headers={'Authorization': f"Bearer {keychain['DUOLINGO_COOKIE']}"})
