@@ -421,12 +421,12 @@ def upload_duolingo_data_to_notion():
 
     # code for pulling daily calendar skills
     session = requests.Session()
-    session.headers.update = [{
+    session.headers.update({
         "Authorization": f"Bearer {keychain['DUOLINGO_COOKIE']}", 
         "User-Agent": "Duolingo/5.152.4 (Android 13)",
         "Accept": "application/json",
         "Content-Type": "application/json",
-    }]
+    })
 
     show = session.get(f"https://www.duolingo.com/api/1/users/show", 
         params={"username":keychain['DUOLINGO_PROFILE_USER']}, 
