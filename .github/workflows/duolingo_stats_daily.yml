@@ -16,7 +16,7 @@ jobs:
               uses: actions/setup-python@v4
               with:
                 python-version: "3.10"
-            
+
             - name: Install dependencies
               run: pip install -r requirements.txt
 
@@ -29,5 +29,7 @@ jobs:
                 DUOLINGO_COURSES_DBID: ${{ secrets.DUOLINGO_COURSES_DBID }}
                 DUOLINGO_COOKIE: ${{ secrets.DUOLINGO_COOKIE}}
                 DUOLINGO_CALENDAR_SKILLS_DBID: ${{ secrets.DUOLINGO_CALENDAR_SKILLS_DBID}}
+                DUOLINGO_EMAIL: ${{ secrets.DUOLINGO_EMAIL }}
+                DUOLINGO_PASSWORD: ${{ secrets.DUOLINGO_PASSWORD}}
               run:
                 python add_duolingo_daily.py
