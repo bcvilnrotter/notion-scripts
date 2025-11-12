@@ -27,7 +27,8 @@ jobs:
                 DUOLINGO_COURSES_PAGEID: ${{ secrets.DUOLINGO_COURSES_PAGEID }}
                 DUOLINGO_STREAK_DATA_DBID: ${{ secrets.DUOLINGO_STREAK_DATA_DBID }}
                 DUOLINGO_COURSES_DBID: ${{ secrets.DUOLINGO_COURSES_DBID }}
-                DUOLINGO_COOKIE: ${{ secrets.DUOLINGO_COOKIE}}
-                DUOLINGO_CALENDAR_SKILLS_DBID: ${{ secrets.DUOLINGO_CALENDAR_SKILLS_DBID}}
+                DUOLINGO_COOKIE: ${{ secrets.DUOLINGO_COOKIE }}
+                DUOLINGO_CALENDAR_SKILLS_DBID: ${{ secrets.DUOLINGO_CALENDAR_SKILLS_DBID }}
+                DUOLINGO_PROFILE_USER: ${{ secrets.DUOLINGO_PROFILE_USER }}
               run:
                 python add_duolingo_daily.py

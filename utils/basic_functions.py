@@ -393,6 +393,7 @@ def upload_duolingo_data_to_notion():
     key_list=[
         'NOTION_TOKEN',
         'DUOLINGO_USER',
+        'DUOLINGO_PROFILE_USER',
         'DUOLINGO_COURSES_PAGEID',
         'DUOLINGO_CALENDAR_SKILLS_DBID',
         'DUOLINGO_COURSES_DBID',
