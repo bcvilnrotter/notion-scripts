@@ -339,7 +339,7 @@ def duolingo_data_notion_calendar_skills_format(dbid,data):
             "datetime":format_notion_date(dt.datetime.fromtimestamp(data['datetime']/1000)),
             "language_string":format_notion_select(data['language_string']),
             "dependencies_name":format_notion_multi_select(data['dependencies_name']),
-            "practice_recommended":format_notion_checkbox(data['practice_recommednded']),
+            "practice_recommended":format_notion_checkbox(data['practice_recommended']),
             "disabled":format_notion_checkbox(data['disabled']),
             "test_count":format_notion_number(data['test_count']),
             "missing_lessons":format_notion_number(data['missing_lessons']),
