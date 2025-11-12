@@ -451,6 +451,7 @@ def upload_duolingo_data_to_notion():
         notion_format = duolingo_data_notion_calendar_skills_format(
             keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],calendar)
         print('page formatted to notion.')
+        print(notion_format)
         page_id = search_for_notion_page_by_datetime(
             headers,keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],dt.datetime.fromtimestamp(calendar['datetime']/1000).strftime('%Y-%m-%d'))
         print('page searched in notion.')
