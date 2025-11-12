@@ -1,5 +1,8 @@
 #%%
 import requests,os,json
+import datetime as dt
+import pandas as pd
+from utils.notion_property_formatting import *
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
@@ -108,34 +111,6 @@ def format_2week_playtime_to_notion_data(key_chain,game_data):
         return None
 
 #%%
-def format_notion_number(number):
-    return {"number": number}
-
-def format_notion_text(text):
-    return {"rich_text": [{"text": {"content": text}}]}
-
-def format_notion_date(start, end=None, patterns=None):
-    if patterns:
-        for pattern in patterns:
-            try:
-                start = datetime.strptime(start, pattern).strftime('%Y-%m-%d')
-                if end: 
-                    end = datetime.strptime(end, pattern).strftime('%Y-%m-%d')
-            except:
-                continue
-    return {"date": {"start": start, "end": end}}
-
-def format_notion_single_relation(page_id):
-    return {"relation": [{"id": page_id}]}
-
-def format_notion_multi_relation(page_ids):
-    return {"relation": [{"id": page_id} for page_id in page_ids]}
-
-def format_notion_multi_select(selections):
-    return {"multi_select": [{"name": selection} for selection in [v.replace(',','') for v in selections]]}
-
-def format_notion_checkbox(checked):
-    return {"checkbox": checked}
 
 def search_for_notion_page_by_title(headers,dbid,title):
     query_url = f"https://api.notion.com/v1/databases/{dbid}/query"
@@ -145,6 +120,24 @@ def search_for_notion_page_by_title(headers,dbid,title):
             "property": "Name",
             "title": {
                 "equals": title
+            }
+        }
+    }
+
+    response = requests.post(query_url,headers=headers,json=payload)
+    if response.status_code == 200 and response.json()['results'] != []:
+        return response.json()["results"][0]["id"]
+    else:
+        return False
+
+def search_for_notion_page_by_datetime(headers,dbid,datetime):
+    query_url = f"https://api.notion.com/v1/databases/{dbid}/query"
+
+    payload = {
+        "filter": {
+            "property": "datetime",
+            "date": {
+                "equals": datetime
             }
         }
     }
@@ -335,21 +328,84 @@ def duolingo_data_notion_courses_format(dbid,data):
         }
     }
 
+def duolingo_data_notion_calendar_skills_format(dbid,data):
+    return {
+        'parent': {'database_id': dbid},
+        'properties': {
+            "Name": {"title":[{"text":{"content":data['title']}}]},
+            "skill_id": format_notion_text(data['skill_id']),
+            "improvement":format_notion_number(data['improvement']),
+            "event_type":format_notion_select(data['event_type']),
+            "datetime":format_notion_date(dt.datetime.fromtimestamp(data['datetime']/1000)),
+            "language_string":format_notion_select(data['langauge_string']),
+            "dependencies_name":format_notion_multi_select(data['dependencies_name']),
+            "practice_recommended":format_notion_checkbox(data['practice_recommednded']),
+            "disabled":format_notion_checkbox(data['disabled']),
+            "test_count":format_notion_number(data['test_count']),
+            "missing_lessons":format_notion_number(data['missing_lessons']),
+            "skill_progress":format_notion_number(data['skill_progress']['level']),
+            "lesson":format_notion_checkbox(data['lesson']),
+            "has_explanation":format_notion_text(data['has_explanation']),
+            "url_title":format_notion_text(data['url_title']),
+            "icon_color":format_notion_select(data['icon_color']),
+            "category":format_notion_select(data['category']),
+            "num_lessons":format_notion_number(data['num_lessons']),
+            "strength":format_notion_number(data['strength']),
+            "beginner":format_notion_checkbox(data['beginner']),
+            "num_levels":format_notion_number(data['num_levels']),
+            "coords_y":format_notion_number(data['coords_y']),
+            "coords_x":format_notion_number(data['coords_x']),
+            "progress_level_session_index":format_notion_number(data['progress_level_session_index']),
+            "level_session_finished":format_notion_number(data['level_sessions_finished']),
+            "levels_finished":format_notion_number(data['levels_finished']),
+            "test":format_notion_checkbox(data['test']),
+            "lesson_number":format_notion_number(data['lesson_number']),
+            "learned":format_notion_checkbox(data['learned']),
+            "num_translation_nodes":format_notion_number(data['num_translation_nodes']),
+            "achievements":format_notion_multi_select(data['achievements']),
+            "description":format_notion_text(data['description']),
+            "index":format_notion_number(data['index']),
+            "bonus":format_notion_checkbox(data['bonus']),
+            "locked":format_notion_checkbox(data['locked']),
+            "explanation":format_notion_text(data['explanation']),
+            "num_lexemes":format_notion_number(data['num_lexemes']),
+            "num_missing":format_notion_number(data['num_missing']),
+            # comment_data skipped as it has empty dictionary values during testing which isn't enough information to go on
+            "dependencies":format_notion_multi_select(data['dependencies']),
+            "known_lexemes":format_notion_multi_select(data['known_lexemes']),
+            "words":format_notion_multi_select(data['words']),
+            "num_sessions_for_level":format_notion_number(data['num_sessions_for_level']),
+            "path":format_notion_multi_select(data['path']),
+            "strength_no_disabled_no_character":format_notion_number(data['strength_no_disabled_no_character']),
+            "strength_no_disabled":format_notion_number(data['strength_no_disabled']),
+            "short":format_notion_text(data['short']),
+            "grammar":format_notion_checkbox(data['grammar']),
+            "name":format_notion_text(data['name']),
+            "language":format_notion_select(data['language']),
+            "is_new_grammar":format_notion_checkbox(data['is_new_grammar']),
+            "new_index":format_notion_number(data['new_index']),
+            "progress_percent":format_notion_number(data['progress_percent']),
+            "mastered":format_notion_checkbox(data['mastered'])
+        }
+    }
+
 
 def upload_duolingo_data_to_notion():
     key_list=[
         'NOTION_TOKEN',
         'DUOLINGO_USER',
         'DUOLINGO_COURSES_PAGEID',
-        'DUOLINGO_STREAK_DATA_DBID',
-        'DUOLINGO_COURSES_DBID'
+        'DUOLINGO_CALENDAR_SKILLS_DBID'
+        'DUOLINGO_COURSES_DBID',
+        'DUOLINGO_COOKIE'
     ]
     keychain = get_keychain(key_list)
     headers = get_notion_header(keychain)
-    page_json,courses,streakData = duolingo_data_notion_format(get_duolingo_api())
+    page_json,courses,_ = duolingo_data_notion_format(get_duolingo_api())
 
     # update the information on the Duolingo courses page
-    response = requests.patch(f"https://api.notion.com/v1/pages/{keychain['DUOLINGO_COURSES_PAGEID']}",headers=headers, json=page_json)
+    response = requests.patch(f"https://api.notion.com/v1/pages/{keychain['DUOLINGO_COURSES_PAGEID']}",
+        headers=headers, json=page_json)
     if response.status_code != 200:
         print(f"error occured while uploaded page data: {response.text}")
     
@@ -361,10 +417,35 @@ def upload_duolingo_data_to_notion():
             response = requests.patch(f"https://api.notion.com/v1/pages/{page_id}",headers=headers,json=notion_format)
         else:
             response = requests.post(f"https://api.notion.com/v1/pages",headers=headers,json=notion_format)
-        print(f"{response.status_code} : {response.json().get('message')}")
 
-    # update the information for all Duolingo streak data
-    #for streak in streakData:
-    #    print((streak,streakData[streak]))
+    # code for pulling daily calendar skills
+    session = requests.Session()
+    show = session.get(f"https://www.duolingo.com/api/1/users/show", 
+        params={"username":keychain['DUOLINGO_USER']}, 
+        headers={'Authorization': f'Bearer {keychain['DUOLINGO_COOKIE']}'})
+    show.raise_for_status()
+
+    # code for pulling the calendar per language from langauge_data
+    language_data = show.json().get('language_data')
+    lan_calendar = pd.DataFrame.from_dict(
+        [show.json().get('language_data').get(l).get('calendar') for l in language_data][0])
+    
+    # code for pulling the skills database per language from language_data
+    lan_skills = pd.DataFrame.from_dict(
+        [show.json().get('language_data').get(l).get('skills') for l in language_data][0])
+    lan_skills = lan_skills.rename(columns={'id':'skill_id'})
+
+    # vlookup like merging of the calendar and skills dataframes using a left join to keep the calendar items primary
+    skills_calendar = pd.merge(lan_calendar,lan_skills,on='skill_id',how='left')
+
+    for calendar in skills_calendar:
+        notion_format = duolingo_data_notion_calendar_skills_format(
+            keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],calendar)
+        page_id = search_for_notion_page_by_datetime(
+            headers,keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],calendar["datetime"])
+        if page_id:
+            response = requests.patch(f"https://api.notion.com/v1/pages{page_id}",headers=headers,json=notion_format)
+        else:
+            response = requests.post(f"https://api.notion.com/v1/pages",headers=headers,json=notion_format)
 
 # %%
