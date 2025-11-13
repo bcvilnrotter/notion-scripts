@@ -353,7 +353,7 @@ def duolingo_data_notion_calendar_skills_format(dbid,data):
         head['properties']['disabled'] = format_notion_checkbox(data['disabled'])
     if data['test_count']:
         head['properties']['test_count'] = format_notion_number(data['test_count'])
-    if data['skill_progress']:
+    if data['skill_progress'] is not np.nan:
         head['properties']['skill_progress'] = format_notion_number(data['skill_progress']['level'])
     if data['lesson']:
         head['properties']['lesson'] = format_notion_checkbox(data['lesson'])
