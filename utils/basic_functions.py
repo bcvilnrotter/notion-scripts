@@ -58,6 +58,8 @@ def get_notion_header(key_chain):
 def prop_value_is_missing(prop):
     if prop is np.nan:
         return True
+    if prop in ['null', None]:
+        return True
     if isinstance(prop, float) and (math.isnan(prop) or math.isinf(prop)):
         return True
     if isinstance(prop, str) and prop.strip() == "":
