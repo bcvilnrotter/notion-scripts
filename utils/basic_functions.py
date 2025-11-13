@@ -60,7 +60,7 @@ def prop_value_is_missing(prop):
         return True
     if prop is []:
         return True
-    if prop in ['null', None]:
+    if prop in ['null', 'NaN', None]:
         return True
     if prop == '':
         return True
