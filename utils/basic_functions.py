@@ -2,6 +2,7 @@
 import requests,os,json
 import datetime as dt
 import pandas as pd
+import numpy as np
 from utils.notion_property_formatting import *
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
@@ -344,7 +345,7 @@ def duolingo_data_notion_calendar_skills_format(dbid,data):
         head['properties']['event_type'] = format_notion_select(data['event_type'])
     if data['language_string']:
         head['properties']['language_string'] = format_notion_select(data['language_string'])
-    if data['dependencies_name']:
+    if data['dependencies_name'] is not np.nan:
         head['properties']['dependencies_name'] = format_notion_multi_select(data['dependencies_name'])
     if data['practice_recommended']:
         head['properties']['practice_recommended'] = format_notion_checkbox(data['practice_recommended'])
@@ -390,7 +391,7 @@ def duolingo_data_notion_calendar_skills_format(dbid,data):
         head['properties']['learned'] = format_notion_checkbox(data['learned'])
     if data['num_translation_nodes']:
         head['properties']['num_translation_nodes'] = format_notion_number(data['num_translation_nodes'])
-    if data['achievements']:
+    if data['achievements'] is not np.nan:
         head['properties']['achievements'] = format_notion_multi_select(data['achievements'])
     if data['description']:
         head['properties']['description'] = format_notion_text(data['description'])
@@ -406,15 +407,15 @@ def duolingo_data_notion_calendar_skills_format(dbid,data):
         head['properties']['num_lexemes'] = format_notion_number(data['num_lexemes'])
     if data['num_missing']:
         head['properties']['num_missing'] = format_notion_number(data['num_missing'])
-    if data['dependencies']:
+    if data['dependencies'] is not np.nan:
         head['properties']['dependencies'] = format_notion_multi_select(data['dependencies'])
-    if data['known_lexemes']:
+    if data['known_lexemes'] is not np.nan:
         head['properties']['known_lexemes'] = format_notion_multi_select(data['known_lexemes'])
-    if data['words']:
+    if data['words'] is not np.nan:
         head['properties']['words'] = format_notion_multi_select(data['words'])
     if data['num_sessions_for_level']:
         head['properties']['num_sessions_for_level'] = format_notion_number(data['num_sessions_for_level'])
-    if data['path']:
+    if data['path'] is not np.nan:
         head['properties']['path'] = format_notion_multi_select(data['path'])
     if data['strength_no_disabled_no_character']:
         head['properties']['strength_no_disabled_no_character'] = format_notion_number(data['strength_no_disabled_no_character'])
