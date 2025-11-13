@@ -66,6 +66,13 @@ def prop_value_is_missing(prop):
         return True
     return False
 
+def try_notion_payload(payload):
+    try:
+        json.dumps(payload, ensure_ascii=False, allow_nan=False)
+        return True, None
+    except ValueError as e:
+        return False, str(e)
+
 def add_image_cover_all_records():
     print('collecting keys.')
     key_chain = get_keychain(['NOTION_TOKEN','NOTION_VIDEO_GAME_STATS_DBID'])
@@ -527,6 +534,11 @@ def upload_duolingo_data_to_notion():
             headers,keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],dt.datetime.fromtimestamp(
                 calendar['datetime']/1000).strftime('%Y-%m-%dT%H:%M:%S'))
         print('page searched in notion.')
+        check,err = try_notion_payload(notion_format)
+        if check:
+            print('notion payload is valid.')
+        else:
+            print(f'notion payload is invalid: {err}')
         if page_id:
             print('updated existing page to notion.')
             response = requests.patch(f"https://api.notion.com/v1/pages/{page_id}",headers=headers,json=notion_format)
