@@ -331,7 +331,7 @@ def duolingo_data_notion_courses_format(dbid,data):
 def duolingo_data_notion_calendar_skills_format(dbid,data):
     head = {'parent': {'database_id': dbid},
             'properties': {
-                "Name": {"title":[{"text":{"content":dt.datetime.fromtimestamp(data['datetime']/1000).strftime('%Y-%m-%d')}}]
+                "Name": {"title":[{"text":{"content":dt.datetime.fromtimestamp(data['datetime']/1000).strftime('%Y-%m-%d-%H:%M:%S')}}]
             }}}
     
     if data['skill_id']:
@@ -559,7 +559,7 @@ def upload_duolingo_data_to_notion():
             keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],calendar)
         print('page formatted to notion.')
         page_id = search_for_notion_page_by_title(
-            headers,keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],dt.datetime.fromtimestamp(calendar['datetime']/1000).strftime('%Y-%m-%d'))
+            headers,keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],dt.datetime.fromtimestamp(calendar['datetime']/1000).strftime('%Y-%m-%d-%H:%M:%S'))
         print('page searched in notion.')
         if page_id:
             print('updated existing page to notion.')
