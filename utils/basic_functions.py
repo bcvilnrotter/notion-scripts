@@ -56,8 +56,11 @@ def get_notion_header(key_chain):
     }
 
 def prop_value_is_missing(prop):
-    if pd.isna(prop):
-        return True
+    try:
+        if pd.isna(prop):
+            return True
+    except(ValueError, TypeError):
+        pass
     if isinstance(prop, (list, np.ndarray)) and len(prop) == 0:
         return True
     if prop in ['null', 'NaN', None]:
