@@ -403,7 +403,7 @@ def duolingo_data_notion_calendar_skills_format(dbid,data):
     if not prop_value_is_missing(data['progress_level_session_index']):
         head['properties']['progress_level_session_index'] = format_notion_number(data['progress_level_session_index'])
     if not prop_value_is_missing(data['level_sessions_finished']):
-        head['properties']['level_session_finished'] = format_notion_number(data['level_sessions_finished'])
+        head['properties']['level_sessions_finished'] = format_notion_number(data['level_sessions_finished'])
     if not prop_value_is_missing(data['levels_finished']):
         head['properties']['levels_finished'] = format_notion_number(data['levels_finished'])
     if not prop_value_is_missing(data['test']): 
