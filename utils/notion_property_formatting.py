@@ -1,4 +1,3 @@
-import pandas as pd
 from datetime import datetime
 
 def format_notion_number(number):
