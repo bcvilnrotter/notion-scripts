@@ -335,77 +335,77 @@ def duolingo_data_notion_calendar_skills_format(dbid,data):
                 "Name": {"title":[{"text":{"content":dt.datetime.fromtimestamp(data['datetime']/1000).strftime('%Y-%m-%dT%H:%M:%S')}}]
             }}}
     
-    if data['datetime']:
+    if data['datetime'] is not np.nan:
         head['properties']['datetime'] = format_notion_date(dt.datetime.fromtimestamp(data['datetime']/1000),is_datetime=True,string_pattern='%Y-%m-%dT%H:%M:%S')
-    if data['skill_id']:
+    if data['skill_id'] is not np.nan:
         head['properties']['skill_id'] = format_notion_text(data['skill_id'])
-    if data['improvement']:
+    if data['improvement'] is not np.nan:
         head['properties']['improvement'] = format_notion_number(data['improvement'])
-    if data['event_type']:
+    if data['event_type'] is not np.nan:
         head['properties']['event_type'] = format_notion_select(data['event_type'])
-    if data['language_string']:
+    if data['language_string'] is not np.nan:
         head['properties']['language_string'] = format_notion_select(data['language_string'])
     if data['dependencies_name'] is not np.nan:
         head['properties']['dependencies_name'] = format_notion_multi_select(data['dependencies_name'])
-    if data['practice_recommended']:
+    if data['practice_recommended'] is not np.nan:
         head['properties']['practice_recommended'] = format_notion_checkbox(data['practice_recommended'])
-    if data['disabled']:
+    if data['disabled'] is not np.nan:
         head['properties']['disabled'] = format_notion_checkbox(data['disabled'])
-    if data['test_count']:
+    if data['test_count'] is not np.nan:
         head['properties']['test_count'] = format_notion_number(data['test_count'])
     if data['skill_progress'] is not np.nan:
         head['properties']['skill_progress'] = format_notion_number(data['skill_progress']['level'])
-    if data['lesson']:
+    if data['lesson'] is not np.nan:
         head['properties']['lesson'] = format_notion_checkbox(data['lesson'])
-    if data['has_explanation']:
+    if data['has_explanation'] is not np.nan:
         head['properties']['has_explanation'] = format_notion_text(data['has_explanation'])
-    if data['url_title']:
+    if data['url_title'] is not np.nan:
         head['properties']['url_title'] = format_notion_text(data['url_title'])
-    if data['icon_color']:
+    if data['icon_color'] is not np.nan:
         head['properties']['icon_color'] = format_notion_select(data['icon_color'])
-    if data['category']: 
+    if data['category'] is not np.nan: 
         head['properties']['category'] = format_notion_select(data['category'])
-    if data['num_lessons']:
+    if data['num_lessons'] is not np.nan:
         head['properties']['num_lessons'] = format_notion_number(data['num_lessons'])
-    if data['strength']:
+    if data['strength'] is not np.nan:
         head['properties']['strength'] = format_notion_number(data['strength'])
-    if data['beginner']:
+    if data['beginner'] is not np.nan:
         head['properties']['beginner'] = format_notion_checkbox(data['beginner'])
-    if data['num_levels']:
+    if data['num_levels'] is not np.nan:
         head['properties']['num_levels'] = format_notion_number(data['num_levels'])
-    if data['coords_y']:
+    if data['coords_y'] is not np.nan:
         head['properties']['coords_y'] = format_notion_number(data['coords_y'])
-    if data['coords_x']:
+    if data['coords_x'] is not np.nan:
         head['properties']['coords_x'] = format_notion_number(data['coords_x'])
-    if data['progress_level_session_index']:
+    if data['progress_level_session_index'] is not np.nan:
         head['properties']['progress_level_session_index'] = format_notion_number(data['progress_level_session_index'])
-    if data['level_sessions_finished']:
+    if data['level_sessions_finished'] is not np.nan:
         head['properties']['level_session_finished'] = format_notion_number(data['level_sessions_finished'])
-    if data['levels_finished']:
+    if data['levels_finished'] is not np.nan:
         head['properties']['levels_finished'] = format_notion_number(data['levels_finished'])
-    if data['test']: 
+    if data['test'] is not np.nan: 
         head['properties']['test'] = format_notion_checkbox(data['test'])
-    if data['lesson_number']:
+    if data['lesson_number'] is not np.nan:
         head['properties']['lesson_number'] = format_notion_number(data['lesson_number'])
-    if data['learned']:
+    if data['learned'] is not np.nan:
         head['properties']['learned'] = format_notion_checkbox(data['learned'])
-    if data['num_translation_nodes']:
+    if data['num_translation_nodes'] is not np.nan:
         head['properties']['num_translation_nodes'] = format_notion_number(data['num_translation_nodes'])
     if data['achievements'] is not np.nan:
         head['properties']['achievements'] = format_notion_multi_select(data['achievements'])
-    if data['description']:
+    if data['description'] is not np.nan:
         head['properties']['description'] = format_notion_text(data['description'])
-    if data['index']:
+    if data['index'] is not np.nan:
         head['properties']['index'] = format_notion_number(data['index'])
-    if data['bonus']:
+    if data['bonus'] is not np.nan:
         head['properties']['bonus'] = format_notion_checkbox(data['bonus'])
-    if data['locked']:
+    if data['locked'] is not np.nan:
         head['properties']['locked'] = format_notion_checkbox(data['locked'])
-    if data['explanation']:
+    if data['explanation'] is not np.nan:
         head['properties']['explanation'] = format_notion_text(data['explanation'])
-    if data['num_lexemes']:
+    if data['num_lexemes'] is not np.nan:
         head['properties']['num_lexemes'] = format_notion_number(data['num_lexemes'])
-    if data['num_missing']:
+    if data['num_missing'] is not np.nan:
         head['properties']['num_missing'] = format_notion_number(data['num_missing'])
     if data['dependencies'] is not np.nan:
         head['properties']['dependencies'] = format_notion_multi_select(data['dependencies'])
@@ -413,29 +413,29 @@ def duolingo_data_notion_calendar_skills_format(dbid,data):
         head['properties']['known_lexemes'] = format_notion_multi_select(data['known_lexemes'])
     if data['words'] is not np.nan:
         head['properties']['words'] = format_notion_multi_select(data['words'])
-    if data['num_sessions_for_level']:
+    if data['num_sessions_for_level'] is not np.nan:
         head['properties']['num_sessions_for_level'] = format_notion_number(data['num_sessions_for_level'])
     if data['path'] is not np.nan:
         head['properties']['path'] = format_notion_multi_select(data['path'])
-    if data['strength_no_disabled_no_character']:
+    if data['strength_no_disabled_no_character'] is not np.nan:
         head['properties']['strength_no_disabled_no_character'] = format_notion_number(data['strength_no_disabled_no_character'])
-    if data['strength_no_disabled']:
+    if data['strength_no_disabled'] is not np.nan:
         head['properties']['strength_no_disabled'] = format_notion_number(data['strength_no_disabled'])
-    if data['short']:
+    if data['short'] is not np.nan:
         head['properties']['short'] = format_notion_text(data['short'])
-    if data['grammar']:
+    if data['grammar'] is not np.nan:
         head['properties']['grammar'] = format_notion_checkbox(data['grammar'])
-    if data['name']:
+    if data['name'] is not np.nan:
         head['properties']['name'] = format_notion_text(data['name'])
-    if data['language']:
+    if data['language'] is not np.nan:
         head['properties']['language'] = format_notion_select(data['language'])
-    if data['is_new_grammar']:
+    if data['is_new_grammar'] is not np.nan:
         head['properties']['is_new_grammar'] = format_notion_checkbox(data['is_new_grammar'])
-    if data['new_index']:
+    if data['new_index'] is not np.nan:
         head['properties']['new_index'] = format_notion_number(data['new_index'])
-    if data['progress_percent']:
+    if data['progress_percent'] is not np.nan:
         head['properties']['progress_percent'] = format_notion_number(data['progress_percent'])
-    if data['mastered']:
+    if data['mastered'] is not np.nan:
         head['properties']['mastered'] = format_notion_checkbox(data['mastered'])
     return head
     """
