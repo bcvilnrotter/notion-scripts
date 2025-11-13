@@ -67,12 +67,12 @@ def prop_value_is_missing(prop):
     return False
 
 def try_notion_payload(payload):
-    try:
-        for i in payload:
+    for i in payload:
+        try:
             json.dumps(i, ensure_ascii=False, allow_nan=False)
-        return True, None
-    except ValueError as e:
-        return False, str(e)
+        except ValueError as e:
+            return False, i, str(e)
+    return True, None, None
 
 def add_image_cover_all_records():
     print('collecting keys.')
@@ -531,7 +531,7 @@ def upload_duolingo_data_to_notion():
         notion_format = duolingo_data_notion_calendar_skills_format(
             keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],calendar)
         print('page formatted to notion.')        
-        check,err = try_notion_payload(notion_format)
+        check, i, err = try_notion_payload(notion_format)
         if check:
             print('notion payload is valid.')
             page_id = search_for_notion_page_by_title(
@@ -546,6 +546,6 @@ def upload_duolingo_data_to_notion():
                 response = requests.post(f"https://api.notion.com/v1/pages",headers=headers,json=notion_format)
             print(response.text)
         else:
-            print(f'notion payload is invalid: {err}')
+            print(f'{i}: {err}')
 
 # %%
