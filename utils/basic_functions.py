@@ -332,11 +332,11 @@ def duolingo_data_notion_calendar_skills_format(dbid,data):
     return {
         'parent': {'database_id': dbid},
         'properties': {
-            "Name": {"title":[{"text":{"content":data['title']}}]},
+            "Name": {"title":[{"text":{"content":dt.datetime.fromtimestamp(data['datetime']/1000).strftime('%Y-%m-%d')}}]},
             "skill_id": format_notion_text(data['skill_id']),
             "improvement":format_notion_number(data['improvement']),
             "event_type":format_notion_select(data['event_type']),
-            "datetime":format_notion_date(dt.datetime.fromtimestamp(data['datetime']/1000),is_datetime=True),
+            #"datetime":format_notion_date(dt.datetime.fromtimestamp(data['datetime']/1000),is_datetime=True),
             "language_string":format_notion_select(data['language_string']),
             "dependencies_name":format_notion_multi_select(data['dependencies_name']),
             "practice_recommended":format_notion_checkbox(data['practice_recommended']),
@@ -451,7 +451,7 @@ def upload_duolingo_data_to_notion():
         notion_format = duolingo_data_notion_calendar_skills_format(
             keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],calendar)
         print('page formatted to notion.')
-        page_id = search_for_notion_page_by_datetime(
+        page_id = search_for_notion_page_by_title(
             headers,keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],dt.datetime.fromtimestamp(calendar['datetime']/1000).strftime('%Y-%m-%d'))
         print('page searched in notion.')
         if page_id:
