@@ -68,7 +68,8 @@ def prop_value_is_missing(prop):
 
 def try_notion_payload(payload):
     try:
-        json.dumps(payload, ensure_ascii=False, allow_nan=False)
+        for i in payload:
+            json.dumps(i, ensure_ascii=False, allow_nan=False)
         return True, None
     except ValueError as e:
         return False, str(e)
@@ -529,22 +530,22 @@ def upload_duolingo_data_to_notion():
     for calendar in skills_calendar.to_dict(orient='records'):
         notion_format = duolingo_data_notion_calendar_skills_format(
             keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],calendar)
-        print('page formatted to notion.')
-        page_id = search_for_notion_page_by_title(
-            headers,keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],dt.datetime.fromtimestamp(
-                calendar['datetime']/1000).strftime('%Y-%m-%dT%H:%M:%S'))
-        print('page searched in notion.')
+        print('page formatted to notion.')        
         check,err = try_notion_payload(notion_format)
         if check:
             print('notion payload is valid.')
+            page_id = search_for_notion_page_by_title(
+                headers,keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],dt.datetime.fromtimestamp(
+                    calendar['datetime']/1000).strftime('%Y-%m-%dT%H:%M:%S'))
+            print('page searched in notion.')
+            if page_id:
+                print('updated existing page to notion.')
+                response = requests.patch(f"https://api.notion.com/v1/pages/{page_id}",headers=headers,json=notion_format)
+            else:
+                print('posting new page to notion.')
+                response = requests.post(f"https://api.notion.com/v1/pages",headers=headers,json=notion_format)
+            print(response.text)
         else:
             print(f'notion payload is invalid: {err}')
-        if page_id:
-            print('updated existing page to notion.')
-            response = requests.patch(f"https://api.notion.com/v1/pages/{page_id}",headers=headers,json=notion_format)
-        else:
-            print('posting new page to notion.')
-            response = requests.post(f"https://api.notion.com/v1/pages",headers=headers,json=notion_format)
-        print(response.text)
 
 # %%
