@@ -1,5 +1,5 @@
 #%%
-import requests,os,json
+import requests,os,json,math
 import datetime as dt
 import pandas as pd
 import numpy as np
@@ -54,6 +54,15 @@ def get_notion_header(key_chain):
         'Content-Type': 'application/json',
         'Notion-Version': '2022-06-28'
     }
+
+def prop_value_is_missing(prop):
+    if prop is np.nan:
+        return True
+    if isinstance(prop, float) and (math.isnan(prop) or math.isinf(prop)):
+        return True
+    if isinstance(prop, str) and prop.strip() == "":
+        return True
+    return False
 
 def add_image_cover_all_records():
     print('collecting keys.')
@@ -332,172 +341,124 @@ def duolingo_data_notion_courses_format(dbid,data):
 def duolingo_data_notion_calendar_skills_format(dbid,data):
     head = {'parent': {'database_id': dbid},
             'properties': {
-                "Name": {"title":[{"text":{"content":dt.datetime.fromtimestamp(data['datetime']/1000).strftime('%Y-%m-%dT%H:%M:%S')}}]
-            }}}
+                "Name": {
+                    "title":[{
+                        "text":{
+                            "content":dt.datetime.fromtimestamp(
+                                data['datetime']/1000
+                            ).strftime('%Y-%m-%dT%H:%M:%S')
+                        }
+                }]
+            }
+        }
+    }
     
-    if data['datetime'] is not np.nan:
-        head['properties']['datetime'] = format_notion_date(dt.datetime.fromtimestamp(data['datetime']/1000),is_datetime=True,string_pattern='%Y-%m-%dT%H:%M:%S')
-    if data['skill_id'] is not np.nan:
+    if not prop_value_is_missing(data['datetime']):
+        head['properties']['datetime'] = format_notion_date(
+            dt.datetime.fromtimestamp(
+                data['datetime']/1000
+            ),is_datetime=True,string_pattern='%Y-%m-%dT%H:%M:%S')
+    if not prop_value_is_missing(data['skill_id']):
         head['properties']['skill_id'] = format_notion_text(data['skill_id'])
-    if data['improvement'] is not np.nan:
+    if not prop_value_is_missing(data['improvement']):
         head['properties']['improvement'] = format_notion_number(data['improvement'])
-    if data['event_type'] is not np.nan:
+    if not prop_value_is_missing(data['event_type']):
         head['properties']['event_type'] = format_notion_select(data['event_type'])
-    if data['language_string'] is not np.nan:
+    if not prop_value_is_missing(data['language_string']):
         head['properties']['language_string'] = format_notion_select(data['language_string'])
-    if data['dependencies_name'] is not np.nan:
+    if not prop_value_is_missing(data['dependencies_name']):
         head['properties']['dependencies_name'] = format_notion_multi_select(data['dependencies_name'])
-    if data['practice_recommended'] is not np.nan:
+    if not prop_value_is_missing(data['practice_recommended']):
         head['properties']['practice_recommended'] = format_notion_checkbox(data['practice_recommended'])
-    if data['disabled'] is not np.nan:
+    if not prop_value_is_missing(data['disabled']):
         head['properties']['disabled'] = format_notion_checkbox(data['disabled'])
-    if data['test_count'] is not np.nan:
+    if not prop_value_is_missing(data['test_count']):
         head['properties']['test_count'] = format_notion_number(data['test_count'])
-    if data['skill_progress'] is not np.nan:
+    if not prop_value_is_missing(data['skill_progress']):
         head['properties']['skill_progress'] = format_notion_number(data['skill_progress']['level'])
-    if data['lesson'] is not np.nan:
+    if not prop_value_is_missing(data['lesson']):
         head['properties']['lesson'] = format_notion_checkbox(data['lesson'])
-    if data['has_explanation'] is not np.nan:
+    if not prop_value_is_missing(data['has_explanation']):
         head['properties']['has_explanation'] = format_notion_text(data['has_explanation'])
-    if data['url_title'] is not np.nan:
+    if not prop_value_is_missing(data['url_title']):
         head['properties']['url_title'] = format_notion_text(data['url_title'])
-    if data['icon_color'] is not np.nan:
+    if not prop_value_is_missing(data['icon_color']):
         head['properties']['icon_color'] = format_notion_select(data['icon_color'])
-    if data['category'] is not np.nan: 
+    if not prop_value_is_missing(data['category']): 
         head['properties']['category'] = format_notion_select(data['category'])
-    if data['num_lessons'] is not np.nan:
+    if not prop_value_is_missing(data['num_lessons']):
         head['properties']['num_lessons'] = format_notion_number(data['num_lessons'])
-    if data['strength'] is not np.nan:
+    if not prop_value_is_missing(data['strength']):
         head['properties']['strength'] = format_notion_number(data['strength'])
-    if data['beginner'] is not np.nan:
+    if not prop_value_is_missing(data['beginner']):
         head['properties']['beginner'] = format_notion_checkbox(data['beginner'])
-    if data['num_levels'] is not np.nan:
+    if not prop_value_is_missing(data['num_levels']):
         head['properties']['num_levels'] = format_notion_number(data['num_levels'])
-    if data['coords_y'] is not np.nan:
+    if not prop_value_is_missing(data['coords_y']):
         head['properties']['coords_y'] = format_notion_number(data['coords_y'])
-    if data['coords_x'] is not np.nan:
+    if not prop_value_is_missing(data['coords_x']):
         head['properties']['coords_x'] = format_notion_number(data['coords_x'])
-    if data['progress_level_session_index'] is not np.nan:
+    if not prop_value_is_missing(data['progress_level_session_index']):
         head['properties']['progress_level_session_index'] = format_notion_number(data['progress_level_session_index'])
-    if data['level_sessions_finished'] is not np.nan:
+    if not prop_value_is_missing(data['level_sessions_finished']):
         head['properties']['level_session_finished'] = format_notion_number(data['level_sessions_finished'])
-    if data['levels_finished'] is not np.nan:
+    if not prop_value_is_missing(data['levels_finished']):
         head['properties']['levels_finished'] = format_notion_number(data['levels_finished'])
-    if data['test'] is not np.nan: 
+    if not prop_value_is_missing(data['test']): 
         head['properties']['test'] = format_notion_checkbox(data['test'])
-    if data['lesson_number'] is not np.nan:
+    if not prop_value_is_missing(data['lesson_number']):
         head['properties']['lesson_number'] = format_notion_number(data['lesson_number'])
-    if data['learned'] is not np.nan:
+    if not prop_value_is_missing(data['learned']):
         head['properties']['learned'] = format_notion_checkbox(data['learned'])
-    if data['num_translation_nodes'] is not np.nan:
+    if not prop_value_is_missing(data['num_translation_nodes']):
         head['properties']['num_translation_nodes'] = format_notion_number(data['num_translation_nodes'])
-    if data['achievements'] is not np.nan:
+    if not prop_value_is_missing(data['achievements']):
         head['properties']['achievements'] = format_notion_multi_select(data['achievements'])
-    if data['description'] is not np.nan:
+    if not prop_value_is_missing(data['description']):
         head['properties']['description'] = format_notion_text(data['description'])
-    if data['index'] is not np.nan:
+    if not prop_value_is_missing(data['index']):
         head['properties']['index'] = format_notion_number(data['index'])
-    if data['bonus'] is not np.nan:
+    if not prop_value_is_missing(data['bonus']):
         head['properties']['bonus'] = format_notion_checkbox(data['bonus'])
-    if data['locked'] is not np.nan:
+    if not prop_value_is_missing(data['locked']):
         head['properties']['locked'] = format_notion_checkbox(data['locked'])
-    if data['explanation'] is not np.nan:
+    if not prop_value_is_missing(data['explanation']):
         head['properties']['explanation'] = format_notion_text(data['explanation'])
-    if data['num_lexemes'] is not np.nan:
+    if not prop_value_is_missing(data['num_lexemes']):
         head['properties']['num_lexemes'] = format_notion_number(data['num_lexemes'])
-    if data['num_missing'] is not np.nan:
+    if not prop_value_is_missing(data['num_missing']):
         head['properties']['num_missing'] = format_notion_number(data['num_missing'])
-    if data['dependencies'] is not np.nan:
+    if not prop_value_is_missing(data['dependencies']):
         head['properties']['dependencies'] = format_notion_multi_select(data['dependencies'])
-    if data['known_lexemes'] is not np.nan:
+    if not prop_value_is_missing(data['known_lexemes']):
         head['properties']['known_lexemes'] = format_notion_multi_select(data['known_lexemes'])
-    if data['words'] is not np.nan:
+    if not prop_value_is_missing(data['words']):
         head['properties']['words'] = format_notion_multi_select(data['words'])
-    if data['num_sessions_for_level'] is not np.nan:
+    if not prop_value_is_missing(data['num_sessions_for_level']):
         head['properties']['num_sessions_for_level'] = format_notion_number(data['num_sessions_for_level'])
-    if data['path'] is not np.nan:
+    if not prop_value_is_missing(data['path']):
         head['properties']['path'] = format_notion_multi_select(data['path'])
-    if data['strength_no_disabled_no_character'] is not np.nan:
+    if not prop_value_is_missing(data['strength_no_disabled_no_character']):
         head['properties']['strength_no_disabled_no_character'] = format_notion_number(data['strength_no_disabled_no_character'])
-    if data['strength_no_disabled'] is not np.nan:
+    if not prop_value_is_missing(data['strength_no_disabled']):
         head['properties']['strength_no_disabled'] = format_notion_number(data['strength_no_disabled'])
-    if data['short'] is not np.nan:
+    if not prop_value_is_missing(data['short']):
         head['properties']['short'] = format_notion_text(data['short'])
-    if data['grammar'] is not np.nan:
+    if not prop_value_is_missing(data['grammar']):
         head['properties']['grammar'] = format_notion_checkbox(data['grammar'])
-    if data['name'] is not np.nan:
+    if not prop_value_is_missing(data['name']):
         head['properties']['name'] = format_notion_text(data['name'])
-    if data['language'] is not np.nan:
+    if not prop_value_is_missing(data['language']):
         head['properties']['language'] = format_notion_select(data['language'])
-    if data['is_new_grammar'] is not np.nan:
+    if not prop_value_is_missing(data['is_new_grammar']):
         head['properties']['is_new_grammar'] = format_notion_checkbox(data['is_new_grammar'])
-    if data['new_index'] is not np.nan:
+    if not prop_value_is_missing(data['new_index']):
         head['properties']['new_index'] = format_notion_number(data['new_index'])
-    if data['progress_percent'] is not np.nan:
+    if not prop_value_is_missing(data['progress_percent']):
         head['properties']['progress_percent'] = format_notion_number(data['progress_percent'])
-    if data['mastered'] is not np.nan:
+    if not prop_value_is_missing(data['mastered']):
         head['properties']['mastered'] = format_notion_checkbox(data['mastered'])
     return head
-    """
-    return {
-        'parent': {'database_id': dbid},
-        'properties': {
-            "Name": {"title":[{"text":{"content":dt.datetime.fromtimestamp(data['datetime']/1000).strftime('%Y-%m-%d')}}]},
-            "skill_id": format_notion_text(data['skill_id']),
-            "improvement":format_notion_number(data['improvement']),
-            "event_type":format_notion_select(data['event_type']),
-            #"datetime":format_notion_date(dt.datetime.fromtimestamp(data['datetime']/1000),is_datetime=True),
-            "language_string":format_notion_select(data['language_string']),
-            "dependencies_name":format_notion_multi_select(data['dependencies_name']),
-            "practice_recommended":format_notion_checkbox(data['practice_recommended']),
-            "disabled":format_notion_checkbox(data['disabled']),
-            "test_count":format_notion_number(data['test_count']),
-            "missing_lessons":format_notion_number(data['missing_lessons']),
-            "skill_progress":format_notion_number(data['skill_progress']['level']),
-            "lesson":format_notion_checkbox(data['lesson']),
-            "has_explanation":format_notion_text(data['has_explanation']),
-            "url_title":format_notion_text(data['url_title']),
-            "icon_color":format_notion_select(data['icon_color']),
-            "category":format_notion_select(data['category']),
-            "num_lessons":format_notion_number(data['num_lessons']),
-            "strength":format_notion_number(data['strength']),
-            "beginner":format_notion_checkbox(data['beginner']),
-            "num_levels":format_notion_number(data['num_levels']),
-            "coords_y":format_notion_number(data['coords_y']),
-            "coords_x":format_notion_number(data['coords_x']),
-            "progress_level_session_index":format_notion_number(data['progress_level_session_index']),
-            "level_session_finished":format_notion_number(data['level_sessions_finished']),
-            "levels_finished":format_notion_number(data['levels_finished']),
-            "test":format_notion_checkbox(data['test']),
-            "lesson_number":format_notion_number(data['lesson_number']),
-            "learned":format_notion_checkbox(data['learned']),
-            "num_translation_nodes":format_notion_number(data['num_translation_nodes']),
-            "achievements":format_notion_multi_select(data['achievements']),
-            "description":format_notion_text(data['description']),
-            "index":format_notion_number(data['index']),
-            "bonus":format_notion_checkbox(data['bonus']),
-            "locked":format_notion_checkbox(data['locked']),
-            "explanation":format_notion_text(data['explanation']),
-            "num_lexemes":format_notion_number(data['num_lexemes']),
-            "num_missing":format_notion_number(data['num_missing']),
-            # comment_data skipped as it has empty dictionary values during testing which isn't enough information to go on
-            "dependencies":format_notion_multi_select(data['dependencies']),
-            "known_lexemes":format_notion_multi_select(data['known_lexemes']),
-            "words":format_notion_multi_select(data['words']),
-            "num_sessions_for_level":format_notion_number(data['num_sessions_for_level']),
-            "path":format_notion_multi_select(data['path']),
-            "strength_no_disabled_no_character":format_notion_number(data['strength_no_disabled_no_character']),
-            "strength_no_disabled":format_notion_number(data['strength_no_disabled']),
-            "short":format_notion_text(data['short']),
-            "grammar":format_notion_checkbox(data['grammar']),
-            "name":format_notion_text(data['name']),
-            "language":format_notion_select(data['language']),
-            "is_new_grammar":format_notion_checkbox(data['is_new_grammar']),
-            "new_index":format_notion_number(data['new_index']),
-            "progress_percent":format_notion_number(data['progress_percent']),
-            "mastered":format_notion_checkbox(data['mastered'])
-        }
-    }"""
 
 # %%
 def upload_duolingo_data_to_notion():
@@ -556,13 +517,13 @@ def upload_duolingo_data_to_notion():
     # vlookup like merging of the calendar and skills dataframes using a left join to keep the calendar items primary
     skills_calendar = pd.merge(lan_calendar,lan_skills,on='skill_id',how='left')
 
-
     for calendar in skills_calendar.to_dict(orient='records'):
         notion_format = duolingo_data_notion_calendar_skills_format(
             keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],calendar)
         print('page formatted to notion.')
         page_id = search_for_notion_page_by_title(
-            headers,keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],dt.datetime.fromtimestamp(calendar['datetime']/1000).strftime('%Y-%m-%dT%H:%M:%S'))
+            headers,keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],dt.datetime.fromtimestamp(
+                calendar['datetime']/1000).strftime('%Y-%m-%dT%H:%M:%S'))
         print('page searched in notion.')
         if page_id:
             print('updated existing page to notion.')
