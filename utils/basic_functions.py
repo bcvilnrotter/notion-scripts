@@ -333,6 +333,7 @@ def duolingo_data_notion_calendar_skills_format(dbid,data):
             'properties': {
                 "Name": {"title":[{"text":{"content":dt.datetime.fromtimestamp(data['datetime']/1000).strftime('%Y-%m-%d-%H:%M:%S')}}]
             }}}
+    
     if data['datetime']:
         head['properties']['datetime'] = format_notion_date(dt.datetime.fromtimestamp(data['datetime']/1000),is_datetime=True,string_pattern='%Y-%m-%d-%H:%M:%S')
     if data['skill_id']:
@@ -564,7 +565,7 @@ def upload_duolingo_data_to_notion():
         print('page searched in notion.')
         if page_id:
             print('updated existing page to notion.')
-            response = requests.patch(f"https://api.notion.com/v1/pages{page_id}",headers=headers,json=notion_format)
+            response = requests.patch(f"https://api.notion.com/v1/pages/{page_id}",headers=headers,json=notion_format)
         else:
             print('posting new page to notion.')
             response = requests.post(f"https://api.notion.com/v1/pages",headers=headers,json=notion_format)
