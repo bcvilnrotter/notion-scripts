@@ -62,6 +62,8 @@ def prop_value_is_missing(prop):
         return True
     if prop in ['null', None]:
         return True
+    if prop == '':
+        return True
     return False
 
 def add_image_cover_all_records():
