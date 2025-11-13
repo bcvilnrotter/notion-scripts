@@ -57,12 +57,12 @@ def get_notion_header(key_chain):
 
 def prop_value_is_missing(prop):
     if prop is np.nan:
-        return True
+        return False
     if isinstance(prop, float) and (math.isnan(prop) or math.isinf(prop)):
-        return True
+        return False
     if isinstance(prop, str) and prop.strip() == "":
-        return True
-    return False
+        return False
+    return True
 
 def add_image_cover_all_records():
     print('collecting keys.')
