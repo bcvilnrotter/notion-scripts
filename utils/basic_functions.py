@@ -333,7 +333,8 @@ def duolingo_data_notion_calendar_skills_format(dbid,data):
             'properties': {
                 "Name": {"title":[{"text":{"content":dt.datetime.fromtimestamp(data['datetime']/1000).strftime('%Y-%m-%d-%H:%M:%S')}}]
             }}}
-    
+    if data['datetime']:
+        head['properties']['datetime'] = format_notion_date(dt.datetime.fromtimestamp(data['datetime']/1000),is_datetime=True,string_pattern='%Y-%m-%d-%H:%M:%S')
     if data['skill_id']:
         head['properties']['skill_id'] = format_notion_text(data['skill_id'])
     if data['improvement']:

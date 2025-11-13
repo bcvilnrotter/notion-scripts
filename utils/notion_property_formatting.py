@@ -6,7 +6,7 @@ def format_notion_number(number):
 def format_notion_text(text):
     return {"rich_text": [{"text": {"content": text}}]}
 
-def format_notion_date(start, end=None, patterns=None, is_datetime=False):
+def format_notion_date(start, end=None, patterns=None, is_datetime=False,string_pattern=None):
     if patterns:
         for pattern in patterns:
             try:
@@ -17,10 +17,10 @@ def format_notion_date(start, end=None, patterns=None, is_datetime=False):
                 continue
     if is_datetime:
         assert isinstance(start,datetime)
-        start = start.strftime('%Y-%m-%d')
+        start = start.strftime(string_pattern) if string_pattern else start.strftime('%Y-%m-%d')
         if end:
             assert isinstance(end,datetime)
-            end = end.strftime('%Y-%m-%d')
+            end = end.strftime(string_pattern) if string_pattern else end.strftime('%Y-%m-%d')
     return {"date": {"start": start, "end": end}}
 
 def format_notion_single_relation(page_id):
