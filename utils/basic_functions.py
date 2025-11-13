@@ -334,105 +334,105 @@ def duolingo_data_notion_calendar_skills_format(dbid,data):
                 "Name": {"title":[{"text":{"content":dt.datetime.fromtimestamp(data['datetime']/1000).strftime('%Y-%m-%d')}}]
             }}}
     
-    if 'skill_id' in data.columns:
+    if data['skill_id']:
         head['properties']['skill_id'] = format_notion_text(data['skill_id'])
-    if 'improvement' in data.columns:
+    if data['improvement']:
         head['properties']['improvement'] = format_notion_number(data['improvement'])
-    if 'event_type' in data.columns:
+    if data['event_type']:
         head['properties']['event_type'] = format_notion_select(data['event_type'])
-    if 'language_string' in data.columns:
+    if data['language_string']:
         head['properties']['language_string'] = format_notion_select(data['language_string'])
-    if 'dependencies_name' in data.columns:
+    if data['dependencies_name']:
         head['properties']['dependencies_name'] = format_notion_multi_select(data['dependencies_name'])
-    if 'practice_recommended' in data.columns:
+    if data['practice_recommended']:
         head['properties']['practice_recommended'] = format_notion_checkbox(data['practice_recommended'])
-    if 'disabled' in data.columns:
+    if data['disabled']:
         head['properties']['disabled'] = format_notion_checkbox(data['disabled'])
-    if 'test_count' in data.columns:
+    if data['test_count']:
         head['properties']['test_count'] = format_notion_number(data['test_count'])
-    if 'skill_progress' in data.columns:
+    if data['skill_progress']:
         head['properties']['skill_progress'] = format_notion_number(data['skill_progress']['level'])
-    if 'lesson' in data.columns:
+    if data['lesson']:
         head['properties']['lesson'] = format_notion_checkbox(data['lesson'])
-    if 'has_explanation' in data.columns:
+    if data['has_explanation']:
         head['properties']['has_explanation'] = format_notion_text(data['has_explanation'])
-    if 'url_title' in data.columns:
+    if data['url_title']:
         head['properties']['url_title'] = format_notion_text(data['url_title'])
-    if 'icon_color' in data.columns:
+    if data['icon_color']:
         head['properties']['icon_color'] = format_notion_select(data['icon_color'])
-    if 'category' in data.columns: 
+    if data['category']: 
         head['properties']['category'] = format_notion_select(data['category'])
-    if 'num_lessons' in data.columns:
+    if data['num_lessons']:
         head['properties']['num_lessons'] = format_notion_number(data['num_lessons'])
-    if 'strength' in data.columns:
+    if data['strength']:
         head['properties']['strength'] = format_notion_number(data['strength'])
-    if 'beginner' in data.columns:
+    if data['beginner']:
         head['properties']['beginner'] = format_notion_checkbox(data['beginner'])
-    if 'num_levels' in data.columns:
+    if data['num_levels']:
         head['properties']['num_levels'] = format_notion_number(data['num_levels'])
-    if 'coords_y' in data.columns:
+    if data['coords_y']:
         head['properties']['coords_y'] = format_notion_number(data['coords_y'])
-    if 'coords_x' in data.columns:
+    if data['coords_x']:
         head['properties']['coords_x'] = format_notion_number(data['coords_x'])
-    if 'progress_level_session_index' in data.columns:
+    if data['progress_level_session_index']:
         head['properties']['progress_level_session_index'] = format_notion_number(data['progress_level_session_index'])
-    if 'level_sessions_finished' in data.columns:
+    if data['level_sessions_finished']:
         head['properties']['level_session_finished'] = format_notion_number(data['level_sessions_finished'])
-    if 'levels_finished' in data.columns:
+    if data['levels_finished']:
         head['properties']['levels_finished'] = format_notion_number(data['levels_finished'])
-    if 'test' in data.columns: 
+    if data['test']: 
         head['properties']['test'] = format_notion_checkbox(data['test'])
-    if 'lesson_number' in data.columns:
+    if data['lesson_number']:
         head['properties']['lesson_number'] = format_notion_number(data['lesson_number'])
-    if 'learned' in data.columns:
+    if data['learned']:
         head['properties']['learned'] = format_notion_checkbox(data['learned'])
-    if 'num_translation_nodes' in data.columns:
+    if data['num_translation_nodes']:
         head['properties']['num_translation_nodes'] = format_notion_number(data['num_translation_nodes'])
-    if 'achievements' in data.columns:
+    if data['achievements']:
         head['properties']['achievements'] = format_notion_multi_select(data['achievements'])
-    if 'description' in data.columns:
+    if data['description']:
         head['properties']['description'] = format_notion_text(data['description'])
-    if 'index' in data.columns:
+    if data['index']:
         head['properties']['index'] = format_notion_number(data['index'])
-    if 'bonus' in data.columns:
+    if data['bonus']:
         head['properties']['bonus'] = format_notion_checkbox(data['bonus'])
-    if 'locked' in data.columns:
+    if data['locked']:
         head['properties']['locked'] = format_notion_checkbox(data['locked'])
-    if 'explanation' in data.columns:
+    if data['explanation']:
         head['properties']['explanation'] = format_notion_text(data['explanation'])
-    if 'num_lexemes' in data.columns:
+    if data['num_lexemes']:
         head['properties']['num_lexemes'] = format_notion_number(data['num_lexemes'])
-    if 'num_missing' in data.columns:
+    if data['num_missing']:
         head['properties']['num_missing'] = format_notion_number(data['num_missing'])
-    if 'dependencies' in data.columns:
+    if data['dependencies']:
         head['properties']['dependencies'] = format_notion_multi_select(data['dependencies'])
-    if 'known_lexemes' in data.columns:
+    if data['known_lexemes']:
         head['properties']['known_lexemes'] = format_notion_multi_select(data['known_lexemes'])
-    if 'words' in data.columns:
+    if data['words']:
         head['properties']['words'] = format_notion_multi_select(data['words'])
-    if 'num_sessions_for_level' in data.columns:
+    if data['num_sessions_for_level']:
         head['properties']['num_sessions_for_level'] = format_notion_number(data['num_sessions_for_level'])
-    if 'path' in data.columns:
+    if data['path']:
         head['properties']['path'] = format_notion_multi_select(data['path'])
-    if 'strength_no_disabled_no_character' in data.columns:
+    if data['strength_no_disabled_no_character']:
         head['properties']['strength_no_disabled_no_character'] = format_notion_number(data['strength_no_disabled_no_character'])
-    if 'strength_no_disabled' in data.columns:
+    if data['strength_no_disabled']:
         head['properties']['strength_no_disabled'] = format_notion_number(data['strength_no_disabled'])
-    if 'short' in data.columns:
+    if data['short']:
         head['properties']['short'] = format_notion_text(data['short'])
-    if 'grammar' in data.columns:
+    if data['grammar']:
         head['properties']['grammar'] = format_notion_checkbox(data['grammar'])
-    if 'name' in data.columns:
+    if data['name']:
         head['properties']['name'] = format_notion_text(data['name'])
-    if 'language' in data.columns:
+    if data['language']:
         head['properties']['language'] = format_notion_select(data['language'])
-    if 'is_new_grammar' in data.columns:
+    if data['is_new_grammar']:
         head['properties']['is_new_grammar'] = format_notion_checkbox(data['is_new_grammar'])
-    if 'new_index' in data.columns:
+    if data['new_index']:
         head['properties']['new_index'] = format_notion_number(data['new_index'])
-    if 'progress_percent' in data.columns:
+    if data['progress_percent']:
         head['properties']['progress_percent'] = format_notion_number(data['progress_percent'])
-    if 'mastered' in data.columns:
+    if data['mastered']:
         head['properties']['mastered'] = format_notion_checkbox(data['mastered'])
     return head
     """
