@@ -30,5 +30,6 @@ jobs:
                 DUOLINGO_COOKIE: ${{ secrets.DUOLINGO_COOKIE }}
                 DUOLINGO_CALENDAR_SKILLS_DBID: ${{ secrets.DUOLINGO_CALENDAR_SKILLS_DBID }}
                 DUOLINGO_PROFILE_USER: ${{ secrets.DUOLINGO_PROFILE_USER }}
+                NOTION_UNIVERSAL_DICTIONARY_DBID_INNER: ${{ secrets.NOTION_UNIVERSAL_DICTIONARY_DBID_INNER }}
               run:
                 python add_duolingo_daily.py
