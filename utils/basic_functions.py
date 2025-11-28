@@ -580,7 +580,8 @@ def upload_duolingo_data_to_notion():
         'DUOLINGO_COURSES_PAGEID',
         'DUOLINGO_CALENDAR_SKILLS_DBID',
         'DUOLINGO_COURSES_DBID',
-        'DUOLINGO_COOKIE'
+        'DUOLINGO_COOKIE',
+        'NOTION_UNIVERSAL_DICTIONARY_DBID_INNER'
     ]
     keychain = get_keychain(key_list)
     headers = get_notion_header(keychain)
