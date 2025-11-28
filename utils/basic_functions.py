@@ -3,6 +3,7 @@ import requests,os,json,math
 import datetime as dt
 import pandas as pd
 import numpy as np
+#from notion_property_formatting import *
 from utils.notion_property_formatting import *
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
@@ -10,14 +11,15 @@ from dotenv import load_dotenv
 # %%
 def get_secret(secret_key):
     if not os.getenv(secret_key):
-        env_path = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..\..','.gitignore\.env'))
+        print(f"Loaging .env for {secret_key}")
+        #env_path = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..\..','.gitignore\.env'))
+        env_path = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..\..\..','.gitignore\.env'))
         load_dotenv(dotenv_path=env_path)
 
     value = os.getenv(secret_key)
-    print("".join(['*'])*len(value))
+    print("".join(['*'])*len(value)) if value else print(f"{secret_key} wasn't pulled.")
     if value is None:
         ValueError(f"Secret '{secret_key} not found.")
-    
     return value
 
 # %%
@@ -28,6 +30,7 @@ def get_banner_url_from_appid(appid):
         return json.loads(response.text).get(appid).get('data').get('header_image')
     print(f'AppId data not found: {response.text}')
     return {}
+
 #%%
 def get_all_page_atts(headers,database_id):
     url = f'https://api.notion.com/v1/databases/{database_id}/query'
@@ -134,7 +137,6 @@ def format_2week_playtime_to_notion_data(key_chain,game_data):
         return None
 
 #%%
-
 def search_for_notion_page_by_title(headers,dbid,title):
     query_url = f"https://api.notion.com/v1/databases/{dbid}/query"
 
@@ -474,6 +476,102 @@ def duolingo_data_notion_calendar_skills_format(dbid,data):
     return head
 
 # %%
+def get_records_from_notion_database(header,database_id):
+    url = f'https://api.notion.com/v1/databases/{database_id}/query'
+    response = requests.post(url,headers=header)
+    response.raise_for_status()
+    return response
+
+def get_duolingo_calendar_skills_words(headers,dbid):
+    response = get_records_from_notion_database(headers,dbid)
+    response.raise_for_status()
+    iterator = response.json().get('results')
+    print(iterator)
+    words = list({
+        item.get('name') 
+        for record in iterator
+        for item in record
+                    .get('properties')
+                    .get('words')
+                    .get('multi_select') 
+        if record
+           .get('properties')
+           .get('words')
+           .get('multi_select') != []})
+
+    processed = []
+    for record in iterator:
+        ms = (
+            record.get('properties',{})
+                .get('words',{})
+                .get('multi_select',[])
+        )
+        names = [item.get('name') for item in ms]
+        processed.append((record,names))
+    
+    return {
+        word: [rec.get('id') for rec, names in processed if word in names]
+        for word in words
+    }
+
+def get_new_empty_notion_page(dbid,title):
+    return {
+        'parent': {'database_id': dbid},
+        'properties': {
+            "Name": {
+                "title":[{
+                    "text":{
+                        "content":title
+                    }
+            }]
+        }
+    }
+}
+
+def get_data_for_duolingo_dictionary_page(dbid,word,page_ids):
+    head = get_new_empty_notion_page(dbid,word)
+    head['properties']['🗓️ Duolingo Calendar Skills'] = format_notion_multi_relation(
+        page_ids)
+    return head
+
+def update_duolingo_dictionary_database():
+    key_list = [
+        'NOTION_TOKEN',
+        'DUOLINGO_CALENDAR_SKILLS_DBID_INNER',
+        'NOTION_UNIVERSAL_DICTIONARY_DBID_INNER'
+    ]
+    keychains = get_keychain(key_list)
+    headers = get_notion_header(keychains)
+    words = get_duolingo_calendar_skills_words(
+        headers,keychains['DUOLINGO_CALENDAR_SKILLS_DBID_INNER'])
+    print(words)
+
+    for word in words.keys():
+        if not search_for_notion_page_by_title(
+            headers,keychains['NOTION_UNIVERSAL_DICTIONARY_DBID_INNER'],word):
+            response = new_entry_to_notion_database(
+                headers,
+                get_data_for_duolingo_dictionary_page(
+                    keychains['NOTION_UNIVERSAL_DICTIONARY_DBID_INNER'],
+                    word,
+                    words[word]
+                )
+            )
+            print(response.text)
+
+# %%
+def get_page_ids_from_universal_dictionary_db(headers,dbid,words):
+    page_ids = []
+    for word in words:
+        page_id = search_for_notion_page_by_title(headers,dbid,word)
+        if page_id:
+            page_ids.append(page_id)
+        else:
+            new_entry_to_notion_database(headers,get_new_empty_notion_page(dbid,word))
+            page_ids.append(search_for_notion_page_by_title(headers,dbid,word))
+    return page_ids
+
+# %%
 def upload_duolingo_data_to_notion():
     key_list=[
         'NOTION_TOKEN',
@@ -533,6 +631,14 @@ def upload_duolingo_data_to_notion():
     for calendar in skills_calendar.to_dict(orient='records'):
         notion_format = duolingo_data_notion_calendar_skills_format(
             keychain['DUOLINGO_CALENDAR_SKILLS_DBID'],calendar)
+        
+        # if record has words to be added to relation property, add them before uploading
+        if calendar.get('words') is not np.nan:
+            words_list = calendar.get('words')
+            page_ids = get_page_ids_from_universal_dictionary_db(
+                headers,keychain['NOTION_UNIVERSAL_DICTIONARY_DBID_INNER'],words_list)
+            notion_format['properties']['🗓️ Duolingo Calendar Skills'] = format_notion_multi_relation(page_ids)
+
         print('page formatted to notion.')        
         check, i, err = try_notion_payload(notion_format)
         if check:
