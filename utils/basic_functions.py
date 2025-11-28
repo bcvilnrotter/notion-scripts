@@ -637,7 +637,7 @@ def upload_duolingo_data_to_notion():
             words_list = calendar.get('words')
             page_ids = get_page_ids_from_universal_dictionary_db(
                 headers,keychain['NOTION_UNIVERSAL_DICTIONARY_DBID_INNER'],words_list)
-            notion_format['properties']['🗓️ Duolingo Calendar Skills'] = format_notion_multi_relation(page_ids)
+            notion_format['properties']['Universal Dictionary'] = format_notion_multi_relation(page_ids)
 
         print('page formatted to notion.')        
         check, i, err = try_notion_payload(notion_format)
