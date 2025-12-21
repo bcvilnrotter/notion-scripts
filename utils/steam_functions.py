@@ -176,12 +176,15 @@ def adjust_notion_video_game_stat_data_outa_sync(key_chain,headers,appid,page_id
     else:
         print(f"{game_data_response}")
 
-def upload_2week_playtime_to_notion_database():
+def upload_2week_playtime_to_notion_database(dry_run=False):
     print('collecting keys.')
     key_chain = get_keychain(['NOTION_TOKEN','NOTION_RAW_PLAYTIME_DBID','NOTION_VIDEO_GAME_STATS_DBID'])
     print('generate header')
     headers = get_notion_header(key_chain)    
     for record in pull_data_from_steam().get('response').get('games'):
+        if dry_run:
+            print(f"Would have added {record.get('name')} to Notion Raw Playtime.")
+            continue
         try:
             response = requests.post('https://api.notion.com/v1/pages',headers=headers, data=json.dumps(format_2week_playtime_to_notion_data(key_chain,record)))
             if response.status_code == 200:

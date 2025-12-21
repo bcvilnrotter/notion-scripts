@@ -264,7 +264,7 @@ def get_page_ids_from_universal_dictionary_db(headers,dbid,words):
     return page_ids
 
 # %%
-def upload_duolingo_data_to_notion():
+def upload_duolingo_data_to_notion(dry_run=False):
     key_list=[
         'NOTION_TOKEN',
         'DUOLINGO_USER',
@@ -332,7 +332,12 @@ def upload_duolingo_data_to_notion():
                 headers,keychain['NOTION_UNIVERSAL_DICTIONARY_DBID_INNER'],words_list)
             notion_format['properties']['Universal Dictionary'] = format_notion_multi_relation(page_ids)
 
-        print('page formatted to notion.')        
+        print('page formatted to notion.')
+        
+        if dry_run:
+            print('dry run, not uploading.')
+            continue        
+        
         check, i, err = try_notion_payload(notion_format)
         if check:
             print('notion payload is valid.')
