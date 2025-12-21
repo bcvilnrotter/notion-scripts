@@ -1,0 +1,47 @@
+on:
+    workflow_dispatch:
+        inputs: 
+            reason:
+                description: "Reason for workflow dispatch"
+                required: true
+                default: "testing dry run of scripts in github environment."
+
+jobs:
+    dry_pipeline_run:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+            
+            - name: Setup Python
+              uses: actions/setup-python@v4
+              with:
+                python-version: "3.10"
+
+            - name: Install dependencies
+              run: pip install -r requirements.txt
+
+            - name: Run Dry Duolingo sync script
+              env:
+                NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+                DUOLINGO_USER: ${{ secrets.DUOLINGO_USER }}
+                DUOLINGO_COURSES_PAGEID: ${{ secrets.DUOLINGO_COURSES_PAGEID }}
+                DUOLINGO_STREAK_DATA_DBID: ${{ secrets.DUOLINGO_STREAK_DATA_DBID }}
+                DUOLINGO_COURSES_DBID: ${{ secrets.DUOLINGO_COURSES_DBID }}
+                DUOLINGO_COOKIE: ${{ secrets.DUOLINGO_COOKIE }}
+                DUOLINGO_CALENDAR_SKILLS_DBID: ${{ secrets.DUOLINGO_CALENDAR_SKILLS_DBID }}
+                DUOLINGO_PROFILE_USER: ${{ secrets.DUOLINGO_PROFILE_USER }}
+                NOTION_UNIVERSAL_DICTIONARY_DBID_INNER: ${{ secrets.NOTION_UNIVERSAL_DICTIONARY_DBID_INNER }}
+              run:
+                python dry_duolingo_daily.py
+
+            - name: Run Dry Steam Playtime Script
+              env:
+                STEAM_KEY: ${{ secrets.STEAM_KEY }}
+                STEAM_USER: ${{ secrets.STEAM_USER }}
+                NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+                NOTION_RAW_PLAYTIME_DBID: ${{ secrets.NOTION_RAW_PLAYTIME_DBID }}
+                NOTION_VIDEO_GAME_STATS_DBID: ${{ secrets.NOTION_VIDEO_GAME_STATS_DBID }}
+              run:
+                python dry_2week_playtime.py
