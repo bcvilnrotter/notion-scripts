@@ -55,13 +55,47 @@ def adjust_notion_video_game_stat_data(key_chain,headers,data):
     video_game_stats_page = search_for_notion_page_by_title(headers,key_chain['NOTION_VIDEO_GAME_STATS_DBID'],title)
     print(video_game_stats_page)
 
-    # get a list of the relation properties based on whether a page exists
+    # get a list of the relation properties based on whether a page exists for VG stats
     if video_game_stats_page:
         video_game_page = requests.get(f"https://api.notion.com/v1/pages/{video_game_stats_page}",headers=headers).json()
         relation_list = video_game_page.get('properties').get('🎳 Raw Playtime').get('relation')
         relation_list.append({"id": page_id})
     else:
         relation_list = [{"id": page_id}]
+
+    # check to see if the institution database has pages for developers and publishers
+    developer_relations = []
+    publisher_relations = []
+
+    if game_data_response.json().get(appid).get('developers'):
+        for developer in game_data_response.json().get(appid).get('data').get('developers'):
+            developer_page = search_for_notion_page_by_title(headers,key_chain['NOTION_INSTITUTIONS_DBID'],developer)
+            if developer_page:
+                developer_relations.append({"id": developer_page})
+            else:
+                # create a new page for the developer
+                new_dev_page = new_entry_to_notion_database(headers, {
+                    "parent": {"database_id": key_chain['NOTION_INSTITUTIONS_DBID']},
+                    "properties": {
+                        "Name": {"title": [{"text": {"content": developer}}]}
+                    }
+                })
+                developer_relations.append({"id": new_dev_page.json()['id']})
+
+    if game_data_response.json().get(appid).get('publishers'):
+        for publisher in game_data_response.json().get(appid).get('data').get('publishers'):
+            publisher_page = search_for_notion_page_by_title(headers,key_chain['NOTION_INSTITUTIONS_DBID'],publisher)
+            if publisher_page:
+                publisher_relations.append({"id": publisher_page})
+            else:
+                # create a new page for the publisher
+                new_pub_page = new_entry_to_notion_database(headers, {
+                    "parent": {"database_id": key_chain['NOTION_INSTITUTIONS_DBID']},
+                    "properties": {
+                        "Name": {"title": [{"text": {"content": publisher}}]}
+                    }
+                })
+                publisher_relations.append({"id": new_pub_page.json()['id']})
 
     # format the data to update the notion page
     update_data = {
@@ -77,6 +111,8 @@ def adjust_notion_video_game_stat_data(key_chain,headers,data):
         "properties": {
             "Name": {"title": [{"text": {"content": title}}]},
             "🎳 Raw Playtime": {"relation": relation_list},
+            "Developers":format_notion_multi_relation(developer_relations),
+            "Publishers":format_notion_multi_relation(publisher_relations),
         }
     }
 
