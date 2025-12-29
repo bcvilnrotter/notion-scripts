@@ -21,7 +21,7 @@ jobs:
             - name: Install dependencies
               run: pip install -r requirements.txt
 
-            - name: Run Duolingo sync script
+            - name: Run Zotero record verification script
               env:
                 NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
                 NOTION_AUTHORS_DBID: ${{ secrets.NOTION_AUTHORS_DBID }}
