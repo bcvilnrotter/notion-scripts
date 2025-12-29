@@ -1,0 +1,30 @@
+name: Zotero Authors Verifications
+
+on:    
+    schedule:
+        - cron: "0 0 * * 0"
+    workflow_dispatch:
+
+jobs:
+    sync_duolingo_update:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+            
+            - name: Setup Python
+              uses: actions/setup-python@v4
+              with:
+                python-version: "3.10"
+
+            - name: Install dependencies
+              run: pip install -r requirements.txt
+
+            - name: Run Duolingo sync script
+              env:
+                NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+                NOTION_AUTHORS_DBID: ${{ secrets.NOTION_AUTHORS_DBID }}
+                NOTION_ZOTERO_DBID: ${{ secrets.NOTION_ZOTERO_DBID }}
+              run:
+                python aupdate_zotero_records.py

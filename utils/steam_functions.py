@@ -84,7 +84,8 @@ def adjust_notion_video_game_stat_data(key_chain,headers,data):
 
     if game_data_response.json().get(appid).get('publishers'):
         for publisher in game_data_response.json().get(appid).get('data').get('publishers'):
-            publisher_page = search_for_notion_page_by_title(headers,key_chain['NOTION_INSTITUTIONS_DBID'],publisher)
+            publisher_page = search_for_notion_page_by_title(
+                headers,key_chain['NOTION_INSTITUTIONS_DBID'],publisher)
             if publisher_page:
                 publisher_relations.append({"id": publisher_page})
             else:
@@ -118,19 +119,35 @@ def adjust_notion_video_game_stat_data(key_chain,headers,data):
 
     # add conditional properties
     if game_data_response.json().get(appid).get('data').get('price_overview'):
-        update_data['properties']['price_overview_initial'] = format_notion_number(game_data_response.json().get(appid).get('data').get('price_overview').get('initial'))
+        update_data['properties']['price_overview_initial'] = format_notion_number(
+            game_data_response.json().get(appid).get('data').get('price_overview').get('initial'))
     if game_data_response.json().get(appid).get('data').get('metacritic'):
-        update_data['properties']['metacritic_score'] = format_notion_number(game_data_response.json().get(appid).get('data').get('metacritic').get('score'))
+        update_data['properties']['metacritic_score'] = format_notion_number(
+            game_data_response.json().get(appid).get('data').get('metacritic').get('score'))
     if game_data_response.json().get(appid).get('data').get('publishers'):
-        update_data['properties']['Raw Publishers'] = format_notion_multi_select(game_data_response.json().get(appid).get('data').get('publishers'))
+        update_data['properties']['Raw Publishers'] = format_notion_multi_select(
+            game_data_response.json().get(appid).get('data').get('publishers'))
     if game_data_response.json().get(appid).get('data').get('developers'):
-        update_data['properties']['Raw Developers'] = format_notion_multi_select(game_data_response.json().get(appid).get('data').get('developers'))
+        update_data['properties']['Raw Developers'] = format_notion_multi_select(
+            game_data_response.json().get(appid).get('data').get('developers'))
     if game_data_response.json().get(appid).get('data').get('genres'):  
-        update_data['properties']['Raw Genres'] = format_notion_multi_select([tag.get('description') for tag in game_data_response.json().get(appid).get('data').get('genres') if tag])
+        update_data['properties']['Raw Genres'] = format_notion_multi_select(
+            [
+                tag.get('description') 
+                for tag in game_data_response.json().get(appid).get('data').get('genres') 
+                if tag
+            ])
     if game_data_response.json().get(appid).get('data').get('categories'):
-        update_data['properties']['Raw Categories'] = format_notion_multi_select([tag.get('description') for tag in game_data_response.json().get(appid).get('data').get('categories') if tag])
+        update_data['properties']['Raw Categories'] = format_notion_multi_select(
+            [
+                tag.get('description') 
+                for tag in game_data_response.json().get(appid).get('data').get('categories') 
+                if tag
+            ])
     if game_data_response.json().get(appid).get('data').get('release_date'):
-        update_data['properties']['Raw Release Date'] = format_notion_date(game_data_response.json().get(appid).get('data').get('release_date').get('date'),patterns=['%b %d, %Y','%d %b, %Y'])
+        update_data['properties']['Raw Release Date'] = format_notion_date(
+            game_data_response.json().get(appid).get('data').get('release_date').get('date'),
+            patterns=['%b %d, %Y','%d %b, %Y'])
 
     print(update_data)
 
@@ -192,19 +209,35 @@ def adjust_notion_video_game_stat_data_outa_sync(key_chain,headers,appid,page_id
 
         # add conditional properties
         if game_data_response.json().get(appid).get('data').get('price_overview'):
-            update_data['properties']['price_overview_initial'] = format_notion_number(game_data_response.json().get(appid).get('data').get('price_overview').get('initial'))
+            update_data['properties']['price_overview_initial'] = format_notion_number(
+                game_data_response.json().get(appid).get('data').get('price_overview').get('initial'))
         if game_data_response.json().get(appid).get('data').get('metacritic'):
-            update_data['properties']['metacritic_score'] = format_notion_number(game_data_response.json().get(appid).get('data').get('metacritic').get('score'))
+            update_data['properties']['metacritic_score'] = format_notion_number(
+                game_data_response.json().get(appid).get('data').get('metacritic').get('score'))
         if game_data_response.json().get(appid).get('data').get('publishers'):
-            update_data['properties']['Raw Publishers'] = format_notion_multi_select(game_data_response.json().get(appid).get('data').get('publishers'))
+            update_data['properties']['Raw Publishers'] = format_notion_multi_select(
+                game_data_response.json().get(appid).get('data').get('publishers'))
         if game_data_response.json().get(appid).get('data').get('developers'):
-            update_data['properties']['Raw Developers'] = format_notion_multi_select(game_data_response.json().get(appid).get('data').get('developers'))
+            update_data['properties']['Raw Developers'] = format_notion_multi_select(
+                game_data_response.json().get(appid).get('data').get('developers'))
         if game_data_response.json().get(appid).get('data').get('genres'):  
-            update_data['properties']['Raw Genres'] = format_notion_multi_select([tag.get('description') for tag in game_data_response.json().get(appid).get('data').get('genres') if tag])
+            update_data['properties']['Raw Genres'] = format_notion_multi_select(
+                [
+                    tag.get('description') 
+                    for tag in game_data_response.json().get(appid).get('data').get('genres') 
+                    if tag
+                ])
         if game_data_response.json().get(appid).get('data').get('categories'):
-            update_data['properties']['Raw Categories'] = format_notion_multi_select([tag.get('description') for tag in game_data_response.json().get(appid).get('data').get('categories') if tag])
+            update_data['properties']['Raw Categories'] = format_notion_multi_select(
+                [
+                    tag.get('description') 
+                    for tag in game_data_response.json().get(appid).get('data').get('categories') 
+                    if tag
+                ])
         if game_data_response.json().get(appid).get('data').get('release_date'):
-            update_data['properties']['Raw Release Date'] = format_notion_date(game_data_response.json().get(appid).get('data').get('release_date').get('date'),patterns=['%b %d, %Y','%d %b, %Y'])
+            update_data['properties']['Raw Release Date'] = format_notion_date(
+                game_data_response.json().get(appid).get('data').get('release_date').get('date'),
+                patterns=['%b %d, %Y','%d %b, %Y'])
 
         # update or create a new page as needed
         update_response = update_entry_to_notion_database(headers,update_data,page_id)

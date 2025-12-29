@@ -206,20 +206,6 @@ def get_duolingo_calendar_skills_words(headers,dbid):
         for word in words
     }
 
-def get_new_empty_notion_page(dbid,title):
-    return {
-        'parent': {'database_id': dbid},
-        'properties': {
-            "Name": {
-                "title":[{
-                    "text":{
-                        "content":title
-                    }
-            }]
-        }
-    }
-}
-
 def get_data_for_duolingo_dictionary_page(dbid,word,page_ids):
     head = get_new_empty_notion_page(dbid,word)
     head['properties']['🗓️ Duolingo Calendar Skills'] = format_notion_multi_relation(
