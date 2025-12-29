@@ -27,4 +27,4 @@ jobs:
                 NOTION_AUTHORS_DBID: ${{ secrets.NOTION_AUTHORS_DBID }}
                 NOTION_ZOTERO_DBID: ${{ secrets.NOTION_ZOTERO_DBID }}
               run:
-                python aupdate_zotero_records.py
+                python update_zotero_records.py
