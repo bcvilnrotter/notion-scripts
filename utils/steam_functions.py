@@ -42,7 +42,7 @@ def format_2week_playtime_to_notion_data(key_chain,game_data):
     else:
         return None
 
-def adjust_notion_video_game_stat_data(key_chain,headers,data):
+def adjust_notion_video_game_stat_data(video_game_stats_dbid,institutions_dbid,headers,data):
     # initialize data from JSON data
     page_id = data.get('id')
     title = data.get('properties').get('Title').get('title')[0].get('text').get('content')
@@ -52,7 +52,7 @@ def adjust_notion_video_game_stat_data(key_chain,headers,data):
     game_data_response = requests.get(f"https://store.steampowered.com/api/appdetails?appids={appid}")
     
     # search to see if a video game stats page exists
-    video_game_stats_page = search_for_notion_page_by_title(headers,key_chain['NOTION_VIDEO_GAME_STATS_DBID'],title)
+    video_game_stats_page = search_for_notion_page_by_title(headers,video_game_stats_dbid,title)
     print(video_game_stats_page)
 
     # get a list of the relation properties based on whether a page exists for VG stats
@@ -69,13 +69,13 @@ def adjust_notion_video_game_stat_data(key_chain,headers,data):
 
     if game_data_response.json().get(appid).get('developers'):
         for developer in game_data_response.json().get(appid).get('data').get('developers'):
-            developer_page = search_for_notion_page_by_title(headers,key_chain['NOTION_INSTITUTIONS_DBID'],developer)
+            developer_page = search_for_notion_page_by_title(headers,institutions_dbid,developer)
             if developer_page:
                 developer_relations.append({"id": developer_page})
             else:
                 # create a new page for the developer
                 new_dev_page = new_entry_to_notion_database(headers, {
-                    "parent": {"database_id": key_chain['NOTION_INSTITUTIONS_DBID']},
+                    "parent": {"database_id":institutions_dbid},
                     "properties": {
                         "Name": {"title": [{"text": {"content": developer}}]}
                     }
@@ -85,13 +85,13 @@ def adjust_notion_video_game_stat_data(key_chain,headers,data):
     if game_data_response.json().get(appid).get('publishers'):
         for publisher in game_data_response.json().get(appid).get('data').get('publishers'):
             publisher_page = search_for_notion_page_by_title(
-                headers,key_chain['NOTION_INSTITUTIONS_DBID'],publisher)
+                headers,institutions_dbid,publisher)
             if publisher_page:
                 publisher_relations.append({"id": publisher_page})
             else:
                 # create a new page for the publisher
                 new_pub_page = new_entry_to_notion_database(headers, {
-                    "parent": {"database_id": key_chain['NOTION_INSTITUTIONS_DBID']},
+                    "parent": {"database_id":institutions_dbid},
                     "properties": {
                         "Name": {"title": [{"text": {"content": publisher}}]}
                     }
@@ -101,7 +101,7 @@ def adjust_notion_video_game_stat_data(key_chain,headers,data):
     # format the data to update the notion page
     update_data = {
         "parent": {
-            "database_id": key_chain['NOTION_VIDEO_GAME_STATS_DBID']
+            "database_id": video_game_stats_dbid
         },
         "cover": {
             "type": "external",
@@ -245,9 +245,9 @@ def adjust_notion_video_game_stat_data_outa_sync(key_chain,headers,appid,page_id
     else:
         print(f"{game_data_response}")
 
-def upload_2week_playtime_to_notion_database(dry_run=False):
+def upload_2week_playtime_to_notion_database(dry_run=False,raw_playtime_dbid='NOTION_RAW_PLAYTIME_DBID',video_game_stats_dbid='NOTION_VIDEO_GAME_STATS_DBID',institutions_dbid='NOTION_INSTITUTIONS_DBID'):
     print('collecting keys.')
-    key_chain = get_keychain(['NOTION_TOKEN','NOTION_RAW_PLAYTIME_DBID','NOTION_VIDEO_GAME_STATS_DBID'])
+    key_chain = get_keychain(['NOTION_TOKEN',raw_playtime_dbid,video_game_stats_dbid,institutions_dbid])
     print('generate header')
     headers = get_notion_header(key_chain)    
     for record in pull_data_from_steam().get('response').get('games'):
@@ -258,7 +258,7 @@ def upload_2week_playtime_to_notion_database(dry_run=False):
             response = requests.post('https://api.notion.com/v1/pages',headers=headers, data=json.dumps(format_2week_playtime_to_notion_data(key_chain,record)))
             if response.status_code == 200:
                 print(f"successfully added {record.get('name')} to Notion Raw Playtime.")
-                adjust_notion_video_game_stat_data(key_chain,headers,response.json())
+                adjust_notion_video_game_stat_data(key_chain[video_game_stats_dbid],key_chain[institutions_dbid],headers,response.json())
             else:
                 print(f"failed to add {record.get('name')} - {response.json()}")
         except Exception as e:
