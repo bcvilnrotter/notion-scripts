@@ -28,6 +28,6 @@ jobs:
                 NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
                 NOTION_RAW_PLAYTIME_DBID: ${{ secrets.RAW_PLAYTIME_DBID_01062026 }}
                 NOTION_VIDEO_GAME_STATS_DBID: ${{ secrets.VIDEO_GAME_STATS_DBID_01062026 }}
-                NOTION_INSTITUTIONS_DBID: ${{ secrets.NOTION_INSTITUTIONS_DBID }}
+                NOTION_INSTITUTIONS_DBID: ${{ secrets.INSTITUTIONS_DBID_01062026 }}
               run:
                 python add_2week_playtime.py
