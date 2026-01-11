@@ -4,6 +4,20 @@ from utils.notion.property_formatting import *
 from utils.notion.database_functions import *
 from utils.basic_functions import *
 
+def get_all_page_atts(headers,database_id):
+    response = get_notion_database_info(headers,database_id)
+
+    if response.status_code == 200:
+        pages = response.json().get('results',[])
+        return {
+            page["id"]:page['properties']['appId']['rich_text'][0]['text']['content'] 
+            for page in pages
+            if page['properties']['appId'].get('rich_text')
+        }
+    else:
+        print(f'Error fetching pages:',response.json())
+        return {}
+
 def get_banner_url_from_appid(appid):
     game_url = f'https://store.steampowered.com/api/appdetails?appids={appid}'
     response = requests.get(game_url,stream=True)

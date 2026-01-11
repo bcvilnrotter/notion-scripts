@@ -4,25 +4,16 @@ def get_notion_database_info(headers,database_id,
                              url='https://api.notion.com/v1/databases/'):
     return requests.get(url+database_id,headers=headers)
 
+def get_notion_page_data(headers,pageid):
+    response = requests.get(f'https://api.notion.com/v1/pages/{pageid}',headers=headers)
+    response.raise_for_status()
+    print(response.json())
+    return response.json()
+
 def get_notion_page_name(headers,pageid):
     response = requests.get(f'https://api.notion.com/v1/pages/{pageid}',headers=headers)
     response.raise_for_status()
     return response.json().get('properties').get('Name').get('title')[0].get('text').get('content')
-
-
-def get_all_page_atts(headers,database_id):
-    response = get_notion_database_info(headers,database_id)
-
-    if response.status_code == 200:
-        pages = response.json().get('results',[])
-        return {
-            page["id"]:page['properties']['appId']['rich_text'][0]['text']['content'] 
-            for page in pages
-            if page['properties']['appId'].get('rich_text')
-        }
-    else:
-        print(f'Error fetching pages:',response.json())
-        return {}
     
 def search_for_notion_page_by_title(headers,dbid,title):
     query_url = f"https://api.notion.com/v1/databases/{dbid}/query"
@@ -59,6 +50,11 @@ def search_for_notion_page_by_datetime(headers,dbid,datetime):
         return response.json()["results"][0]["id"]
     else:
         return False
+
+def archive_page_from_database(headers,page_id):
+    response = requests.patch(f'https://api.notion.com/v1/pages/{page_id}',headers=headers,data={'archived':True})
+    response.raise_for_status()
+    return response
 
 def update_entry_to_notion_database(headers,data,page_id):
     response = requests.patch(f'https://api.notion.com/v1/pages/{page_id}',headers=headers, data=json.dumps(data))
@@ -105,7 +101,7 @@ def request_paginated_data(url,header):
         has_more = response.get('has_more')
         next_cursor = response.get('next_cursor')
     
-    print(f'Returning {len(all_data)} total records from paginated request.')
+    print(f'... Returning {len(all_data)} total records from paginated request.')
     return all_data
 
 def get_page_name(header,page_id):
