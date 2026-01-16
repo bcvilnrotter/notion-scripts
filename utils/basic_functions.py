@@ -1,8 +1,10 @@
 import os
+from pathlib import Path
 from utils.notion.property_formatting import *
 from utils.notion.basic_functions import *
 from utils.notion.database_functions import *
 from dotenv import load_dotenv
+from pandas.api.types import *
 
 def get_secret(secret_key):
     if not os.getenv(secret_key):
@@ -19,3 +21,11 @@ def get_secret(secret_key):
 
 def get_keychain(keys):
     return {key:get_secret(key) for key in keys}
+
+def print_json_to_file(data,filename):
+    with open(Path(__file__).parent.parent / "tmp" / filename,"w") as f:
+        json.dump(data,f)
+
+def print_data_to_file(data,filename):
+    with open(Path(__file__).parent.parent / "tmp" / filename,"w") as f:
+        f.write(data)
