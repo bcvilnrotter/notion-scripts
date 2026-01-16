@@ -240,6 +240,8 @@ def upload_2week_playtime_to_notion_database(
         if dry_run:
             print(f"Would have added {record.get('name')} to Notion Raw Playtime.")
             continue
+        else:
+            print(f"Processing record for {record.get('name')} to Notion Raw Playtime.")
         try:
             payload = {'status':'init'}
             payload = adjust_notion_video_game_stat_data(
