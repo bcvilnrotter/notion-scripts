@@ -242,6 +242,8 @@ def upload_2week_playtime_to_notion_database(
             continue
         try:
             payload = {}
+            response = {}
+            
             payload = adjust_notion_video_game_stat_data(
                 key_chain[video_game_stats_dbid],key_chain[institutions_dbid],headers,
                 format_2week_playtime_to_notion_data(key_chain[raw_playtime_dbid],record))
