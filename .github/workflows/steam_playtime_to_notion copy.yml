@@ -30,5 +30,3 @@ jobs:
 
               run:
                 python update_inaturalist_db.py
-
-                # get_keychain(['NOTION_TOKEN','INATURALIST_OBSERVATIONS_DBID','INATURALIST_DICTIONARY_DBID','INATURALIST_USER'])
