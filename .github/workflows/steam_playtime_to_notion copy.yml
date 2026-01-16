@@ -1,0 +1,34 @@
+name: iNaturalist Database Update
+
+on:
+    schedule:
+        - cron: "0 0 */14 * *"
+    workflow_dispatch:
+
+jobs:
+    sync_steam_to_notion:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+            
+            - name: Setup Python
+              uses: actions/setup-python@v4
+              with:
+                python-version: "3.10"
+            
+            - name: Install dependencies
+              run: pip install -r requirements.txt
+
+            - name: Run update iNaturalist DB script
+              env:
+                NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+                INATURALIST_OBSERVATIONS_DBID: ${{ secrets.INATURALIST_OBSERVATIONS_DBID }}
+                INATURALIST_DICTIONARY_DBID: ${{ secrets.INATURALIST_DICTIONARY_DBID }}
+                INATURALIST_USER: ${{ secrets.INATURALIST_USER }}
+
+              run:
+                python update_inaturalist_db.py
+
+                # get_keychain(['NOTION_TOKEN','INATURALIST_OBSERVATIONS_DBID','INATURALIST_DICTIONARY_DBID','INATURALIST_USER'])

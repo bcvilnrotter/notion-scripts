@@ -221,32 +221,17 @@ def update_inaturalist_db():
 
     for _,v in tqdm(filtered_diff_data_new.items(),total=len(filtered_diff_data_new),desc='... Uploading new observations.'):
         data = v['new_entry']
-        
-        print(data)
 
         if 'taxon.name' in data['properties']:
             new_entry_to_notion_database(headers,wrap_full_new_observation_page(
                 headers,data,key_chain['INATURALIST_DICTIONARY_DBID']))
+    
+    for id,v in tqdm(filtered_diff_data_update.items(),total=len(filtered_diff_data_update),desc='... Updating preexisting observations.'):
+        data = v['update']
+        update_entry_to_notion_database(headers,{'properties':data},search_for_notion_page_by_title(
+            headers,key_chain['INATURALIST_OBSERVATIONS_DBID'],id))
 
     # TODO: Iterate through the diff blob and either make a new entry in the obs database, or update a made page
-        
-    """
-    obs_page = search_for_notion_page_by_title(headers,key_chain['INATURALIST_OBSERVATIONS_DBID'],str(obs['id']))
-    if obs_page == False:
-        new_entry_to_notion_database(headers,obs_format)
-    """
-    """
-    if obs_page:
-        print(obs_format)
-        obs_diff = compare_properties(obs_format,get_notion_page_data(headers,obs_page))
-        #print(obs_diff.get('values_changed').get('root').get('new_value').get(''))
-        update_entry_to_notion_database(headers,obs_diff,obs_page) if obs_diff != {} else print(f"...Page {obs_page} has no changes...")
-    else:
-        new_entry_to_notion_database(headers,obs_format)
-    """
-
-    #print(f"Fetched {len(pdf)} observations from iNaturalist.")
-    #print(f"Number of columns: {len(pdf.columns)}")
 
 """
 quality_grade Counter({'str': 1566})
