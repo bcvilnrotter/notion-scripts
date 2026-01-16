@@ -4,6 +4,9 @@ from utils.notion.property_formatting import *
 from utils.notion.database_functions import *
 from utils.basic_functions import *
 
+def check_video_game_page_exists(response,appid):
+    return True if response.json().get(appid).get('success') else False
+
 def get_all_page_atts(headers,database_id):
     response = get_notion_database_info(headers,database_id)
 
@@ -21,7 +24,7 @@ def get_all_page_atts(headers,database_id):
 def get_banner_url_from_appid(appid):
     game_url = f'https://store.steampowered.com/api/appdetails?appids={appid}'
     response = requests.get(game_url,stream=True)
-    if response.json().get(appid).get('success'):
+    if check_video_game_page_exists(response,appid):
         return json.loads(response.text).get(appid).get('data').get('header_image')
     print(f'AppId data not found: {response.text}')
     return {}
@@ -131,13 +134,16 @@ def adjust_notion_video_game_stat_data(video_game_stats_dbid,institutions_dbid,h
     appid = format_data.get('properties').get('AppId').get('rich_text')[0].get('text').get('content')
     
     game_data_response = requests.get(f"https://store.steampowered.com/api/appdetails?appids={appid}")
-    video_game_stats_page = search_for_notion_page_by_title(headers,video_game_stats_dbid,title)
-    if video_game_stats_page:
-        format_data['properties']['Video Game Stats'] = format_notion_single_relation(video_game_stats_page)
+    if check_video_game_page_exists(game_data_response,appid):
+        video_game_stats_page = search_for_notion_page_by_title(headers,video_game_stats_dbid,title)
+        if video_game_stats_page:
+            format_data['properties']['Video Game Stats'] = format_notion_single_relation(video_game_stats_page)
+        else:
+            format_data['properties']['Video Game Stats'] = format_notion_single_relation(new_entry_to_notion_database(
+                headers,format_video_game_stats_page(
+                    video_game_stats_dbid,institutions_dbid,headers,appid,title,game_data_response)).json().get('id'))
     else:
-        format_data['properties']['Video Game Stats'] = format_notion_single_relation(new_entry_to_notion_database(
-            headers,format_video_game_stats_page(video_game_stats_dbid,institutions_dbid,headers,appid,title,game_data_response)).json().get('id'))
-    
+        print(f'... Video Game page data for {title} not found.')
     return format_data
 
 def add_image_cover_all_records():
