@@ -213,11 +213,11 @@ def update_inaturalist_db():
     filtered_diff_data_update = {k:v for k,v in filtered_diff_data.items() if 'update' in v}
     filtered_diff_data_new = {k:v for k,v in filtered_diff_data.items() if 'new_entry' in v}
 
-    print_json_to_file(filtered_diff_data_update,'filtered_diff_data_update.json')
-    print_json_to_file(filtered_diff_data_new,'filtered_diff_data_new.json')
+    # print_json_to_file(filtered_diff_data_update,'filtered_diff_data_update.json')
+    # print_json_to_file(filtered_diff_data_new,'filtered_diff_data_new.json')
 
     print(f'... Identified {len(filtered_diff_data) } records for uploading, with {len(filtered_diff_data_new)} new records, and {len(filtered_diff_data_update)} updates.')
-    print_json_to_file(diff_dict,"diff_dict.json")
+    # print_json_to_file(diff_dict,"diff_dict.json")
 
     for _,v in tqdm(filtered_diff_data_new.items(),total=len(filtered_diff_data_new),desc='... Uploading new observations.'):
         data = v['new_entry']
