@@ -6,7 +6,7 @@ on:
     workflow_dispatch:
 
 jobs:
-    sync_steam_to_notion:
+    sync_inaturalist_obserations_to_notion:
         runs-on: ubuntu-latest
 
         steps:
