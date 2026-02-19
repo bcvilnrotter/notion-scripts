@@ -9,7 +9,10 @@ def get_notion_header(key_chain):
         'Notion-Version': '2022-06-28'
     }
 
-def get_notion_header_scalable(notion_token,ctype='application/json',notion_version='2022-06-28'):
+def get_notion_header_scalable(
+        notion_token,
+        ctype='application/json',
+        notion_version='2022-06-28'):
     return {
         'Authorization': f"Bearer {notion_token}",
         'Content-Type': ctype,

@@ -2,12 +2,16 @@ import pandas as pd
 from datetime import datetime
 
 def format_notion_number(number):
-    return {"number": number}
+    if number is None:
+        return {"number":None}
+    return {"number": int(number)}
 
 def format_notion_number_outer(number_format):
     return format_notion_number(number_format.get('number'))
 
 def format_notion_text(text):
+    if text is None:
+        return {"rich_text": []}
     return {"rich_text": [{"text": {"content": text}}]}
 
 def format_notion_rich_text_outer(text_format):
@@ -23,6 +27,8 @@ def format_notion_title_outer(title_format):
     ]}
 
 def format_notion_date(start, end=None, patterns=None, is_datetime=False,string_pattern=None):
+    if start is None:
+        return {"date":None}
     if patterns:
         for pattern in patterns:
             try:
@@ -52,15 +58,23 @@ def format_notion_multi_relation(page_ids):
     return {"relation": [{"id": page_id} for page_id in page_ids]}
 
 def format_notion_select(selection):
+    if selection is None:
+        return {"select":None}
     return {"select": {"name": selection}}
 
 def format_notion_select_outer(select_format):
     return format_notion_select(select_format.get('select').get('name')) if select_format.get('select') != None else format_notion_select(select_format.get('select'))
 
 def format_notion_multi_select(selections):
-    return {"multi_select": [{"name": selection} for selection in [v.replace(',','') for v in selections]]}
+    if not selections:
+        return {"multi_select":[]}
+    return {"multi_select": [{
+        "name": selection} 
+        for selection in [v.replace(',','') for v in selections]]}
 
 def format_notion_checkbox(checked):
+    if checked is None:
+        return {"checkbox":False}
     return {"checkbox": checked}
 
 def format_notion_checkbox_outer(checkbox_format):
@@ -79,6 +93,10 @@ def format_notion_place(lat,long,name,address):
         "name":name,
         "address":address
     }}
+
+def get_name_from_notion_page(page):
+    return page.get(
+        'properties').get('Name').get('title')[0].get('text').get('content')
 
 def dynamic_notion_formatter(type_name,value,exclude=['relation']):
     if type_name in exclude:

@@ -5,24 +5,31 @@ def get_notion_database_info(headers,database_id,
     return requests.get(url+database_id,headers=headers)
 
 def get_notion_page_data(headers,pageid):
-    response = requests.get(f'https://api.notion.com/v1/pages/{pageid}',headers=headers)
+    response = requests.get(
+        f'https://api.notion.com/v1/pages/{pageid}',headers=headers)
     response.raise_for_status()
-    print(response.json())
     return response.json()
 
 def get_notion_page_name(headers,pageid):
-    response = requests.get(f'https://api.notion.com/v1/pages/{pageid}',headers=headers)
+    response = requests.get('https://api.notion.com/v1/pages/{}'.format(
+        pageid=pageid),headers=headers)
     response.raise_for_status()
-    return response.json().get('properties').get('Name').get('title')[0].get('text').get('content')
+    return response.json().get(
+        'properties').get(
+            'Name').get('title')[0].get('text').get('content')
     
-def search_for_notion_page_by_title(headers,dbid,title):
+def search_for_notion_page_by_title(
+        headers,dbid,title,
+        prop_name="Name",
+        lower_case=False):
     query_url = f"https://api.notion.com/v1/databases/{dbid}/query"
-
+    title_formatted = title.lower() if lower_case else title
+    
     payload = {
         "filter": {
-            "property": "Name",
+            "property": prop_name,
             "title": {
-                "equals": title
+                "equals": title_formatted
             }
         }
     }
@@ -52,14 +59,27 @@ def search_for_notion_page_by_datetime(headers,dbid,datetime):
         return False
 
 def archive_page_from_database(headers,page_id):
-    response = requests.patch(f'https://api.notion.com/v1/pages/{page_id}',headers=headers,data={'archived':True})
+    response = requests.patch(
+        f'https://api.notion.com/v1/pages/{page_id}',
+        headers=headers,data={'archived':True})
+    
     response.raise_for_status()
     return response
 
 def update_entry_to_notion_database(headers,data,page_id):
-    response = requests.patch(f'https://api.notion.com/v1/pages/{page_id}',headers=headers, data=json.dumps(data))
-    response.raise_for_status()
-    return response
+    
+    try:
+        response = requests.patch(
+            f'https://api.notion.com/v1/pages/{page_id}',
+            headers=headers, json=data)
+
+        response.raise_for_status()
+        return response
+    except Exception as e:
+        print(json.dumps(data,indent=2))
+        print(response.status_code)
+        print(response.headers)
+        print(response.json())
 
 def get_new_empty_notion_page(dbid,title):
     return {
@@ -76,16 +96,23 @@ def get_new_empty_notion_page(dbid,title):
 }
 
 def new_entry_to_notion_database(headers,data):
-    response = requests.post('https://api.notion.com/v1/pages',headers=headers, data=json.dumps(data))
+    response = requests.post(
+        'https://api.notion.com/v1/pages',
+        headers=headers, data=json.dumps(data))
     response.raise_for_status()
-    name = response.json().get('properties').get('Name').get('title')[0].get('text').get('content')
-    print(f' ... Created new page in database {data.get("parent").get("database_id")} with name "{name}"')
+    name = response.json().get(
+        'properties').get(
+            'Name').get('title')[0].get('text').get('content')
+    print(' ... Created new page in database {} with name "{}"'.format(
+        data=data,name=name))
     return response
 
-def get_records_from_notion_database(header,database_id):
+def get_records_from_notion_database(header,database_id,paginated=False):
     url = f'https://api.notion.com/v1/databases/{database_id}/query'
     response = requests.post(url,headers=header)
     response.raise_for_status()
+    if paginated:
+        return request_paginated_data(url,header)
     return response
 
 def request_paginated_data(url,header):
@@ -101,13 +128,15 @@ def request_paginated_data(url,header):
         has_more = response.get('has_more')
         next_cursor = response.get('next_cursor')
     
-    print(f'... Returning {len(all_data)} total records from paginated request.')
+    print('... Returning {} total records from paginated request.'.format(
+        len(all_data)))
     return all_data
 
 def get_page_name(header,page_id):
     url = f'https://api.notion.com/v1/pages/{page_id}'
     response = requests.get(url,headers=header).json()
-    return response.get('properties').get('Name').get('title')[0].get('text').get('content')
+    return response.get(
+        'properties').get('Name').get('title')[0].get('text').get('content')
 
 def get_page_update_data(dbid,name,properties_dict,cover_image_url=None):
     data = {'parent':{'database_id':dbid}}
@@ -118,5 +147,7 @@ def get_page_update_data(dbid,name,properties_dict,cover_image_url=None):
                 "url":cover_image_url
             }
         }
-    data['properties'] = {"Name": {"title": [{"text": {"content": name}}]},**properties_dict}
+    data['properties'] = {
+        "Name": {
+            "title": [{"text": {"content": name}}]},**properties_dict}
     return data

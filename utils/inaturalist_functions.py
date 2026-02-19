@@ -142,7 +142,8 @@ def get_full_new_observation_page(headers,obs,obs_dbid,tax_dbid):
     return obs_format
 
 def update_inaturalist_db():
-    key_chain = get_keychain(['NOTION_TOKEN','INATURALIST_OBSERVATIONS_DBID','INATURALIST_DICTIONARY_DBID','INATURALIST_USER'])
+    key_chain = get_keychain(
+        ['NOTION_TOKEN','INATURALIST_OBSERVATIONS_DBID','INATURALIST_DICTIONARY_DBID','INATURALIST_USER'])
     headers = get_notion_header_scalable(key_chain['NOTION_TOKEN'])
 
     observations = pyi.get_observations(user_id=key_chain['INATURALIST_USER'],page='all')
@@ -151,18 +152,23 @@ def update_inaturalist_db():
     pdf = pd.json_normalize(cleaned,sep='.')
     pdf = pdf.replace([np.nan,np.inf,-np.inf],None)
 
-    pdf['outlinks.source'] = pdf['outlinks'].apply(lambda x: x[0].get('source') if x != [] else np.nan)
-    pdf['outlinks.url'] = pdf['outlinks'].apply(lambda x: x[0].get('url') if x != [] else np.nan)
-    pdf[['geojson.coordinates.lat','geojson.coordinates.long']] = pd.DataFrame(pdf['geojson.coordinates'].apply(pd.Series),index=pdf.index)
+    pdf['outlinks.source'] = pdf['outlinks'].apply(
+        lambda x: x[0].get('source') if x != [] else np.nan)
+    pdf['outlinks.url'] = pdf['outlinks'].apply(
+        lambda x: x[0].get('url') if x != [] else np.nan)
+    pdf[['geojson.coordinates.lat','geojson.coordinates.long']] = pd.DataFrame(
+        pdf['geojson.coordinates'].apply(pd.Series),index=pdf.index)
     print(f'... Performed feature engineering transformations.')
 
     new_entries = [format_inaturalist_observation(key_chain['INATURALIST_OBSERVATIONS_DBID'],o) for _,o in pdf.iterrows()]
     print(f'... Created new_value json blob.')
-    #print_json_to_file(new_entries,"new_entries.json")
 
-    obs_records = request_paginated_data(f'https://api.notion.com/v1/databases/{key_chain["INATURALIST_OBSERVATIONS_DBID"]}/query',headers)
-    obs_records_id_first = {o.get('properties').get('Name').get('title')[0].get('plain_text'):o for o in obs_records}
-    #print_json_to_file(obs_records,"obs_records.json")
+    obs_records = request_paginated_data(
+        f'https://api.notion.com/v1/databases/{key_chain["INATURALIST_OBSERVATIONS_DBID"]}'
+        f'/query',headers)
+    obs_records_id_first = {
+        o.get('properties').get('Name').get('title')[0].get('plain_text'):o 
+        for o in obs_records}
 
     def pull_id(item):
         return item['properties']['Name']['title'][0]['text']['content']
@@ -192,18 +198,18 @@ def update_inaturalist_db():
         'taxon.conservation_status.authority',       
     ]
 
-    #print_json_to_file({'properties':new_entry.get('properties') for new_entry in new_entries},'new_entries_list_compression.json')
-    #print_json_to_file({'properties':build_comparison_json(obs_record.get('properties'),prop_list) for obs_record in obs_records},'obs_records_compression.json')
-
     diff_dict = {
         pull_id(entry): (
             {'new_entry': entry} 
             if pull_id(entry) not in obs_records_id_first else
             (
                 {'update': compare_properties(
-                    entry.get('properties'),build_comparison_json(obs_records_id_first[pull_id(entry)].get('properties'),prop_list))}
-                if  compare_properties(entry.get('properties'),build_comparison_json(
-                    obs_records_id_first[pull_id(entry)].get('properties'),prop_list)) != {} else {'dup':{}}
+                    entry.get('properties'),
+                    build_comparison_json(
+                        obs_records_id_first[pull_id(entry)].get('properties'),prop_list))}
+                if compare_properties(entry.get('properties'),build_comparison_json(
+                    obs_records_id_first[
+                        pull_id(entry)].get('properties'),prop_list)) != {} else {'dup':{}}
             )    
         )
         for entry in new_entries 
@@ -213,13 +219,12 @@ def update_inaturalist_db():
     filtered_diff_data_update = {k:v for k,v in filtered_diff_data.items() if 'update' in v}
     filtered_diff_data_new = {k:v for k,v in filtered_diff_data.items() if 'new_entry' in v}
 
-    # print_json_to_file(filtered_diff_data_update,'filtered_diff_data_update.json')
-    # print_json_to_file(filtered_diff_data_new,'filtered_diff_data_new.json')
-
     print(f'... Identified {len(filtered_diff_data) } records for uploading, with {len(filtered_diff_data_new)} new records, and {len(filtered_diff_data_update)} updates.')
-    # print_json_to_file(diff_dict,"diff_dict.json")
 
-    for _,v in tqdm(filtered_diff_data_new.items(),total=len(filtered_diff_data_new),desc='... Uploading new observations.'):
+    for _,v in tqdm(
+        filtered_diff_data_new.items(),
+        total=len(filtered_diff_data_new),
+        desc='... Uploading new observations.'):
         data = v['new_entry']
 
         if 'taxon.name' in data['properties']:
@@ -231,7 +236,6 @@ def update_inaturalist_db():
         update_entry_to_notion_database(headers,{'properties':data},search_for_notion_page_by_title(
             headers,key_chain['INATURALIST_OBSERVATIONS_DBID'],id))
 
-    # TODO: Iterate through the diff blob and either make a new entry in the obs database, or update a made page
 
 """
 quality_grade Counter({'str': 1566})
