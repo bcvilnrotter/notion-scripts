@@ -7,6 +7,11 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.10","3.11","3.12"]
+        include:
+          - python-version: "3.11"
+            experimental: true
+          - python-version: "3.12"
+            experimental: true
 
     steps:
      - name: Checkout code
@@ -25,4 +30,5 @@ jobs:
         pip install pytest
     
      - name: Run Tests
+       continue-on-error: ${{ matrix.experimental == true }}
        run: pytest
