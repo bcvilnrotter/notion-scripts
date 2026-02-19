@@ -11,7 +11,7 @@ import requests, time
 def get_institution_pages(headers,dbid):
     institutions = get_records_from_notion_database(
         headers,dbid,paginated=True)
-    print_json_to_file(institutions,'institutions_raw.json')
+    #print_json_to_file(institutions,'institutions_raw.json')
     return institutions
 
 def convert_to_url(text):
