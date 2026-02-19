@@ -28,7 +28,13 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         pip install pytest
-    
-     - name: Run Tests
+     
+     - name: Run Dry Steam Playtime Script
+       env:
+        STEAM_KEY: ${{ secrets.STEAM_KEY }}
+        STEAM_USER: ${{ secrets.STEAM_USER }}
+        NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        NOTION_RAW_PLAYTIME_DBID: ${{ secrets.NOTION_RAW_PLAYTIME_DBID }}
+        NOTION_VIDEO_GAME_STATS_DBID: ${{ secrets.NOTION_VIDEO_GAME_STATS_DBID }}
        continue-on-error: ${{ matrix.experimental == true }}
-       run: pytest
+       run: python dry_2week_playtime.py
