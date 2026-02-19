@@ -34,6 +34,38 @@ def pull_data_from_steam():
     recent_playtime = requests.get(steam_url)
     return recent_playtime.json()
 
+def search_for_previous_playtime(
+        headers,dbid,title,date,
+        prop_name="Name",
+        lower_case=False):
+    query_url = f"https://api.notion.com/v1/databases/{dbid}/query"
+    title_formatted = title.lower() if lower_case else title
+    
+    payload = {
+        "filter": {
+            "and": [
+                {
+                    "property": prop_name,
+                    "title": {
+                        "equals": title_formatted
+                    }
+                },
+                {
+                    "timestamp": "created_time",
+                    "created_time": {
+                        "equals": date
+                    }
+                }
+            ]
+        }
+    }
+
+    response = requests.post(query_url,headers=headers,json=payload)
+    if response.status_code == 200 and response.json()['results'] != []:
+        return response.json()["results"][0]["id"]
+    else:
+        return False
+
 # %%
 def format_2week_playtime_to_notion_data(raw_playtime_dbid,game_data):
     today = datetime.utcnow().strftime('%Y-%m-%d')
@@ -50,7 +82,7 @@ def format_2week_playtime_to_notion_data(raw_playtime_dbid,game_data):
             "playtime_mac_forever": {"number": game_data['playtime_mac_forever']},
             "playtime_linux_forever": {"number": game_data['playtime_linux_forever']},
             "playtime_deck_forever": {"number": game_data['playtime_deck_forever']}
-        }
+        }        
 
         return {
             "parent": {"database_id": raw_playtime_dbid},
@@ -129,9 +161,12 @@ def format_video_game_stats_page(video_game_stats_dbid,institutions_dbid,headers
     }
 
 
-def adjust_notion_video_game_stat_data(video_game_stats_dbid,institutions_dbid,headers,format_data):
+def adjust_notion_video_game_stat_data(video_game_stats_dbid,institutions_dbid,pt_dbid,spage_id,headers,format_data):
     title = format_data.get('properties').get('Name').get('title')[0].get('text').get('content')
     appid = format_data.get('properties').get('AppId').get('rich_text')[0].get('text').get('content')
+
+    two_weeks_ago = (datetime.utcnow() - timedelta(days=14)).strftime('%Y-%m-%d')
+    yesterday = (datetime.utcnow() - timedelta(days=1)).strftime('%Y-%m-%d')
     
     game_data_response = requests.get(f"https://store.steampowered.com/api/appdetails?appids={appid}")
     if check_video_game_page_exists(game_data_response,appid):
@@ -144,6 +179,17 @@ def adjust_notion_video_game_stat_data(video_game_stats_dbid,institutions_dbid,h
                     video_game_stats_dbid,institutions_dbid,headers,appid,title,game_data_response)).json().get('id'))
     else:
         print(f' ... Video Game page data for {title} not found.')
+    
+    pt_yesterday = search_for_previous_playtime(headers,pt_dbid,title,yesterday)
+    if pt_yesterday:
+        format_data['properties']['Raw Playtime (-1 day)'] = format_notion_single_relation(pt_yesterday)
+    
+    pt_two_weeks_ago = search_for_previous_playtime(headers,pt_dbid,title,two_weeks_ago)
+    if pt_two_weeks_ago:
+        format_data['properties']['Raw Playtime (-14 day)'] = format_notion_single_relation(pt_two_weeks_ago)
+    
+    format_data['properties']['🌦️ App Ecosystem'] = format_notion_single_relation(spage_id)
+    
     return format_data
 
 def add_image_cover_all_records():
@@ -236,7 +282,8 @@ def upload_2week_playtime_to_notion_database(
         dry_run=False,
         raw_playtime_dbid='NOTION_RAW_PLAYTIME_DBID',
         video_game_stats_dbid='NOTION_VIDEO_GAME_STATS_DBID',
-        institutions_dbid='NOTION_INSTITUTIONS_DBID'
+        institutions_dbid='NOTION_INSTITUTIONS_DBID',
+        steam_page_id='STEAM_APP_PAGE_ID'
     ):
 
     key_chain = get_keychain(['NOTION_TOKEN',raw_playtime_dbid,video_game_stats_dbid,institutions_dbid])
@@ -251,7 +298,11 @@ def upload_2week_playtime_to_notion_database(
         try:
             payload = {'status':'init'}
             payload = adjust_notion_video_game_stat_data(
-                key_chain[video_game_stats_dbid],key_chain[institutions_dbid],headers,
+                key_chain[video_game_stats_dbid],
+                key_chain[institutions_dbid],
+                key_chain[raw_playtime_dbid],
+                key_chain[steam_page_id],
+                headers,
                 format_2week_playtime_to_notion_data(key_chain[raw_playtime_dbid],record))
             response = new_entry_to_notion_database(headers,payload)
             response.raise_for_status()            

@@ -29,5 +29,6 @@ jobs:
                 NOTION_RAW_PLAYTIME_DBID: ${{ secrets.NOTION_RAW_PLAYTIME_DBID }}
                 NOTION_VIDEO_GAME_STATS_DBID: ${{ secrets.NOTION_VIDEO_GAME_STATS_DBID }}
                 NOTION_INSTITUTIONS_DBID: ${{ secrets.NOTION_INSTITUTIONS_DBID }}
+                STEAM_APP_PAGE_ID: ${{ secrets.STEAM_APP_PAGE_ID }}
               run:
                 python add_2week_playtime.py
