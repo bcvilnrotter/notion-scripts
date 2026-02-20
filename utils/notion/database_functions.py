@@ -103,8 +103,7 @@ def new_entry_to_notion_database(headers,data):
     name = response.json().get(
         'properties').get(
             'Name').get('title')[0].get('text').get('content')
-    print(' ... Created new page in database {} with name "{}"'.format(
-        data=data,name=name))
+    print(f' ... Created new page in database {data} with name "{name}"')
     return response
 
 def get_records_from_notion_database(header,database_id,paginated=False):
