@@ -34,37 +34,7 @@ def pull_data_from_steam():
     recent_playtime = requests.get(steam_url)
     return recent_playtime.json()
 
-def search_for_previous_playtime(
-        headers,dbid,title,date,
-        prop_name="Name",
-        lower_case=False):
-    query_url = f"https://api.notion.com/v1/databases/{dbid}/query"
-    title_formatted = title.lower() if lower_case else title
-    
-    payload = {
-        "filter": {
-            "and": [
-                {
-                    "property": prop_name,
-                    "title": {
-                        "equals": title_formatted
-                    }
-                },
-                {
-                    "timestamp": "created_time",
-                    "created_time": {
-                        "equals": date
-                    }
-                }
-            ]
-        }
-    }
 
-    response = requests.post(query_url,headers=headers,json=payload)
-    if response.status_code == 200 and response.json()['results'] != []:
-        return response.json()["results"][0]["id"]
-    else:
-        return False
 
 # %%
 def format_2week_playtime_to_notion_data(raw_playtime_dbid,game_data):
@@ -160,6 +130,44 @@ def format_video_game_stats_page(video_game_stats_dbid,institutions_dbid,headers
         "properties":properties_data
     }
 
+def search_for_previous_playtime(
+        headers,dbid,title,date,
+        prop_name="Name",
+        lower_case=False):
+    query_url = f"https://api.notion.com/v1/databases/{dbid}/query"
+    title_formatted = title.lower() if lower_case else title
+    
+    payload = {
+        "filter": {
+            "and": [
+                {
+                    "property": prop_name,
+                    "title": {
+                        "equals": title_formatted
+                    }
+                },
+                {
+                    "timestamp": "created_time",
+                    "created_time": {
+                        "on_or_after": date
+                    }
+                },
+                                {
+                    "timestamp": "created_time",
+                    "created_time": {
+                        "before": date
+                    }
+                }
+            ]
+        }
+    }
+
+    response = requests.post(query_url,headers=headers,json=payload)
+    data = response.json()
+    if response.status_code == 200 and data.get("results"):
+        return data["results"][0]["id"]
+    else:
+        return False
 
 def adjust_notion_video_game_stat_data(video_game_stats_dbid,institutions_dbid,pt_dbid,spage_id,headers,format_data):
     title = format_data.get('properties').get('Name').get('title')[0].get('text').get('content')
@@ -286,7 +294,13 @@ def upload_2week_playtime_to_notion_database(
         steam_page_id='STEAM_APP_PAGE_ID'
     ):
 
-    key_chain = get_keychain(['NOTION_TOKEN',raw_playtime_dbid,video_game_stats_dbid,institutions_dbid])
+    key_chain = get_keychain([
+        'NOTION_TOKEN',
+        raw_playtime_dbid,
+        video_game_stats_dbid,
+        institutions_dbid,
+        steam_page_id
+    ])
     headers = get_notion_header(key_chain)
 
     for record in pull_data_from_steam().get('response').get('games'):
