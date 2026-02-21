@@ -136,6 +136,7 @@ def search_for_previous_playtime(
         lower_case=False):
     query_url = f"https://api.notion.com/v1/databases/{dbid}/query"
     title_formatted = title.lower() if lower_case else title
+    date_end = (datetime.strptime(date,"%Y-%m-%d")+timedelta(days=1)).strftime("%Y-%m-%d")
     
     payload = {
         "filter": {
@@ -155,7 +156,7 @@ def search_for_previous_playtime(
                                 {
                     "timestamp": "created_time",
                     "created_time": {
-                        "before": date
+                        "before": date_end
                     }
                 }
             ]
