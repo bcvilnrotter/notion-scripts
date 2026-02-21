@@ -10,8 +10,6 @@ jobs:
         include:
           - python-version: "3.11"
             experimental: true
-          - python-version: "3.12"
-            experimental: true
 
     steps:
      - name: Checkout code
