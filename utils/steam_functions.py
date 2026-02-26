@@ -205,7 +205,7 @@ def adjust_notion_video_game_stat_data(video_game_stats_dbid,institutions_dbid,p
         'properties'][
             'no daily duration (-1 day)'
     ] = format_notion_checkbox(
-        False) if not pt_yesterday else format_notion_checkbox(True)
+        False) if pt_yesterday else format_notion_checkbox(True)
     
     format_data[
         'properties'][
