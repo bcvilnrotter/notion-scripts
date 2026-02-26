@@ -191,11 +191,27 @@ def adjust_notion_video_game_stat_data(video_game_stats_dbid,institutions_dbid,p
     
     pt_yesterday = search_for_previous_playtime(headers,pt_dbid,title,yesterday)
     if pt_yesterday:
-        format_data['properties']['Raw Playtime (-1 day)'] = format_notion_single_relation(pt_yesterday)
+        format_data[
+            'properties'][
+                'Raw Playtime (-1 day)'] = format_notion_single_relation(pt_yesterday)
     
     pt_two_weeks_ago = search_for_previous_playtime(headers,pt_dbid,title,two_weeks_ago)
     if pt_two_weeks_ago:
-        format_data['properties']['Raw Playtime (-14 day)'] = format_notion_single_relation(pt_two_weeks_ago)
+        format_data[
+            'properties'][
+                'Raw Playtime (-14 day)'] = format_notion_single_relation(pt_two_weeks_ago)
+    
+    format_data[
+        'properties'][
+            'no daily duration (-1 day)'
+    ] = format_notion_checkbox(
+        False) if not pt_yesterday else format_notion_checkbox(True)
+    
+    format_data[
+        'properties'][
+            'has daily duration (-14 day)'
+    ] = format_notion_checkbox(
+        True) if pt_two_weeks_ago else format_notion_checkbox(False)
     
     format_data['properties']['🌦️ App Ecosystem'] = format_notion_single_relation(spage_id)
     
