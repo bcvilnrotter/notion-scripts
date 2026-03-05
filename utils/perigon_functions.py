@@ -251,7 +251,7 @@ def format_perigon_record(p_record,n_record,perigon_page_id):
         payload['properties']['Perigon.address'] = format_notion_text(
             p_record.get('address'))
 
-    if n_prop.get('Perigon.id').get('
+    if n_prop.get('Perigon.id').get(
        'rich_text') != [{'text':{'content':p_record.get('id')}}]:
         payload['Properties']['Perigon.id'] = format_notion_text(
             p_record.get('id'))
