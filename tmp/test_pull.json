@@ -1,0 +1,4721 @@
+{
+  "status": 200,
+  "numResults": 1067,
+  "results": [
+    {
+      "createdAt": "2026-03-04T11:23:31.026128+00:00",
+      "updatedAt": "2026-03-04T13:58:40.332564+00:00",
+      "initializedAt": "2026-03-04T13:58:40.332566+00:00",
+      "id": "a3effe4a622c45919bd7fe90b4c859a2",
+      "name": "Sundar Pichai shares Holi image by Mumbai photographer",
+      "summary": "Google and Alphabet CEO Sundar Pichai shared a heartfelt Holi greeting on Instagram, posting a vivid photograph he credited to Mumbai photographer Prajay Katkoria with the caption, “A celebration of color, community, and new beginnings. Happy Holi to all! Incredible shot by @prajai_k taken on Pixel 8 Pro.” The image—capturing a figure mid-throw as a cloud of bright pink gulal contrasts with a clear blue sky—drew widespread praise online and a warm reply from Katkoria. Multiple outlets highlighted that the photo was taken on a Pixel 8 Pro and framed Pichai’s post as a nod to his Indian roots. Google India also marked the festival with a Gemini AI–generated rangoli and festive wishes, underscoring the company’s broader social celebrations. Overall, the posts functioned both as a personal cultural gesture and a showcase for Google’s imaging and AI features, prompting substantial social media engagement.",
+      "shortSummary": "Google CEO Sundar Pichai wished followers a Happy Holi, sharing a vivid Pixel 8 Pro photograph by Mumbai photographer Prajay Katkoria that he called “a celebration of color, community, and new beginnings.” The post drew warm responses online, with Katkoria thanking Pichai and users praising the image’s striking capture of Holi’s spirit.",
+      "summaryReferences": [
+        "1231cf9cbd7248d4bbd5d1b9f3df3472",
+        "a4538b99ba7e4f239e145d14373cc4f2",
+        "b0834de813a64ebab59dbcefe9bbb35f",
+        "766e2dfb54f344808ccc69c3ec7e8393",
+        "0c35739977144be795e62710f6611ddf"
+      ],
+      "keyPoints": [
+        {
+          "point": "Photographer Prajay Katkoria has a finance background — his LinkedIn lists a BA in Economics and prior roles including analyst positions at KPMG and Honda Motorcycle & Scooter India, as well as experience in financial analysis, portfolio management, content creation and SEO work in the BPO sector.",
+          "references": [
+            "0c35739977144be795e62710f6611ddf"
+          ]
+        },
+        {
+          "point": "The image Pichai shared was chosen from a series of Holi photographs Katkoria shot in Vrindavan.",
+          "references": [
+            "766e2dfb54f344808ccc69c3ec7e8393"
+          ]
+        },
+        {
+          "point": "Google India’s Holi post used a Gemini AI–generated rangoli image presented on a brass thali (plate) and surrounded by bowls of dry colours, flower petals, gujias and a pichkari, accompanied by the caption: “Sweet moments, bright memories, and colors all around. Wishing you a #Holi filled with warmth and cheer.”",
+          "references": [
+            "766e2dfb54f344808ccc69c3ec7e8393"
+          ]
+        },
+        {
+          "point": "Photographer Prajay Katkoria replied publicly to Pichai’s post, writing: “Means a lot, Sundar Pichai sir! Happy Holi to everyone.”",
+          "references": [
+            "a4538b99ba7e4f239e145d14373cc4f2",
+            "0c35739977144be795e62710f6611ddf"
+          ]
+        },
+        {
+          "point": "The post generated a flood of enthusiastic reactions on Instagram — heart and fire emojis and celebratory comments, including one user who wrote: “Respected Sir, Thank You Very Much & Wishing You And Your Sweet Little, Lovely Family, Friends, Fans & Other Tech Innovators A Wonderfully Blessed Happy Holi.”",
+          "references": [
+            "0c35739977144be795e62710f6611ddf"
+          ]
+        }
+      ],
+      "sentiment": {
+        "positive": 0.47999752,
+        "negative": 0.11951326,
+        "neutral": 0.4004892
+      },
+      "uniqueCount": 7,
+      "reprintCount": 1,
+      "totalCount": 8,
+      "countries": [
+        {
+          "name": "in",
+          "count": 7
+        }
+      ],
+      "topCountries": [
+        "in"
+      ],
+      "topics": [
+        {
+          "name": "Business Leaders",
+          "count": 4
+        },
+        {
+          "name": "Electronics",
+          "count": 3
+        },
+        {
+          "name": "Google Pixel",
+          "count": 3
+        }
+      ],
+      "topTopics": [
+        {
+          "name": "Business Leaders"
+        },
+        {
+          "name": "Electronics"
+        },
+        {
+          "name": "Google Pixel"
+        }
+      ],
+      "categories": [
+        {
+          "name": "Business",
+          "count": 4
+        },
+        {
+          "name": "Tech",
+          "count": 3
+        },
+        {
+          "name": "Lifestyle",
+          "count": 2
+        }
+      ],
+      "topCategories": [
+        {
+          "name": "Business"
+        },
+        {
+          "name": "Tech"
+        },
+        {
+          "name": "Lifestyle"
+        }
+      ],
+      "taxonomies": [
+        {
+          "name": "/News/Technology News",
+          "count": 4
+        },
+        {
+          "name": "/News/Business News/Company News",
+          "count": 4
+        },
+        {
+          "name": "/Arts & Entertainment/Celebrities & Entertainment News",
+          "count": 5
+        },
+        {
+          "name": "/Computers & Electronics/Software/Operating Systems",
+          "count": 1
+        },
+        {
+          "name": "/Internet & Telecom/Mobile & Wireless/Mobile Phones",
+          "count": 1
+        },
+        {
+          "name": "/Online Communities/Social Networks",
+          "count": 1
+        },
+        {
+          "name": "/Arts & Entertainment/Online Media/Online Image Galleries",
+          "count": 4
+        },
+        {
+          "name": "/Hobbies & Leisure/Special Occasions/Holidays & Seasonal Events",
+          "count": 4
+        },
+        {
+          "name": "/People & Society/Religion & Belief",
+          "count": 2
+        },
+        {
+          "name": "/Arts & Entertainment/Offbeat/Other",
+          "count": 1
+        },
+        {
+          "name": "/Arts & Entertainment/Humor/Other",
+          "count": 1
+        },
+        {
+          "name": "/People & Society/Other",
+          "count": 1
+        }
+      ],
+      "topTaxonomies": [
+        {
+          "name": "/Arts & Entertainment/Celebrities & Entertainment News"
+        },
+        {
+          "name": "/News/Technology News"
+        },
+        {
+          "name": "/News/Business News/Company News"
+        },
+        {
+          "name": "/Arts & Entertainment/Online Media/Online Image Galleries"
+        },
+        {
+          "name": "/Hobbies & Leisure/Special Occasions/Holidays & Seasonal Events"
+        },
+        {
+          "name": "/People & Society/Religion & Belief"
+        }
+      ],
+      "people": [
+        {
+          "wikidataId": "Q3503829",
+          "name": "Sundar Pichai",
+          "count": 7
+        }
+      ],
+      "topPeople": [
+        {
+          "wikidataId": "Q3503829",
+          "name": "Sundar Pichai"
+        }
+      ],
+      "companies": [
+        {
+          "id": "f1d262a1353b4567858f806721fe8cb8",
+          "name": "Google",
+          "domains": [
+            "about.google"
+          ],
+          "symbols": [],
+          "count": 7
+        },
+        {
+          "id": "254bb0fdf63a4fab92e6f976f7ba8abb",
+          "name": "KPMG",
+          "domains": [
+            "kpmg.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "2f3c4cabcb844cd8994de932a086aadd",
+          "name": "HMSI",
+          "domains": [
+            "honda2wheelersindia.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "806457af1fd9418db78388760f52c06f",
+          "name": "Alphabet Inc.",
+          "domains": [
+            "abc.xyz"
+          ],
+          "symbols": [
+            "ABEA.DE",
+            "ABEC.DE",
+            "GOOG",
+            "GOOGL",
+            "GOOGL.SW"
+          ],
+          "count": 1
+        }
+      ],
+      "topCompanies": [
+        {
+          "id": "f1d262a1353b4567858f806721fe8cb8",
+          "name": "Google",
+          "domains": [
+            "about.google"
+          ],
+          "symbols": []
+        }
+      ],
+      "locations": [
+        {
+          "count": 1
+        }
+      ],
+      "topLocations": [
+        {}
+      ]
+    },
+    {
+      "createdAt": "2026-03-03T22:23:45.111572+00:00",
+      "updatedAt": "2026-03-05T14:05:09.185904+00:00",
+      "initializedAt": "2026-03-05T14:05:09.185907+00:00",
+      "id": "039e4fcf6ee849679e8a4988c09cc602",
+      "name": "Ring CEO Criticized After Nancy Guthrie Remarks",
+      "summary": "Ring founder and CEO Jamie Siminoff told Fortune that Nancy Guthrie’s abduction “might have been solved” if there had been more cameras on the house, calling the recovered Google Nest doorbell footage the best evidence in the case. He framed the episode as underscoring the importance of home video and devices like Ring, comments that many online readers found insensitive and self-promotional. Social-media critics accused him of exploiting the disappearance to sell surveillance and warned about the privacy implications of expanded camera networks. Authorities recovered a short Nest clip showing a masked person tampering with the doorbell and have also reviewed neighboring surveillance that captured vehicle movements near the home. The search for 84-year-old Nancy Guthrie continues more than a month after her disappearance, and Savannah Guthrie has offered a $1 million reward for information.",
+      "shortSummary": "Ring founder and CEO Jamie Siminoff told Fortune that Nancy Guthrie’s disappearance “might… have been solved” if there had been more home security cameras, citing recovered footage from a Nest doorbell as key evidence of what happened. His remarks provoked heavy online backlash, with critics calling the comments insensitive and opportunistic and accusing the monitoring-company CEO of using the case to promote more surveillance.",
+      "summaryReferences": [
+        "1c9209b7a83f431daf452f31a2a2222b",
+        "70f452d0dfcc4437ac101a788e3cc5a9",
+        "57165004bd59474eb0a066931fe26a88",
+        "5667ad4bcc804a578820ab5360e47ebc",
+        "9d5e4223cc7f455f8e3a06d325701b35"
+      ],
+      "keyPoints": [
+        {
+          "point": "Nancy Guthrie did not have a Nest subscription, so her doorbell camera did not record continuously; technicians spent more than a week searching Google’s cloud before painstakingly recovering the short clip that became the case’s key footage.",
+          "references": [
+            "1c9209b7a83f431daf452f31a2a2222b"
+          ]
+        },
+        {
+          "point": "The FBI-released footage showed a masked person holstering a gun at the front entrance, and investigators found blood at the scene that belonged to Nancy, leading authorities to conclude she was most likely abducted.",
+          "references": [
+            "70f452d0dfcc4437ac101a788e3cc5a9"
+          ]
+        },
+        {
+          "point": "Online critics on Reddit framed Siminoff’s comments as an argument for 'universal mass surveillance' and raised privacy concerns, with one commenter warning, 'Why get a warrant when you could just buy the information from Ring?'",
+          "references": [
+            "57165004bd59474eb0a066931fe26a88"
+          ]
+        },
+        {
+          "point": "Reports note Nancy Guthrie vanished after being dropped off from a family dinner at her million-dollar Tucson home, and the intensive search has continued for more than a month.",
+          "references": [
+            "9d5e4223cc7f455f8e3a06d325701b35"
+          ]
+        }
+      ],
+      "sentiment": {
+        "positive": 0.14008464,
+        "negative": 0.5380723,
+        "neutral": 0.3218431
+      },
+      "uniqueCount": 8,
+      "reprintCount": 7,
+      "totalCount": 15,
+      "countries": [
+        {
+          "name": "us",
+          "count": 10
+        },
+        {
+          "name": "gb",
+          "count": 1
+        },
+        {
+          "name": "in",
+          "count": 1
+        }
+      ],
+      "topCountries": [
+        "us"
+      ],
+      "topics": [
+        {
+          "name": "Business Leaders",
+          "count": 13
+        },
+        {
+          "name": "Media",
+          "count": 1
+        },
+        {
+          "name": "Missing People",
+          "count": 2
+        }
+      ],
+      "topTopics": [
+        {
+          "name": "Business Leaders"
+        }
+      ],
+      "categories": [
+        {
+          "name": "Business",
+          "count": 13
+        },
+        {
+          "name": "Entertainment",
+          "count": 1
+        },
+        {
+          "name": "Lifestyle",
+          "count": 1
+        }
+      ],
+      "topCategories": [
+        {
+          "name": "Business"
+        }
+      ],
+      "taxonomies": [
+        {
+          "name": "/Sensitive Subjects/Violence & Abuse",
+          "count": 11
+        },
+        {
+          "name": "/News/Other",
+          "count": 11
+        },
+        {
+          "name": "/Law & Government/Public Safety/Crime & Justice",
+          "count": 10
+        },
+        {
+          "name": "/Arts & Entertainment/Celebrities & Entertainment News",
+          "count": 7
+        },
+        {
+          "name": "/Law & Government/Public Safety/Law Enforcement",
+          "count": 9
+        },
+        {
+          "name": "/News/Gossip & Tabloid News/Scandals & Investigations",
+          "count": 5
+        },
+        {
+          "name": "/Sensitive Subjects/Other",
+          "count": 8
+        },
+        {
+          "name": "/Arts & Entertainment/TV & Video/TV Shows & Programs",
+          "count": 4
+        },
+        {
+          "name": "/Arts & Entertainment/TV & Video/Online Video",
+          "count": 3
+        },
+        {
+          "name": "/Sensitive Subjects/Death & Tragedy",
+          "count": 2
+        },
+        {
+          "name": "/News/Business News/Company News",
+          "count": 1
+        },
+        {
+          "name": "/Online Communities/Social Networks",
+          "count": 1
+        },
+        {
+          "name": "/News/Local News",
+          "count": 2
+        }
+      ],
+      "topTaxonomies": [
+        {
+          "name": "/Sensitive Subjects/Violence & Abuse"
+        },
+        {
+          "name": "/News/Other"
+        },
+        {
+          "name": "/Law & Government/Public Safety/Crime & Justice"
+        },
+        {
+          "name": "/Law & Government/Public Safety/Law Enforcement"
+        },
+        {
+          "name": "/Sensitive Subjects/Other"
+        },
+        {
+          "name": "/Arts & Entertainment/Celebrities & Entertainment News"
+        }
+      ],
+      "people": [
+        {
+          "wikidataId": "Q16151747",
+          "name": "Nancy Guthrie",
+          "count": 2
+        }
+      ],
+      "topPeople": [],
+      "companies": [
+        {
+          "id": "f1d262a1353b4567858f806721fe8cb8",
+          "name": "Google",
+          "domains": [
+            "about.google"
+          ],
+          "symbols": [],
+          "count": 7
+        },
+        {
+          "id": "429bf1a0efb34d7c9206be9fbdc99697",
+          "name": "Ring",
+          "domains": [
+            "ring.com"
+          ],
+          "symbols": [],
+          "count": 10
+        },
+        {
+          "id": "435e0daa7ea443ba89f0dd39e95dd71d",
+          "name": "Amazon.com, Inc.",
+          "domains": [
+            "amazon.com"
+          ],
+          "symbols": [
+            "AMZ.DE",
+            "AMZN"
+          ],
+          "count": 6
+        },
+        {
+          "id": "07c61b44f83d474d96f88b1bae1ab1a3",
+          "name": "Reddit, Inc.",
+          "domains": [
+            "redditinc.com"
+          ],
+          "symbols": [
+            "RDDT"
+          ],
+          "count": 3
+        },
+        {
+          "id": "12b73257f15749289ea19f880414b9f4",
+          "name": "Express, Inc.",
+          "domains": [
+            "express.com"
+          ],
+          "symbols": [
+            "0IJU.L",
+            "EXPR"
+          ],
+          "count": 1
+        },
+        {
+          "id": "5c84f5c12c3e4c258ac1ab8f17af84bb",
+          "name": "NBC",
+          "domains": [
+            "nbc.com"
+          ],
+          "symbols": [],
+          "count": 2
+        }
+      ],
+      "topCompanies": [
+        {
+          "id": "429bf1a0efb34d7c9206be9fbdc99697",
+          "name": "Ring",
+          "domains": [
+            "ring.com"
+          ],
+          "symbols": []
+        },
+        {
+          "id": "f1d262a1353b4567858f806721fe8cb8",
+          "name": "Google",
+          "domains": [
+            "about.google"
+          ],
+          "symbols": []
+        },
+        {
+          "id": "435e0daa7ea443ba89f0dd39e95dd71d",
+          "name": "Amazon.com, Inc.",
+          "domains": [
+            "amazon.com"
+          ],
+          "symbols": [
+            "AMZ.DE",
+            "AMZN"
+          ]
+        }
+      ],
+      "locations": [],
+      "topLocations": []
+    },
+    {
+      "createdAt": "2026-03-03T22:12:07.106773+00:00",
+      "updatedAt": "2026-03-05T14:13:47.814733+00:00",
+      "initializedAt": "2026-03-04T02:42:18.875179+00:00",
+      "id": "e5524f8b93d7460e8beb433697bca624",
+      "name": "Disney Secures $9.25B Credit Facilities",
+      "summary": "On Feb. 27, 2026, The Walt Disney Company entered into two new unsecured credit agreements totaling $9.25 billion: a $5.25 billion 364‑day facility arranged with Citibank and a $4 billion five‑year facility arranged with JPMorgan Chase, each replacing like‑sized prior lines. Both facilities are unsecured and guaranteed by TWDC Enterprises 18 Corp. (subject to release in certain circumstances) and are intended to support Disney’s commercial paper borrowings and other general corporate purposes. The 364‑day agreement matures Feb. 26, 2027 (with an option to extend advances outstanding to Feb. 26, 2028) and the five‑year agreement matures Feb. 27, 2031; borrowings are priced off Term SOFR, EURIBO, TIBO or Daily Simple SONIA with spreads tied to Disney’s public debt rating and allow voluntary prepayment. The agreements include standard covenants and default provisions, require a minimum consolidated EBITDA to consolidated interest expense ratio of 3.00 to 1.00, and expressly exclude certain entities (including units related to Hong Kong Disneyland, Shanghai Disney Resort and FuboTV) from specific representations, covenants or events of default.",
+      "shortSummary": "The Walt Disney Company on Feb. 27, 2026 secured two new unsecured credit agreements totaling $9.25 billion—a $5.25 billion 364‑day facility led by Citibank and a $4 billion five‑year facility led by JPMorgan—each replacing like‑sized prior lines. Both facilities, guaranteed by TWDC Enterprises to support commercial‑paper borrowings and general corporate purposes, carry variable interest tied to benchmarks such as Term SOFR/EURIBO/Daily Simple SONIA and mature in Feb. 2027 (with an optional extension to 2028) and Feb. 2031, respectively.",
+      "summaryReferences": [
+        "9a249f619ea14047983aabcf78dd60a6",
+        "0124f301bfe04371bbeed3b377cf49a8",
+        "94d04fe9b1654f50a6e3fbe62985c5d5",
+        "5b425977935444d0b0f5e02aea34a89d",
+        "a27269a7b1fa4bbbb8bfa14f5e526ea2"
+      ],
+      "keyPoints": [
+        {
+          "point": "The interest‑rate spread on borrowings ranges from 0.625% to 1.000% depending on Disney’s public debt rating.",
+          "references": [
+            "9a249f619ea14047983aabcf78dd60a6"
+          ]
+        },
+        {
+          "point": "The 364‑Day Credit Agreement replaces the prior $5.25 billion 364‑Day facility dated Feb. 28, 2025, and the Five‑Year Credit Agreement replaces the prior $4 billion facility dated March 4, 2022.",
+          "references": [
+            "a27269a7b1fa4bbbb8bfa14f5e526ea2"
+          ]
+        },
+        {
+          "point": "The agreements allow voluntary prepayment without penalties except for customary breakage costs.",
+          "references": [
+            "9a249f619ea14047983aabcf78dd60a6"
+          ]
+        },
+        {
+          "point": "Disney disclosed the credit agreements in an SEC filing (Form 8‑K).",
+          "references": [
+            "a27269a7b1fa4bbbb8bfa14f5e526ea2"
+          ]
+        },
+        {
+          "point": "As additional context, Disney recently reported Q1 2026 revenue rose 5.3% to $26.0 billion, with segment growth of Entertainment +7%, Experiences +6% and Sports +1%.",
+          "references": [
+            "5b425977935444d0b0f5e02aea34a89d"
+          ]
+        }
+      ],
+      "sentiment": {
+        "positive": 0.49855894,
+        "negative": 0.11390261,
+        "neutral": 0.38753843
+      },
+      "uniqueCount": 9,
+      "reprintCount": 22,
+      "totalCount": 31,
+      "countries": [
+        {
+          "name": "us",
+          "count": 13
+        },
+        {
+          "name": "tr",
+          "count": 1
+        },
+        {
+          "name": "in",
+          "count": 1
+        },
+        {
+          "name": "gb",
+          "count": 2
+        },
+        {
+          "name": "de",
+          "count": 3
+        }
+      ],
+      "topCountries": [
+        "us"
+      ],
+      "topics": [
+        {
+          "name": "SEC",
+          "count": 4
+        },
+        {
+          "name": "Markets",
+          "count": 5
+        }
+      ],
+      "topTopics": [
+        {
+          "name": "Markets"
+        },
+        {
+          "name": "SEC"
+        }
+      ],
+      "categories": [
+        {
+          "name": "Business",
+          "count": 1
+        },
+        {
+          "name": "Politics",
+          "count": 1
+        },
+        {
+          "name": "Finance",
+          "count": 6
+        }
+      ],
+      "topCategories": [
+        {
+          "name": "Finance"
+        }
+      ],
+      "taxonomies": [
+        {
+          "name": "/News/Business News/Company News",
+          "count": 14
+        },
+        {
+          "name": "/Finance/Banking/Other",
+          "count": 6
+        },
+        {
+          "name": "/News/Business News/Financial Markets News",
+          "count": 11
+        },
+        {
+          "name": "/Finance/Investing/Other",
+          "count": 13
+        },
+        {
+          "name": "/Finance/Investing/Stocks & Bonds",
+          "count": 7
+        },
+        {
+          "name": "/News/Business News/Other",
+          "count": 10
+        }
+      ],
+      "topTaxonomies": [
+        {
+          "name": "/News/Business News/Company News"
+        },
+        {
+          "name": "/Finance/Investing/Other"
+        },
+        {
+          "name": "/News/Business News/Financial Markets News"
+        },
+        {
+          "name": "/News/Business News/Other"
+        },
+        {
+          "name": "/Finance/Investing/Stocks & Bonds"
+        },
+        {
+          "name": "/Finance/Banking/Other"
+        }
+      ],
+      "people": [],
+      "topPeople": [],
+      "companies": [
+        {
+          "id": "1a59812a10fc46f99472b26a10bf0eb0",
+          "name": "The Walt Disney Company",
+          "domains": [
+            "thewaltdisneycompany.com"
+          ],
+          "symbols": [
+            "DIS",
+            "WDP.DE"
+          ],
+          "count": 13
+        },
+        {
+          "id": "c3dcab4b4e4742749b00ec3b400ea9b1",
+          "name": "Citibank",
+          "domains": [
+            "citi.com"
+          ],
+          "symbols": [],
+          "count": 8
+        },
+        {
+          "id": "04591add74704eec90f7770d5034c22d",
+          "name": "fuboTV Inc.",
+          "domains": [
+            "fubo.tv"
+          ],
+          "symbols": [
+            "FUBO"
+          ],
+          "count": 9
+        },
+        {
+          "id": "f0dfb8871f684f398c6161ab472c7c2c",
+          "name": "JPMorgan Chase & Co.",
+          "domains": [
+            "jpmorganchase.com"
+          ],
+          "symbols": [
+            "CMC.DE",
+            "JPM",
+            "JPM-PC",
+            "JPM-PD",
+            "JPM-PJ",
+            "JPM-PK",
+            "JPM-PL",
+            "JPM-PM"
+          ],
+          "count": 5
+        },
+        {
+          "id": "c4800bcde1c940d6b13e2022836c10cd",
+          "name": "Getty Images Holdings, Inc.",
+          "domains": [
+            "gettyimages.com"
+          ],
+          "symbols": [
+            "GETY"
+          ],
+          "count": 1
+        },
+        {
+          "id": "79c2a8a3303b4851afbe2f0e76f7cf23",
+          "name": "Disney Experiences",
+          "domains": [
+            "disneyconnect.com"
+          ],
+          "symbols": [],
+          "count": 4
+        },
+        {
+          "id": "1bc09603d6cd4aeba01c8c7762d8cda6",
+          "name": "Reuters",
+          "domains": [
+            "reuters.com"
+          ],
+          "symbols": [],
+          "count": 1
+        }
+      ],
+      "topCompanies": [
+        {
+          "id": "1a59812a10fc46f99472b26a10bf0eb0",
+          "name": "The Walt Disney Company",
+          "domains": [
+            "thewaltdisneycompany.com"
+          ],
+          "symbols": [
+            "DIS",
+            "WDP.DE"
+          ]
+        },
+        {
+          "id": "04591add74704eec90f7770d5034c22d",
+          "name": "fuboTV Inc.",
+          "domains": [
+            "fubo.tv"
+          ],
+          "symbols": [
+            "FUBO"
+          ]
+        },
+        {
+          "id": "c3dcab4b4e4742749b00ec3b400ea9b1",
+          "name": "Citibank",
+          "domains": [
+            "citi.com"
+          ],
+          "symbols": []
+        }
+      ],
+      "locations": [
+        {
+          "state": "CA",
+          "city": "Burbank",
+          "count": 1
+        }
+      ],
+      "topLocations": []
+    },
+    {
+      "createdAt": "2026-03-03T17:47:44.014912+00:00",
+      "updatedAt": "2026-03-04T16:55:02.774616+00:00",
+      "initializedAt": "2026-03-03T21:46:30.963967+00:00",
+      "id": "1fde71571ef64f828cb5e3686623f1aa",
+      "name": "ACM CEO Damon Whiteside Plans June 2026 Exit",
+      "summary": "Damon Whiteside, CEO of the Academy of Country Music, announced he will step down June 30, 2026 and serve as CEO Emeritus through the end of the year while the ACM board’s search committee identifies his successor. Over six-and-a-half years he grew ACM membership to its largest and most diverse level, relocated the organization from Los Angeles to Nashville, and expanded flagship franchises including ACM Our Country, the 60th Gala, Party for a Cause, Wine & Country at Hearst Castle, and the Charley Pride Inclusion Brunch. Whiteside also strengthened the Academy’s finances—reporting a roughly 150% profit increase in 2025 with 2026 projected to grow another 140%—and through ACM Lifting Lives helped raise and distribute more than $4 million via a COVID response fund while generating about $1.3 million annually through new fundraising. He repositioned the ACM Awards as a streaming-first event via a global Amazon Prime Video partnership (in place through 2028), executive produced the sold-out 60th anniversary show hosted by Reba McEntire, and the webcast delivered over 70% year-over-year live viewership growth for Prime Video. The departure is being framed as part of a broader leadership shuffle in Nashville’s country music institutions as other major organizations also prepare for executive transitions.",
+      "shortSummary": "Academy of Country Music CEO Damon Whiteside announced he will step down in June 2026 after six-and-a-half years, remaining in the CEO role through June 30 and then serving as CEO Emeritus through the end of the year while the ACM Board’s search committee looks for his successor. Under Whiteside the ACM grew to its largest and most diverse membership, relocated to Nashville, substantially boosted profitability (2025 up 150% and 2026 projected +140%), expanded key franchises, and repositioned the ACM Awards as a streaming-first event via a global partnership with Amazon Prime Video.",
+      "summaryReferences": [
+        "344c3d6c03ed429eb8ae46eadd663b66",
+        "c93331fa317b4c31b33bf78d45b5a69a",
+        "84111dd057ab490e90adc22e317d9c64",
+        "7fbac9ce3c0b4677a98afad3ad5cfd6b",
+        "aa5e7025b411457bb808cc6f1ed702d1"
+      ],
+      "keyPoints": [
+        {
+          "point": "Whiteside returned the ACM Honors to broadcast television during his tenure.",
+          "references": [
+            "344c3d6c03ed429eb8ae46eadd663b66",
+            "84111dd057ab490e90adc22e317d9c64"
+          ]
+        },
+        {
+          "point": "In addition to the ACM Awards, Whiteside executive produced other flagship programming including ACM Honors and ACM Our Country.",
+          "references": [
+            "c93331fa317b4c31b33bf78d45b5a69a",
+            "84111dd057ab490e90adc22e317d9c64"
+          ]
+        },
+        {
+          "point": "The sold-out 60th Anniversary ACM Awards included what was described as the final televised awards-show performance by Alan Jackson.",
+          "references": [
+            "84111dd057ab490e90adc22e317d9c64"
+          ]
+        },
+        {
+          "point": "The ACM Awards were repositioned as a streaming-only event — the first major awards show to forgo a traditional broadcast/cable home after nearly 25 years on CBS — via an exclusive global partnership with Amazon Prime Video.",
+          "references": [
+            "aa5e7025b411457bb808cc6f1ed702d1",
+            "aa5e7025b411457bb808cc6f1ed702d1"
+          ]
+        },
+        {
+          "point": "Whiteside's exit coincides with other near-term leadership changes in Nashville: Country Music Association CEO Sarah Trahern has also announced she will step down at the end of 2026 after 14 years, creating overlapping executive transitions among major country music institutions.",
+          "references": [
+            "aa5e7025b411457bb808cc6f1ed702d1",
+            "7fbac9ce3c0b4677a98afad3ad5cfd6b"
+          ]
+        }
+      ],
+      "sentiment": {
+        "positive": 0.5714986,
+        "negative": 0.15747575,
+        "neutral": 0.2710257
+      },
+      "uniqueCount": 11,
+      "reprintCount": 14,
+      "totalCount": 25,
+      "countries": [
+        {
+          "name": "us",
+          "count": 19
+        },
+        {
+          "name": "ca",
+          "count": 1
+        },
+        {
+          "name": "in",
+          "count": 2
+        }
+      ],
+      "topCountries": [
+        "us"
+      ],
+      "topics": [
+        {
+          "name": "Business Leaders",
+          "count": 23
+        },
+        {
+          "name": "Music",
+          "count": 7
+        }
+      ],
+      "topTopics": [
+        {
+          "name": "Business Leaders"
+        }
+      ],
+      "categories": [
+        {
+          "name": "Business",
+          "count": 24
+        },
+        {
+          "name": "Entertainment",
+          "count": 7
+        }
+      ],
+      "topCategories": [
+        {
+          "name": "Business"
+        }
+      ],
+      "taxonomies": [
+        {
+          "name": "/Arts & Entertainment/Celebrities & Entertainment News",
+          "count": 22
+        },
+        {
+          "name": "/News/Business News/Company News",
+          "count": 19
+        },
+        {
+          "name": "/Arts & Entertainment/Entertainment Industry/Recording Industry",
+          "count": 12
+        },
+        {
+          "name": "/Arts & Entertainment/Music & Audio/Pop Music",
+          "count": 4
+        }
+      ],
+      "topTaxonomies": [
+        {
+          "name": "/Arts & Entertainment/Celebrities & Entertainment News"
+        },
+        {
+          "name": "/News/Business News/Company News"
+        },
+        {
+          "name": "/Arts & Entertainment/Entertainment Industry/Recording Industry"
+        }
+      ],
+      "people": [
+        {
+          "wikidataId": "Q229430",
+          "name": "Reba McEntire",
+          "count": 13
+        },
+        {
+          "wikidataId": "Q7336357",
+          "name": "Rissi Palmer",
+          "count": 2
+        },
+        {
+          "wikidataId": "Q6176881",
+          "name": "Jelly Roll",
+          "count": 2
+        },
+        {
+          "wikidataId": "Q17916913",
+          "name": "Cody Johnson",
+          "count": 2
+        },
+        {
+          "wikidataId": "Q975911",
+          "name": "Eric Church",
+          "count": 2
+        },
+        {
+          "wikidataId": "Q7383978",
+          "name": "Ryan Coogler",
+          "count": 2
+        },
+        {
+          "wikidataId": "Q106378786",
+          "name": "Lainey Wilson",
+          "count": 2
+        },
+        {
+          "wikidataId": "Q21914464",
+          "name": "Dua Lipa",
+          "count": 6
+        },
+        {
+          "wikidataId": "Q47447",
+          "name": "Ed Sheeran",
+          "count": 6
+        },
+        {
+          "wikidataId": "Q60231335",
+          "name": "Riley Green",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q180453",
+          "name": "Dolly Parton",
+          "count": 4
+        },
+        {
+          "wikidataId": "Q216288",
+          "name": "Garth Brooks",
+          "count": 4
+        }
+      ],
+      "topPeople": [
+        {
+          "wikidataId": "Q229430",
+          "name": "Reba McEntire"
+        }
+      ],
+      "companies": [
+        {
+          "id": "435e0daa7ea443ba89f0dd39e95dd71d",
+          "name": "Amazon.com, Inc.",
+          "domains": [
+            "amazon.com"
+          ],
+          "symbols": [
+            "AMZ.DE",
+            "AMZN"
+          ],
+          "count": 4
+        },
+        {
+          "id": "b3b64978c7884fb5b18a5df9dc0fa91b",
+          "name": "Billboard",
+          "domains": [
+            "billboard.com"
+          ],
+          "symbols": [],
+          "count": 2
+        },
+        {
+          "id": "1a59812a10fc46f99472b26a10bf0eb0",
+          "name": "The Walt Disney Company",
+          "domains": [
+            "thewaltdisneycompany.com"
+          ],
+          "symbols": [
+            "DIS",
+            "WDP.DE"
+          ],
+          "count": 12
+        },
+        {
+          "id": "9f5b63a76bab4b0ba0f676b821755f18",
+          "name": "Penske Media Corporation",
+          "domains": [
+            "pmc.com"
+          ],
+          "symbols": [],
+          "count": 2
+        },
+        {
+          "id": "aec9ef77bcee489c879d175f429401a2",
+          "name": "Dick Clark Productions",
+          "domains": [
+            "dickclark.com"
+          ],
+          "symbols": [],
+          "count": 2
+        },
+        {
+          "id": "d5c906e7fb294a6da59a1454ceb23fc2",
+          "name": "CBS",
+          "domains": [
+            "cbs.com"
+          ],
+          "symbols": [],
+          "count": 6
+        },
+        {
+          "id": "be0e8e24e5ad46e5aa8bb891e3d9bfff",
+          "name": "Association for Computing Machinery",
+          "domains": [
+            "acm.org"
+          ],
+          "symbols": [],
+          "count": 8
+        },
+        {
+          "id": "27d42be7f18340788830628f5d06abec",
+          "name": "Dallas Cowboys",
+          "domains": [
+            "dallascowboys.com"
+          ],
+          "symbols": [],
+          "count": 8
+        },
+        {
+          "id": "25b9d6b7abd44be69efa391433d72d25",
+          "name": "NBA",
+          "domains": [
+            "nba.com"
+          ],
+          "symbols": [],
+          "count": 2
+        },
+        {
+          "id": "8c179056536d4dee957c253a2315d8ab",
+          "name": "Variety",
+          "domains": [
+            "variety.com"
+          ],
+          "symbols": [],
+          "count": 3
+        },
+        {
+          "id": "9b3ba5636ea84328b42c879bd851d5f7",
+          "name": "The Tennessean",
+          "domains": [
+            "tennessean.com"
+          ],
+          "symbols": [],
+          "count": 2
+        },
+        {
+          "id": "c4d29fcc6f6c4088a343e9b3df020b42",
+          "name": "Chick-fil-A",
+          "domains": [
+            "chick-fil-a.com"
+          ],
+          "symbols": [],
+          "count": 2
+        }
+      ],
+      "topCompanies": [
+        {
+          "id": "1a59812a10fc46f99472b26a10bf0eb0",
+          "name": "The Walt Disney Company",
+          "domains": [
+            "thewaltdisneycompany.com"
+          ],
+          "symbols": [
+            "DIS",
+            "WDP.DE"
+          ]
+        },
+        {
+          "id": "be0e8e24e5ad46e5aa8bb891e3d9bfff",
+          "name": "Association for Computing Machinery",
+          "domains": [
+            "acm.org"
+          ],
+          "symbols": []
+        },
+        {
+          "id": "27d42be7f18340788830628f5d06abec",
+          "name": "Dallas Cowboys",
+          "domains": [
+            "dallascowboys.com"
+          ],
+          "symbols": []
+        }
+      ],
+      "locations": [
+        {
+          "state": "TN",
+          "city": "Nashville",
+          "count": 1
+        }
+      ],
+      "topLocations": []
+    },
+    {
+      "createdAt": "2026-03-03T12:29:05.849862+00:00",
+      "updatedAt": "2026-03-05T11:26:02.592237+00:00",
+      "initializedAt": "2026-03-04T03:36:40.686088+00:00",
+      "id": "d683a5403be84c3fbc82d0656d2c1029",
+      "name": "Netlist reports Q4 sales up 121%, loss narrows",
+      "summary": "Netlist reported sharply improved 2025 results driven by AI-fueled memory demand and constrained industry supply, with management saying price tailwinds and a chip shortage are likely to persist until new fab capacity comes online around 2027. The company posted fourth-quarter net sales of $75.7 million and full-year net sales of $188.6 million, alongside large percentage increases in gross profit and materially smaller net losses versus a year earlier. Leadership highlighted product momentum—notably the Lightning overclocked, low-latency DDR5 line, which has completed OEM qualifications and is ramping with system integrators—and said demand is coming from markets such as high-frequency trading and high-performance computing. Netlist also emphasized progress on intellectual-property enforcement, citing important appellate wins that upheld patent validity and expanded actions covering DDR5 and HBM technologies. Management said the company is investing in R&D for next-generation memory (including MRDIMM and CXL NVDIMM) and enters 2026 positioned to capitalize on these product, pricing, and IP developments.",
+      "shortSummary": "Netlist reported a strong 2025 with fourth-quarter net sales of $75.7 million and full-year revenue of $188.6 million, producing large year-over-year revenue gains, sharply improved gross profit and a smaller net loss though the company remains unprofitable. Management said results were driven by AI-fueled memory supply tightness and higher prices, plus progress on products (including Lightning DDR5) and IP enforcement—citing appellate patent wins—and the company is investing in next‑generation memory (MRDIMM, CXL NVDIMM) to capitalize on demand through 2027.",
+      "summaryReferences": [
+        "5697db72141c4a14a66871db04523e59",
+        "97cf963eb63141beabd46eaf68bf6a33",
+        "dd8751214ca0480cb8ec10215239dd05",
+        "1f9e9d5920884e8882aee9ff4b4bc5fa",
+        "8c2f59792fe044a2bc384e8a990e5816"
+      ],
+      "keyPoints": [
+        {
+          "point": "Netlist reported specific margin and profitability improvements: fourth-quarter gross profit was $6.9 million (up 2,620% year‑over‑year), full‑year gross profit was $11.4 million (up 297% y/y), and net loss improved by 82% in Q4 and 54% for the full year; Q4 net sales rose 79% sequentially and 121% year‑over‑year while full‑year sales increased 28%.",
+          "references": [
+            "8c2f59792fe044a2bc384e8a990e5816",
+            "1f9e9d5920884e8882aee9ff4b4bc5fa"
+          ]
+        },
+        {
+          "point": "CEO C.K. (Chuck) Hong characterized the current production environment as a “zero‑sum game,” saying the tightness is largely AI‑driven and that Netlist is seeing limited access to DRAM “raw material” (and some NAND); he expects the supply imbalance to persist until new fab capacity comes online toward the second half of 2027.",
+          "references": [
+            "5697db72141c4a14a66871db04523e59"
+          ]
+        },
+        {
+          "point": "Netlist said its Lightning overclocked, low‑latency DDR5 line has completed qualifications at a “global server OEM” that is now testing the modules with end customers, and Lightning sales volume is “ramping up nicely” in the system‑integrator market.",
+          "references": [
+            "5697db72141c4a14a66871db04523e59"
+          ]
+        },
+        {
+          "point": "Outside the headline items, Netlist’s product set and proprietary technologies include storage‑class memory, NVDIMM/enterprise SSD/embedded flash offerings and proprietary designs such as Presight technology, distributed buffer architecture, IC and PCB designs and thermal management; one profile noted a market capitalization around $381.37 million.",
+          "references": [
+            "97cf963eb63141beabd46eaf68bf6a33"
+          ]
+        }
+      ],
+      "sentiment": {
+        "positive": 0.5145662,
+        "negative": 0.12147726,
+        "neutral": 0.36395654
+      },
+      "uniqueCount": 11,
+      "reprintCount": 28,
+      "totalCount": 39,
+      "countries": [
+        {
+          "name": "us",
+          "count": 25
+        },
+        {
+          "name": "ca",
+          "count": 2
+        },
+        {
+          "name": "fr",
+          "count": 1
+        },
+        {
+          "name": "de",
+          "count": 2
+        },
+        {
+          "name": "gb",
+          "count": 1
+        }
+      ],
+      "topCountries": [
+        "us"
+      ],
+      "topics": [
+        {
+          "name": "Markets",
+          "count": 14
+        },
+        {
+          "name": "Earnings Calls",
+          "count": 8
+        },
+        {
+          "name": "Environment-ESG",
+          "count": 1
+        }
+      ],
+      "topTopics": [
+        {
+          "name": "Markets"
+        },
+        {
+          "name": "Earnings Calls"
+        }
+      ],
+      "categories": [
+        {
+          "name": "Finance",
+          "count": 14
+        },
+        {
+          "name": "Environment",
+          "count": 1
+        }
+      ],
+      "topCategories": [
+        {
+          "name": "Finance"
+        }
+      ],
+      "taxonomies": [
+        {
+          "name": "/News/Business News/Company News",
+          "count": 29
+        },
+        {
+          "name": "/News/Business News/Financial Markets News",
+          "count": 29
+        },
+        {
+          "name": "/Finance/Investing/Stocks & Bonds",
+          "count": 29
+        },
+        {
+          "name": "/Finance/Investing/Other",
+          "count": 2
+        },
+        {
+          "name": "/Business & Industrial/Business Services/Corporate Events",
+          "count": 1
+        },
+        {
+          "name": "/News/Other",
+          "count": 1
+        },
+        {
+          "name": "/News/Technology News",
+          "count": 4
+        },
+        {
+          "name": "/Computers & Electronics/Computer Hardware/Computer Components",
+          "count": 4
+        },
+        {
+          "name": "/Finance/Banking/Other",
+          "count": 1
+        }
+      ],
+      "topTaxonomies": [
+        {
+          "name": "/News/Business News/Company News"
+        },
+        {
+          "name": "/News/Business News/Financial Markets News"
+        },
+        {
+          "name": "/Finance/Investing/Stocks & Bonds"
+        }
+      ],
+      "people": [],
+      "topPeople": [],
+      "companies": [
+        {
+          "id": "2010eff8ad464d28b8612ee1da46414b",
+          "name": "Netlist, Inc.",
+          "domains": [
+            "netlist.com"
+          ],
+          "symbols": [
+            "0K6M.L",
+            "NLST"
+          ],
+          "count": 18
+        },
+        {
+          "id": "f1d262a1353b4567858f806721fe8cb8",
+          "name": "Google",
+          "domains": [
+            "about.google"
+          ],
+          "symbols": [],
+          "count": 16
+        },
+        {
+          "id": "05c3bd85a7dd4e499ec46c642bf0a6f4",
+          "name": "Micron Technology, Inc.",
+          "domains": [
+            "micron.com"
+          ],
+          "symbols": [
+            "MTE.DE",
+            "MU"
+          ],
+          "count": 16
+        },
+        {
+          "id": "cf71763a2ce74396a8a86bfb8ad11541",
+          "name": "Monroe Capital Corporation",
+          "domains": [
+            "monroebdc.com"
+          ],
+          "symbols": [
+            "MRCC"
+          ],
+          "count": 1
+        },
+        {
+          "id": "5e7993fc711c46cda82ec5577ff2884f",
+          "name": "Horizon Technology Finance Corporation",
+          "domains": [
+            "horizontechfinance.com"
+          ],
+          "symbols": [
+            "HRZN",
+            "HTFB"
+          ],
+          "count": 1
+        },
+        {
+          "id": "5aa0618f4d7643fba5fb84a93708d4a9",
+          "name": "Advanced Micro Devices, Inc.",
+          "domains": [
+            "amd.com"
+          ],
+          "symbols": [
+            "AMD",
+            "AMD.DE",
+            "AMD.SW"
+          ],
+          "count": 5
+        },
+        {
+          "id": "e7e32fc01ffd4df08ad05b7f49833334",
+          "name": "Super Micro Computer, Inc.",
+          "domains": [
+            "supermicro.com"
+          ],
+          "symbols": [
+            "SMCI"
+          ],
+          "count": 5
+        },
+        {
+          "id": "ceb59763dc1b40919bb099edf2e965fe",
+          "name": "ITC Limited",
+          "domains": [
+            "itcportal.com"
+          ],
+          "symbols": [
+            "ITC.NS"
+          ],
+          "count": 4
+        },
+        {
+          "id": "94bbd0512cd04cc4b7041d78d9d4cf73",
+          "name": "NVIDIA Corporation",
+          "domains": [
+            "nvidia.com"
+          ],
+          "symbols": [
+            "NVD.DE",
+            "NVDA"
+          ],
+          "count": 2
+        },
+        {
+          "id": "680da992aa26445e822f7b36214c6c5d",
+          "name": "AeroVironment, Inc.",
+          "domains": [
+            "avinc.com"
+          ],
+          "symbols": [
+            "0HAL.L",
+            "AVAV"
+          ],
+          "count": 1
+        },
+        {
+          "id": "32c60c813d8d4b22970d43b79739d60a",
+          "name": "Avnet, Inc.",
+          "domains": [
+            "avnet.com"
+          ],
+          "symbols": [
+            "AVT"
+          ],
+          "count": 5
+        },
+        {
+          "id": "42c02bb01003487ebfc524e65ef0c02e",
+          "name": "Intel Corporation",
+          "domains": [
+            "intel.com"
+          ],
+          "symbols": [
+            "4335.HK",
+            "INCO.BR",
+            "INL.DE",
+            "INTC"
+          ],
+          "count": 5
+        },
+        {
+          "id": "08391f87561f4868bf121c6e53d75cc4",
+          "name": "National Vision Holdings, Inc.",
+          "domains": [
+            "nationalvision.com"
+          ],
+          "symbols": [
+            "EYE"
+          ],
+          "count": 1
+        },
+        {
+          "id": "860e9a3709134205bb1dd5f7c95fc870",
+          "name": "Fred Meyer",
+          "domains": [
+            "fredmeyer.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "96149cb857ba4093b31084391a333706",
+          "name": "AC Lens",
+          "domains": [
+            "aclens.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "f2bd4e576da44696ace280cf30be9171",
+          "name": "KKR & Co. Inc.",
+          "domains": [
+            "kkr.com"
+          ],
+          "symbols": [
+            "0Z1W.L",
+            "KKR",
+            "KKR-PC"
+          ],
+          "count": 1
+        },
+        {
+          "id": "5f6bb0f0d960439184df98949ecdfb35",
+          "name": "ROTH Capital Partners",
+          "domains": [
+            "roth.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "6d688831f698495281098a1d24465e33",
+          "name": "OpenAI",
+          "domains": [
+            "openai.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "06f74eb1f5314f01a1c038434cb85a67",
+          "name": "Netcall plc",
+          "domains": [
+            "netcall.com"
+          ],
+          "symbols": [
+            "NET.L"
+          ],
+          "count": 3
+        },
+        {
+          "id": "80c66b3f6da94bce9b47a9ef1715d9be",
+          "name": "ATN International, Inc.",
+          "domains": [
+            "atni.com"
+          ],
+          "symbols": [
+            "ATNI"
+          ],
+          "count": 6
+        },
+        {
+          "id": "2f1b8ab65f5d4a6c87f531da19393376",
+          "name": "EPI (Holdings) Limited",
+          "domains": [
+            "epiholdings.com"
+          ],
+          "symbols": [
+            "0689.HK"
+          ],
+          "count": 6
+        },
+        {
+          "id": "de5dc68ed4bc4cd0aaa209e950b1ed34",
+          "name": "Nasdaq, Inc.",
+          "domains": [
+            "nasdaq.com"
+          ],
+          "symbols": [
+            "0K4T.L",
+            "NDAQ"
+          ],
+          "count": 6
+        }
+      ],
+      "topCompanies": [
+        {
+          "id": "2010eff8ad464d28b8612ee1da46414b",
+          "name": "Netlist, Inc.",
+          "domains": [
+            "netlist.com"
+          ],
+          "symbols": [
+            "0K6M.L",
+            "NLST"
+          ]
+        },
+        {
+          "id": "f1d262a1353b4567858f806721fe8cb8",
+          "name": "Google",
+          "domains": [
+            "about.google"
+          ],
+          "symbols": []
+        },
+        {
+          "id": "05c3bd85a7dd4e499ec46c642bf0a6f4",
+          "name": "Micron Technology, Inc.",
+          "domains": [
+            "micron.com"
+          ],
+          "symbols": [
+            "MTE.DE",
+            "MU"
+          ]
+        }
+      ],
+      "locations": [
+        {
+          "state": "CT",
+          "county": "Capitol Planning Region",
+          "count": 1
+        }
+      ],
+      "topLocations": []
+    },
+    {
+      "createdAt": "2026-03-03T08:24:57.927275+00:00",
+      "updatedAt": "2026-03-05T12:45:51.609787+00:00",
+      "initializedAt": "2026-03-04T17:48:03.185159+00:00",
+      "id": "e1cca0ee73f8401f98602366b38a215b",
+      "name": "Fuel Prices Spike Across Ireland, UK Amid Conflict",
+      "summary": "Analysts at Rabobank warn European dairy farmers are under significant pressure from weak milk and dairy-product prices, with fat markets plunging more than 40% and whole‑milk‑powder down about 30%, while protein markets have been more resilient and whey prices have risen on demand for high‑protein products. EU and UK milk production rose about 5.9% in December—the fourth consecutive monthly increase—boosting margins late last year, but Rabobank says supply growth may reverse in 2025 as margin pressure and new regulatory constraints bite, leaving Ireland with some of the lowest milk prices in Europe. Separately, chaos in oil markets linked to the Middle East crisis has driven sharp retail increases in petrol, diesel and especially home‑heating oil in Ireland, with typical 300–500 litre delivery quotes jumping by tens to hundreds of euros and some suppliers suspending online orders. The AA warns UK pump prices will likely rise in the coming weeks and regional outlets from Shropshire to the Black Country are publishing lists of the cheapest stations to help motorists, while officials urge consumers not to panic‑buy. The oil‑price volatility is also prompting government contingency measures for citizens abroad and renewed calls for consumers to monitor prices and conserve usage where possible.",
+      "shortSummary": "The Middle East crisis is driving rapid increases in petrol, diesel and especially home‑heating oil prices across Ireland and parts of the UK, with Galway consumers citing examples such as an extra €100 for 1,500 litres and a €75 rise on a 300‑litre quote as some suppliers suspend online orders. The AA warns pump prices may climb back toward earlier highs while local outlets publish lists of the cheapest stations to help drivers in areas like Shropshire and the Black Country.",
+      "summaryReferences": [
+        "a088943baf0c4fa596c7b0724968a868",
+        "7065e6084fb24352881fe89de29af1e8",
+        "cc8f7dc494bf4e6f840bdb4a4c8e68b6",
+        "82c95b74c02c42e9ad43c07ad583c68a",
+        "0906d95d3ec04cabb353131f7eec35b3"
+      ],
+      "keyPoints": [
+        {
+          "point": "Rabobank noted milk prices remained high until November last year while feed and energy costs were stable or slightly lower year‑on‑year, which helped deliver high margins that slowed slaughter rates even as herd sizes continued to decline.",
+          "references": [
+            "7065e6084fb24352881fe89de29af1e8"
+          ]
+        },
+        {
+          "point": "The Rabobank report said yield per cow rose sharply in Europe—mainly through extra feed—and average EU fat and protein levels both increased by 0.03% in 2025 as milk solids improved.",
+          "references": [
+            "7065e6084fb24352881fe89de29af1e8"
+          ]
+        },
+        {
+          "point": "Specific retail home‑heating oil price jumps were reported in Galway: Certa’s 300L quote rose from €422 to €473 and 500L from €670 to €879; Stewart’s Oil’s 300L moved from ~€430 to €480 and 500L from ~€675 to €750; some suppliers (including Top Oil and McMahon’s) suspended online orders.",
+          "references": [
+            "82c95b74c02c42e9ad43c07ad583c68a"
+          ]
+        },
+        {
+          "point": "The Irish Government has arranged contingency evacuations: it will charter a jet to Oman to collect about 250 at‑risk Irish nationals, and Emirates has scheduled special flights from Dubai to Dublin to help move roughly 2,000 Irish citizens.",
+          "references": [
+            "82c95b74c02c42e9ad43c07ad583c68a"
+          ]
+        },
+        {
+          "point": "AA president Edmund King warned pump prices will \"inevitably increase\" in the coming weeks—potentially back to where they were at the start of the year—and noted petrol was 131.9p/l in February (down from 135.7p/l at the start of the year); he also said warmer weather typically improves fuel efficiency by about 3 mpg, with each 1 mpg roughly equivalent to 1p per litre.",
+          "references": [
+            "0906d95d3ec04cabb353131f7eec35b3"
+          ]
+        }
+      ],
+      "sentiment": {
+        "positive": 0.13659868,
+        "negative": 0.559664,
+        "neutral": 0.3037373
+      },
+      "uniqueCount": 12,
+      "reprintCount": 6,
+      "totalCount": 18,
+      "countries": [
+        {
+          "name": "ie",
+          "count": 5
+        },
+        {
+          "name": "gb",
+          "count": 8
+        },
+        {
+          "name": "au",
+          "count": 4
+        }
+      ],
+      "topCountries": [
+        "gb"
+      ],
+      "topics": [
+        {
+          "name": "Economy",
+          "count": 1
+        },
+        {
+          "name": "Oil Sector",
+          "count": 3
+        },
+        {
+          "name": "Oil & Gas",
+          "count": 3
+        },
+        {
+          "name": "Markets",
+          "count": 3
+        },
+        {
+          "name": "Energy Sector",
+          "count": 5
+        }
+      ],
+      "topTopics": [
+        {
+          "name": "Energy Sector"
+        },
+        {
+          "name": "Oil Sector"
+        },
+        {
+          "name": "Oil & Gas"
+        }
+      ],
+      "categories": [
+        {
+          "name": "Finance",
+          "count": 4
+        },
+        {
+          "name": "Lifestyle",
+          "count": 2
+        },
+        {
+          "name": "General",
+          "count": 1
+        }
+      ],
+      "topCategories": [
+        {
+          "name": "Finance"
+        },
+        {
+          "name": "Lifestyle"
+        }
+      ],
+      "taxonomies": [
+        {
+          "name": "/Business & Industrial/Energy & Utilities/Oil & Gas",
+          "count": 16
+        },
+        {
+          "name": "/News/World News",
+          "count": 4
+        },
+        {
+          "name": "/News/Business News/Economy News",
+          "count": 13
+        },
+        {
+          "name": "/News/Business News/Other",
+          "count": 13
+        },
+        {
+          "name": "/People & Society/Social Sciences/Political Science",
+          "count": 3
+        },
+        {
+          "name": "/News/Other",
+          "count": 13
+        },
+        {
+          "name": "/Sensitive Subjects/War & Conflict",
+          "count": 3
+        },
+        {
+          "name": "/News/Local News",
+          "count": 11
+        },
+        {
+          "name": "/News/Politics/Other",
+          "count": 2
+        },
+        {
+          "name": "/Business & Industrial/Agriculture & Forestry/Other",
+          "count": 1
+        },
+        {
+          "name": "/News/Business News/Company News",
+          "count": 1
+        },
+        {
+          "name": "/Autos & Vehicles/Vehicle Parts & Services/Vehicle Parts & Accessories",
+          "count": 1
+        }
+      ],
+      "topTaxonomies": [
+        {
+          "name": "/Business & Industrial/Energy & Utilities/Oil & Gas"
+        },
+        {
+          "name": "/News/Business News/Economy News"
+        },
+        {
+          "name": "/News/Business News/Other"
+        },
+        {
+          "name": "/News/Other"
+        },
+        {
+          "name": "/News/Local News"
+        }
+      ],
+      "people": [
+        {
+          "wikidataId": "Q7788105",
+          "name": "Thomas Byrne",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q57336",
+          "name": "Ali Khamenei",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q332576",
+          "name": "Michael Martin",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q23006313",
+          "name": "Peter Burke",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q106997",
+          "name": "Jamie Lee Curtis",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q363769",
+          "name": "Chris Sutton",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q310263",
+          "name": "Martin O'Neill",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q107447008",
+          "name": "Danny Röhl",
+          "count": 1
+        }
+      ],
+      "topPeople": [],
+      "companies": [
+        {
+          "id": "e8a5e08d23b04620b1fe2e3f685f892c",
+          "name": "Maxol",
+          "domains": [
+            "maxol.ie"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "dbd903eb65c94ad78e95780304b1bd28",
+          "name": "Applegreen",
+          "domains": [
+            "applegreenstores.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "f1d262a1353b4567858f806721fe8cb8",
+          "name": "Google",
+          "domains": [
+            "about.google"
+          ],
+          "symbols": [],
+          "count": 5
+        },
+        {
+          "id": "0e6adf90a261458680e9d10a8358e7bd",
+          "name": "Asda",
+          "domains": [
+            "asda.com"
+          ],
+          "symbols": [],
+          "count": 4
+        },
+        {
+          "id": "a8d8b068ece24b06b2c74d5b5a2b587f",
+          "name": "Tesco PLC",
+          "domains": [
+            "tescoplc.com"
+          ],
+          "symbols": [
+            "TSCDY",
+            "TSCO.L"
+          ],
+          "count": 4
+        },
+        {
+          "id": "e0b9e840eb3d40ff836e43c53dcc2fcd",
+          "name": "RAC Limited",
+          "domains": [
+            "rac.co.uk"
+          ],
+          "symbols": [],
+          "count": 5
+        },
+        {
+          "id": "4ee24c5ae2fa4728a7a988f4bf2b116a",
+          "name": "Liverpool Echo",
+          "domains": [
+            "liverpoolecho.co.uk"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "6c049e4884ec46f289745a138010fe00",
+          "name": "Daily Record",
+          "domains": [
+            "dailyrecord.co.uk"
+          ],
+          "symbols": [],
+          "count": 4
+        },
+        {
+          "id": "0a283a62c9a545b48d295da956cfbc50",
+          "name": "Shell plc",
+          "domains": [
+            "shell.com"
+          ],
+          "symbols": [
+            "L3H.F",
+            "RDS-A",
+            "RDS-B",
+            "RDSA.AS",
+            "RDSA.L",
+            "RDSB.AS",
+            "RDSB.L",
+            "R6C.DE",
+            "R6C3.DE",
+            "SHEL",
+            "SHEL.L",
+            "SHELL.AS"
+          ],
+          "count": 4
+        },
+        {
+          "id": "dbb9ac95fdcc44b4b19ba2a12231db2b",
+          "name": "Esso",
+          "domains": [
+            "esso.com"
+          ],
+          "symbols": [],
+          "count": 4
+        },
+        {
+          "id": "4afb790f172c46bd832bd785e17ca2ec",
+          "name": "European Union",
+          "domains": [
+            "european-union.europa.eu"
+          ],
+          "symbols": [],
+          "count": 2
+        },
+        {
+          "id": "ff836467628e46b7a6fef43cf4e37042",
+          "name": "Emirates",
+          "domains": [
+            "emirates.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "1900ee1794884fd7b333c9002eb28b59",
+          "name": "Rabobank",
+          "domains": [
+            "rabobank.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "24dd9e78e1f8468baa44d3266b1b37e1",
+          "name": "Celtic plc",
+          "domains": [
+            "celticfc.net"
+          ],
+          "symbols": [
+            "CCP.L",
+            "CCPA.L",
+            "CCPC.L"
+          ],
+          "count": 1
+        }
+      ],
+      "topCompanies": [
+        {
+          "id": "f1d262a1353b4567858f806721fe8cb8",
+          "name": "Google",
+          "domains": [
+            "about.google"
+          ],
+          "symbols": []
+        },
+        {
+          "id": "e0b9e840eb3d40ff836e43c53dcc2fcd",
+          "name": "RAC Limited",
+          "domains": [
+            "rac.co.uk"
+          ],
+          "symbols": []
+        }
+      ],
+      "locations": [
+        {
+          "state": "ENG",
+          "county": "Shropshire",
+          "count": 1
+        },
+        {
+          "state": "ENG",
+          "county": "Cornwall",
+          "count": 1
+        },
+        {
+          "state": "NSW",
+          "city": "Bathurst",
+          "count": 4
+        }
+      ],
+      "topLocations": [
+        {
+          "state": "NSW",
+          "city": "Bathurst"
+        }
+      ]
+    },
+    {
+      "createdAt": "2026-03-02T22:29:52.706474+00:00",
+      "updatedAt": "2026-03-05T12:57:00.144080+00:00",
+      "initializedAt": "2026-03-03T14:23:44.600423+00:00",
+      "id": "cfcb8f75aaa4413183903095b10bf705",
+      "name": "Sir Michael Moritz seeks German citizenship over antisemitism",
+      "summary": "Sir Michael Moritz, the Welsh-born billionaire investor who holds US and UK passports, says he is applying for German citizenship as an “insurance policy” because he views Britain as increasingly hostile to Jews and less safe than the US. He pointed to a spike in antisemitic incidents after the Manchester Heaton Park synagogue attack and described everyday signs of fear, such as Jewish children in northwest London avoiding school blazers to hide their identity. Drawing on his family’s history — his grandparents were killed in the Holocaust and he recounts feeling like an outsider in his memoir Ausländer — Moritz said Germany’s central teaching of the Nazi era gives him some reassurance. He also argued the UK and much of Europe are less attractive places to do business than the US and China and warned that artificial intelligence could be deeply disruptive for white-collar workers.",
+      "shortSummary": "Sir Michael Moritz, the Cardiff-born billionaire investor, is applying for a German passport as an “insurance policy,” saying Britain is “far more hostile than the US” to Jews and pointing to a spike in antisemitism after the Heaton Park synagogue attack. He cited his family’s Holocaust history and said Germany’s central teaching of the Nazi era gives him some reassurance, while also warning the UK is becoming a less attractive place to do business compared with the US and China.",
+      "summaryReferences": [
+        "5c4b4b3f79a44218a30df57c30e748d1",
+        "4e848e61534c436eb9c27c82f08a1257",
+        "1d1a323211a0483e96fa669b608de034",
+        "543c215c00fd42adac0359f397fcbf85",
+        "5e078d2c32dc4893a5a8ccbc02ad3880"
+      ],
+      "keyPoints": [
+        {
+          "point": "Moritz made his fortune as an early investor in major tech companies, including Google, PayPal, LinkedIn and WhatsApp.",
+          "references": [
+            "1d1a323211a0483e96fa669b608de034"
+          ]
+        },
+        {
+          "point": "Using public archives, Moritz documented family victims of the Holocaust by name — his paternal grandparents Max and Minnie Moritz — and found Gestapo photographs of relatives being forced onto buses to their deaths.",
+          "references": [
+            "5e078d2c32dc4893a5a8ccbc02ad3880"
+          ]
+        },
+        {
+          "point": "He is consistently ranked as the wealthiest person in Wales and among the top 50 richest people in the UK, with his fortune cited in one report at about £4.43 billion.",
+          "references": [
+            "4e848e61534c436eb9c27c82f08a1257"
+          ]
+        },
+        {
+          "point": "Moritz said his parents escaped Germany and settled in Cardiff, where he later attended Howardian High School in Penylan — experiences he recounts in his memoir as part of feeling like an outsider.",
+          "references": [
+            "5e078d2c32dc4893a5a8ccbc02ad3880"
+          ]
+        },
+        {
+          "point": "He described the German passport as an 'insurance policy' that could give him the option to flee not only the UK but also the US if antisemitism or danger worsened.",
+          "references": [
+            "1d1a323211a0483e96fa669b608de034",
+            "543c215c00fd42adac0359f397fcbf85"
+          ]
+        }
+      ],
+      "sentiment": {
+        "positive": 0.07862564,
+        "negative": 0.6387356,
+        "neutral": 0.28263876
+      },
+      "uniqueCount": 9,
+      "reprintCount": 12,
+      "totalCount": 21,
+      "countries": [
+        {
+          "name": "us",
+          "count": 7
+        },
+        {
+          "name": "gb",
+          "count": 8
+        },
+        {
+          "name": "gh",
+          "count": 1
+        },
+        {
+          "name": "ca",
+          "count": 2
+        },
+        {
+          "name": "in",
+          "count": 1
+        }
+      ],
+      "topCountries": [
+        "gb"
+      ],
+      "topics": [
+        {
+          "name": "Jewish",
+          "count": 13
+        },
+        {
+          "name": "Social Issues",
+          "count": 12
+        }
+      ],
+      "topTopics": [
+        {
+          "name": "Jewish"
+        },
+        {
+          "name": "Social Issues"
+        }
+      ],
+      "categories": [
+        {
+          "name": "World",
+          "count": 1
+        },
+        {
+          "name": "Health",
+          "count": 1
+        },
+        {
+          "name": "Travel",
+          "count": 1
+        }
+      ],
+      "topCategories": [],
+      "taxonomies": [
+        {
+          "name": "/People & Society/Other",
+          "count": 20
+        },
+        {
+          "name": "/News/Other",
+          "count": 20
+        },
+        {
+          "name": "/Sensitive Subjects/Other",
+          "count": 20
+        },
+        {
+          "name": "/People & Society/Social Issues & Advocacy/Discrimination & Identity Relations",
+          "count": 20
+        },
+        {
+          "name": "/People & Society/Social Issues & Advocacy/Other",
+          "count": 20
+        },
+        {
+          "name": "/Sensitive Subjects/War & Conflict",
+          "count": 8
+        },
+        {
+          "name": "/News/Politics/Other",
+          "count": 10
+        },
+        {
+          "name": "/People & Society/Religion & Belief",
+          "count": 9
+        },
+        {
+          "name": "/Reference/Humanities/History",
+          "count": 1
+        },
+        {
+          "name": "/News/Business News/Other",
+          "count": 1
+        },
+        {
+          "name": "/Law & Government/Government/Visa & Immigration",
+          "count": 1
+        }
+      ],
+      "topTaxonomies": [
+        {
+          "name": "/People & Society/Other"
+        },
+        {
+          "name": "/News/Other"
+        },
+        {
+          "name": "/Sensitive Subjects/Other"
+        },
+        {
+          "name": "/People & Society/Social Issues & Advocacy/Discrimination & Identity Relations"
+        },
+        {
+          "name": "/People & Society/Social Issues & Advocacy/Other"
+        },
+        {
+          "name": "/News/Politics/Other"
+        }
+      ],
+      "people": [
+        {
+          "wikidataId": "Q3124567",
+          "name": "Michael Moritz",
+          "count": 18
+        },
+        {
+          "wikidataId": "Q333141",
+          "name": "Rhodri Morgan",
+          "count": 7
+        },
+        {
+          "wikidataId": "Q6227958",
+          "name": "John Curtice",
+          "count": 2
+        },
+        {
+          "wikidataId": "Q22686",
+          "name": "Donald Trump",
+          "count": 3
+        },
+        {
+          "wikidataId": "Q16147538",
+          "name": "Asif Aziz",
+          "count": 2
+        },
+        {
+          "wikidataId": "Q19665899",
+          "name": "Richard Livingstone",
+          "count": 2
+        },
+        {
+          "wikidataId": "Q1431063",
+          "name": "Nassef Sawiris",
+          "count": 2
+        },
+        {
+          "wikidataId": "Q2808",
+          "name": "Elton John",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q296689",
+          "name": "Ed Davey",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q334155",
+          "name": "Sadiq Khan",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q6383803",
+          "name": "Keir Starmer",
+          "count": 1
+        }
+      ],
+      "topPeople": [
+        {
+          "wikidataId": "Q3124567",
+          "name": "Michael Moritz"
+        }
+      ],
+      "companies": [
+        {
+          "id": "f1d262a1353b4567858f806721fe8cb8",
+          "name": "Google",
+          "domains": [
+            "about.google"
+          ],
+          "symbols": [],
+          "count": 12
+        },
+        {
+          "id": "36e252bb1f234fdcb11f1f5c942bc97b",
+          "name": "Yahoo Inc.",
+          "domains": [
+            "yahoo.com"
+          ],
+          "symbols": [],
+          "count": 11
+        },
+        {
+          "id": "2dc198f357614be58ef3e1a450e4e184",
+          "name": "The Sunday Times",
+          "domains": [],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "a4c7318061e0456391966316124f9f38",
+          "name": "PayPal Holdings, Inc.",
+          "domains": [
+            "paypal.com"
+          ],
+          "symbols": [
+            "2PP.DE",
+            "PYPL"
+          ],
+          "count": 1
+        },
+        {
+          "id": "ee682176b79346389ff40f28eb1418c9",
+          "name": "Jewish News",
+          "domains": [
+            "jewishnews.timesofisrael.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "20ba2b7d68ed42419a91b3c4696ffcce",
+          "name": "The Daily Telegraph",
+          "domains": [
+            "telegraph.co.uk"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "fc76b055186a472c85aa40562edc1891",
+          "name": "Luther Burbank Corporation",
+          "domains": [
+            "lutherburbanksavings.com"
+          ],
+          "symbols": [
+            "LBC"
+          ],
+          "count": 1
+        },
+        {
+          "id": "7e2ad5047191457f82ebca4d9771d62c",
+          "name": "Sequoia Capital",
+          "domains": [
+            "sequoiacap.com"
+          ],
+          "symbols": [],
+          "count": 1
+        }
+      ],
+      "topCompanies": [
+        {
+          "id": "f1d262a1353b4567858f806721fe8cb8",
+          "name": "Google",
+          "domains": [
+            "about.google"
+          ],
+          "symbols": []
+        },
+        {
+          "id": "36e252bb1f234fdcb11f1f5c942bc97b",
+          "name": "Yahoo Inc.",
+          "domains": [
+            "yahoo.com"
+          ],
+          "symbols": []
+        }
+      ],
+      "locations": [
+        {
+          "state": "ENG",
+          "area": "Ashchurch Rural",
+          "count": 1
+        }
+      ],
+      "topLocations": []
+    },
+    {
+      "createdAt": "2026-03-02T21:44:00.193224+00:00",
+      "updatedAt": "2026-03-05T04:26:11.460705+00:00",
+      "initializedAt": "2026-03-03T23:33:10.350640+00:00",
+      "id": "c7bec76677604156800914aac0c720e9",
+      "name": "ServiceNow Shares Rally After Reported Traceloop Acquisition",
+      "summary": "ServiceNow shares rallied roughly 3–4% as investors bought the dip amid renewed inflation and geopolitical concerns and a broader rotation toward perceived “AI winners,” though the stock remains well below its longer-term moving averages and is down about 23% year-to-date. The company reinforced that AI push by agreeing to buy Israeli AI observability startup Traceloop for up to $80 million to fold into its AI Control Tower, marking its third recent Israel acquisition and signaling a deeper move into AI governance and production-grade observability. Management also acted to support the stock: CEO William McDermott purchased additional shares, and ServiceNow authorized roughly $5 billion in new buybacks on top of prior repurchase plans and initiated a $2 billion accelerated repurchase. Analysts are mixed—Wall Street Zen cut its rating to hold while other firms’ price targets vary widely—yet the consensus remains a “moderate buy” despite the recent downgrades. The firm’s latest quarter beat EPS and revenue estimates and showed year-over-year growth, leaving investors to weigh improving AI strategy and shareholder actions against valuation pressure and continuing volatility.",
+      "shortSummary": "ServiceNow shares jumped about 3–4% as investors bought the dip after the company confirmed its acquisition of Israeli AI‑observability startup Traceloop (deal up to $60–80M), announced an additional $5B buyback and $2B accelerated repurchase, and CEO William McDermott increased his holdings.  Despite an earnings beat and strong revenue growth, NOW is down roughly 23% year-to-date, shows mixed technical momentum and has drawn analyst cuts and a recent downgrade to “hold,” even as consensus ratings remain generally favorable with a high average price target.",
+      "summaryReferences": [
+        "6d38147e5e604e3d9cbb3fed198d1de8",
+        "8d3ee2284b784cf985b79b94abb754d2",
+        "e7e2e97bf16643da9dfc0944f8fe38f3",
+        "63dadbab0b35431ba3b048e63f8fac6e",
+        "b36e0c27572a49739d33384a4811c81d"
+      ],
+      "keyPoints": [
+        {
+          "point": "NVIDIA CEO Jensen Huang publicly argued that generative AI is not a zero-sum threat to enterprise software, saying the “market ‘got it wrong’” and defending platforms like ServiceNow as well-positioned to deploy fine-tuned AI agents.",
+          "references": [
+            "8d3ee2284b784cf985b79b94abb754d2"
+          ]
+        },
+        {
+          "point": "Traceloop is a young, Israeli startup (about 2.5 years old) built on the open-source OpenLLMetry framework; it had previously raised roughly $6.1 million and developed an enterprise customer base for its AI observability tooling.",
+          "references": [
+            "63dadbab0b35431ba3b048e63f8fac6e"
+          ]
+        },
+        {
+          "point": "In addition to reporting buyback increases, ServiceNow CEO William McDermott bought 28,682 shares in open-market transactions, bringing his total holdings to 158,234 shares; the stock is trading above its 20-day moving average ($106.16) but remains below the 50-day ($127.37) and 200-day ($171.17) averages, reflecting short-term strength inside a longer-term downtrend.",
+          "references": [
+            "e7e2e97bf16643da9dfc0944f8fe38f3"
+          ]
+        },
+        {
+          "point": "Analyst coverage is varied: several firms updated targets and ratings (examples: KeyCorp cut its target to $115 and set an “underweight,” Deutsche Bank at $180, Goldman Sachs at $216), and MarketBeat-style tallying shows an overall consensus of a “Moderate Buy” with an average price target near $192.06.",
+          "references": [
+            "b36e0c27572a49739d33384a4811c81d"
+          ]
+        }
+      ],
+      "sentiment": {
+        "positive": 0.50232273,
+        "negative": 0.329481,
+        "neutral": 0.16819623
+      },
+      "uniqueCount": 7,
+      "reprintCount": 11,
+      "totalCount": 18,
+      "countries": [
+        {
+          "name": "us",
+          "count": 11
+        },
+        {
+          "name": "ca",
+          "count": 1
+        }
+      ],
+      "topCountries": [
+        "us"
+      ],
+      "topics": [
+        {
+          "name": "Markets",
+          "count": 14
+        },
+        {
+          "name": "AI",
+          "count": 3
+        },
+        {
+          "name": "Stocks",
+          "count": 3
+        }
+      ],
+      "topTopics": [
+        {
+          "name": "Markets"
+        }
+      ],
+      "categories": [
+        {
+          "name": "Finance",
+          "count": 14
+        },
+        {
+          "name": "Tech",
+          "count": 3
+        }
+      ],
+      "topCategories": [
+        {
+          "name": "Finance"
+        }
+      ],
+      "taxonomies": [
+        {
+          "name": "/Finance/Investing/Stocks & Bonds",
+          "count": 18
+        },
+        {
+          "name": "/News/Business News/Financial Markets News",
+          "count": 18
+        },
+        {
+          "name": "/News/Business News/Company News",
+          "count": 18
+        },
+        {
+          "name": "/Finance/Investing/Currencies & Foreign Exchange",
+          "count": 1
+        },
+        {
+          "name": "/Computers & Electronics/Software/Business & Productivity Software",
+          "count": 11
+        },
+        {
+          "name": "/Science/Computer Science/Machine Learning & Artificial Intelligence",
+          "count": 1
+        },
+        {
+          "name": "/News/Technology News",
+          "count": 1
+        }
+      ],
+      "topTaxonomies": [
+        {
+          "name": "/Finance/Investing/Stocks & Bonds"
+        },
+        {
+          "name": "/News/Business News/Financial Markets News"
+        },
+        {
+          "name": "/News/Business News/Company News"
+        },
+        {
+          "name": "/Computers & Electronics/Software/Business & Productivity Software"
+        }
+      ],
+      "people": [
+        {
+          "wikidataId": "Q305177",
+          "name": "Jensen Huang",
+          "count": 9
+        }
+      ],
+      "topPeople": [
+        {
+          "wikidataId": "Q305177",
+          "name": "Jensen Huang"
+        }
+      ],
+      "companies": [
+        {
+          "id": "1af9eb7f17d045409ce5ca177fb018f5",
+          "name": "ServiceNow, Inc.",
+          "domains": [
+            "servicenow.com"
+          ],
+          "symbols": [
+            "0L5N.L",
+            "NOW"
+          ],
+          "count": 17
+        },
+        {
+          "id": "929d30be06f64956ab3e96e77c1e1369",
+          "name": "International Business Machines Corporation",
+          "domains": [
+            "ibm.com"
+          ],
+          "symbols": [
+            "IBM",
+            "IBM.DE",
+            "IBM.L"
+          ],
+          "count": 2
+        },
+        {
+          "id": "35907ba1579044e79ac693a9dd641351",
+          "name": "Y Combinator",
+          "domains": [
+            "ycombinator.com"
+          ],
+          "symbols": [],
+          "count": 2
+        },
+        {
+          "id": "553a2dfc3fd84238afd8d576c1ebc681",
+          "name": "Fiverr International Ltd.",
+          "domains": [
+            "fiverr.com"
+          ],
+          "symbols": [
+            "FVRR"
+          ],
+          "count": 2
+        },
+        {
+          "id": "8e6ce1851a554930906918d56872dde1",
+          "name": "Dynatrace, Inc.",
+          "domains": [
+            "dynatrace.com"
+          ],
+          "symbols": [
+            "DT"
+          ],
+          "count": 2
+        },
+        {
+          "id": "f1d262a1353b4567858f806721fe8cb8",
+          "name": "Google",
+          "domains": [
+            "about.google"
+          ],
+          "symbols": [],
+          "count": 9
+        },
+        {
+          "id": "bc79ccff3dce4da6b30213bf8250c69a",
+          "name": "NOW Inc.",
+          "domains": [
+            "dnow.com"
+          ],
+          "symbols": [
+            "0K9J.L",
+            "DNOW"
+          ],
+          "count": 1
+        },
+        {
+          "id": "09b275bad8a94f33865bb611c81b8264",
+          "name": "Morgan Stanley",
+          "domains": [
+            "morganstanley.com"
+          ],
+          "symbols": [
+            "0QYU.L",
+            "DWD.DE",
+            "MS",
+            "MS-PA",
+            "MS-PE",
+            "MS-PF",
+            "MS-PI",
+            "MS-PK",
+            "MS-PL",
+            "MS-PO"
+          ],
+          "count": 2
+        },
+        {
+          "id": "d3839922ba074360a30ed76bde569604",
+          "name": "Geode Capital Management",
+          "domains": [
+            "geodecapital.com"
+          ],
+          "symbols": [],
+          "count": 2
+        },
+        {
+          "id": "1ad3700e8f154f24867910ffc1c09708",
+          "name": "Deutsche Bank Aktiengesellschaft",
+          "domains": [
+            "db.com"
+          ],
+          "symbols": [
+            "DB",
+            "DBK.DE",
+            "DBK.SW"
+          ],
+          "count": 1
+        },
+        {
+          "id": "41235f007cac49a6b0419227dc766920",
+          "name": "HCL Technologies Limited",
+          "domains": [
+            "hcltech.com"
+          ],
+          "symbols": [
+            "HCLTECH.NS"
+          ],
+          "count": 3
+        },
+        {
+          "id": "daed1dcac5454e2d9fb8f09c71a1f5f0",
+          "name": "State Street Corporation",
+          "domains": [
+            "statestreet.com"
+          ],
+          "symbols": [
+            "0L9G.L",
+            "STT",
+            "STT-PD",
+            "STT-PG"
+          ],
+          "count": 2
+        },
+        {
+          "id": "d4821ac51aa943c9b5ba569a3067eb04",
+          "name": "Jefferies Financial Group Inc.",
+          "domains": [
+            "jefferies.com"
+          ],
+          "symbols": [
+            "JEF"
+          ],
+          "count": 1
+        },
+        {
+          "id": "32a7157ecb8647ddaf549223e1f09f4c",
+          "name": "Royal Bank of Canada",
+          "domains": [
+            "rbc.com"
+          ],
+          "symbols": [
+            "0QKU.L",
+            "RY",
+            "RY-PT",
+            "RY-PZ.TO",
+            "RY.SW",
+            "RY.TO"
+          ],
+          "count": 1
+        },
+        {
+          "id": "c89b49487624491d8f46288946ae293f",
+          "name": "The Goldman Sachs Group, Inc.",
+          "domains": [
+            "goldmansachs.com"
+          ],
+          "symbols": [
+            "GS",
+            "GS-PA",
+            "GS-PD",
+            "GS-PJ",
+            "GS-PK",
+            "GS.SW",
+            "GOS.DE"
+          ],
+          "count": 2
+        },
+        {
+          "id": "415c5c78a7494cfea43a2eea88524991",
+          "name": "T. Rowe Price Group, Inc.",
+          "domains": [
+            "troweprice.com"
+          ],
+          "symbols": [
+            "0KNY.L",
+            "TROW"
+          ],
+          "count": 2
+        },
+        {
+          "id": "5ef5885400a74ecd87cdd7c9cf2b2097",
+          "name": "KeyCorp",
+          "domains": [
+            "key.com"
+          ],
+          "symbols": [
+            "0JQR.L",
+            "KEY",
+            "KEY-PI",
+            "KEY-PJ",
+            "KEY-PK"
+          ],
+          "count": 1
+        },
+        {
+          "id": "4e186f1168ee4c3c8fd149ba6fb051fa",
+          "name": "StarHub Ltd",
+          "domains": [
+            "starhub.com"
+          ],
+          "symbols": [
+            "CC3.SI"
+          ],
+          "count": 3
+        },
+        {
+          "id": "435e0daa7ea443ba89f0dd39e95dd71d",
+          "name": "Amazon.com, Inc.",
+          "domains": [
+            "amazon.com"
+          ],
+          "symbols": [
+            "AMZ.DE",
+            "AMZN"
+          ],
+          "count": 7
+        },
+        {
+          "id": "94bbd0512cd04cc4b7041d78d9d4cf73",
+          "name": "NVIDIA Corporation",
+          "domains": [
+            "nvidia.com"
+          ],
+          "symbols": [
+            "NVD.DE",
+            "NVDA"
+          ],
+          "count": 9
+        },
+        {
+          "id": "a4c7318061e0456391966316124f9f38",
+          "name": "PayPal Holdings, Inc.",
+          "domains": [
+            "paypal.com"
+          ],
+          "symbols": [
+            "2PP.DE",
+            "PYPL"
+          ],
+          "count": 7
+        },
+        {
+          "id": "8e697b9407a64158a6ca974ac96c74b6",
+          "name": "Meta",
+          "domains": [
+            "meta.com",
+            "facebook.com",
+            "instagram.com",
+            "whatsapp.com"
+          ],
+          "symbols": [],
+          "count": 7
+        },
+        {
+          "id": "f7c94938a17f4817ad342be801ced48d",
+          "name": "Zscaler, Inc.",
+          "domains": [
+            "zscaler.com"
+          ],
+          "symbols": [
+            "0XVU.L",
+            "ZS"
+          ],
+          "count": 1
+        },
+        {
+          "id": "21bb4abf25164a5d9fe5146ec0fb0550",
+          "name": "Skyworks Solutions, Inc.",
+          "domains": [
+            "skyworksinc.com"
+          ],
+          "symbols": [
+            "0L77.L",
+            "AWM.DE",
+            "SWKS"
+          ],
+          "count": 1
+        },
+        {
+          "id": "b54a0451b47649978d791cce84bf9204",
+          "name": "Needham & Company",
+          "domains": [
+            "needhamco.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "a6b2bcf69d6240cf949523ab448e57eb",
+          "name": "Seeking Alpha",
+          "domains": [
+            "seekingalpha.com"
+          ],
+          "symbols": [],
+          "count": 2
+        },
+        {
+          "id": "9f6084ff86ff474ab44f2298efbe3e62",
+          "name": "The Motley Fool",
+          "domains": [
+            "fool.com"
+          ],
+          "symbols": [],
+          "count": 2
+        },
+        {
+          "id": "07c61b44f83d474d96f88b1bae1ab1a3",
+          "name": "Reddit, Inc.",
+          "domains": [
+            "redditinc.com"
+          ],
+          "symbols": [
+            "RDDT"
+          ],
+          "count": 2
+        },
+        {
+          "id": "b6f9fe12292e4491bc5d75b931c21361",
+          "name": "HSBC",
+          "domains": [
+            "hsbc.co.uk"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "c552eacb062442b6b2b6af81419af9e8",
+          "name": "NTT Docomo",
+          "domains": [
+            "nttdocomo-v.com"
+          ],
+          "symbols": [],
+          "count": 2
+        },
+        {
+          "id": "2fbf41c4cb084f57900ae32e45e859fe",
+          "name": "Evercore Inc.",
+          "domains": [
+            "evercore.com"
+          ],
+          "symbols": [
+            "EVR"
+          ],
+          "count": 1
+        },
+        {
+          "id": "1bcd4db27ac3458fa1d7276acdd15c3c",
+          "name": "Piper Sandler Companies",
+          "domains": [
+            "pipersandler.com"
+          ],
+          "symbols": [
+            "PIPR"
+          ],
+          "count": 1
+        }
+      ],
+      "topCompanies": [
+        {
+          "id": "1af9eb7f17d045409ce5ca177fb018f5",
+          "name": "ServiceNow, Inc.",
+          "domains": [
+            "servicenow.com"
+          ],
+          "symbols": [
+            "0L5N.L",
+            "NOW"
+          ]
+        },
+        {
+          "id": "f1d262a1353b4567858f806721fe8cb8",
+          "name": "Google",
+          "domains": [
+            "about.google"
+          ],
+          "symbols": []
+        },
+        {
+          "id": "94bbd0512cd04cc4b7041d78d9d4cf73",
+          "name": "NVIDIA Corporation",
+          "domains": [
+            "nvidia.com"
+          ],
+          "symbols": [
+            "NVD.DE",
+            "NVDA"
+          ]
+        }
+      ],
+      "locations": [],
+      "topLocations": []
+    },
+    {
+      "createdAt": "2026-03-02T16:12:10.906041+00:00",
+      "updatedAt": "2026-03-05T04:26:33.816136+00:00",
+      "initializedAt": "2026-03-04T02:48:07.989736+00:00",
+      "id": "cd169365120d44598bae06261f39c396",
+      "name": "Disney Shares Fall After $9.25B Debt Overhaul",
+      "summary": "Disney shares have weakened recently, trading in the low-$100s (reports show closes near $103–$106) amid a broader entertainment-sector slump that hit peers like Netflix and Amazon. The company posted a 5.2% year-over-year revenue gain to $25.98 billion, driven largely by parks and resorts. Management reworked its financing, securing $9.25 billion of new unsecured credit (a 364‑day $5.25 billion facility and a five‑year $4 billion facility) while excluding certain subsidiaries such as the Hong Kong and Shanghai resorts and Fubo, and left borrowing costs exposed to variable benchmarks and Disney’s credit rating. Valuation views are mixed: narrative bulls argue a fair value near $131.50 based on streaming margins, Experiences cash generation and ESPN’s digital evolution, while DCF models place intrinsic value closer to $100–$106. Technical indicators show selling pressure with the stock below key moving averages and immediate support around $102–104 and resistance near $106–107. Near-term performance will hinge on earnings‑estimate revisions and risks such as rising sports-rights costs, intense streaming competition, content spending and capital-allocation decisions.",
+      "shortSummary": "Disney reported a 5.2% quarterly revenue gain to $25.98 billion and has restructured its financing—securing $9.25 billion in new unsecured credit (a 364‑day $5.25B facility and a five‑year $4B facility) while excluding certain subsidiaries—to bolster liquidity but remain exposed to variable borrowing costs.  Investors are divided as the stock trades in the low‑$100s with bearish technicals, DCF models clustering near ~$100 per share while some narrative analysts peg fair value near $131, and analysts warn that streaming margins, sports‑rights costs and earnings‑estimate revisions will drive near‑term performance.",
+      "summaryReferences": [
+        "98862ff6891646b88d4f8d15c62e7e4d",
+        "071240ff44da402fa778ff9e600f67c6",
+        "73a8daf7b6184862aced627c2cce380a",
+        "7d8c788b1c4443a3977a2f0343120e53",
+        "4e37e214e43145b18871ff7beb345efd"
+      ],
+      "keyPoints": [
+        {
+          "point": "On March 3, 2026 Disney traded with heavy volume — about $1.4 billion — placing the name 95th in daily activity rankings, and the new 364‑day facility effectively replaces a prior short‑term agreement that supported its commercial paper program.",
+          "references": [
+            "98862ff6891646b88d4f8d15c62e7e4d"
+          ]
+        },
+        {
+          "point": "The pricing on Disney’s new credit lines includes a margin tied to its public debt rating, specified in filings as an add‑on in the range of roughly 0.625% to 1.00% above term benchmarks such as Term SOFR, EURIBOR, TIBOR or SONIA.",
+          "references": [
+            "98862ff6891646b88d4f8d15c62e7e4d"
+          ]
+        },
+        {
+          "point": "A DCF-style valuation writeup projects Disney’s free cash flow rising to about $11.2 billion in 2028 (from a latest‑12‑month FCF near $8.6 billion) and notes the analysis used a two-stage Free Cash Flow to Equity approach to arrive at an intrinsic value near $100.49–$100.36 per share.",
+          "references": [
+            "73a8daf7b6184862aced627c2cce380a",
+            "4e37e214e43145b18871ff7beb345efd"
+          ]
+        },
+        {
+          "point": "Technically, Disney is trading below all major moving averages cited by market‑technicians — MA‑20 at $106.33, MA‑50 at $110.13 and MA‑200 at $113.30 — with immediate technical support around $102.86 and resistance also identified at the Ichimoku Kijun near $107.66; momentum indicators such as the RSI were reported around 46.92 and the daily MACD signaled strong selling.",
+          "references": [
+            "7d8c788b1c4443a3977a2f0343120e53"
+          ]
+        },
+        {
+          "point": "Analyst‑consensus earnings figures cited by Zacks put Disney’s expected EPS for the current quarter at $1.53 (a ~+5.5% year‑over‑year increase) while the Zacks Consensus for the current fiscal year is $6.59 (roughly +11.1% year over year); Zacks notes the quarterly consensus estimate has moved down about 6.1% over the past 30 days.",
+          "references": [
+            "4e37e214e43145b18871ff7beb345efd"
+          ]
+        }
+      ],
+      "sentiment": {
+        "positive": 0.14260831,
+        "negative": 0.5285491,
+        "neutral": 0.32884264
+      },
+      "uniqueCount": 7,
+      "reprintCount": 0,
+      "totalCount": 7,
+      "countries": [
+        {
+          "name": "us",
+          "count": 6
+        }
+      ],
+      "topCountries": [
+        "us"
+      ],
+      "topics": [
+        {
+          "name": "Markets",
+          "count": 1
+        }
+      ],
+      "topTopics": [
+        {
+          "name": "Markets"
+        }
+      ],
+      "categories": [
+        {
+          "name": "Finance",
+          "count": 3
+        },
+        {
+          "name": "Tech",
+          "count": 1
+        }
+      ],
+      "topCategories": [
+        {
+          "name": "Finance"
+        }
+      ],
+      "taxonomies": [
+        {
+          "name": "/News/Business News/Financial Markets News",
+          "count": 7
+        },
+        {
+          "name": "/Finance/Investing/Stocks & Bonds",
+          "count": 7
+        },
+        {
+          "name": "/News/Business News/Company News",
+          "count": 7
+        },
+        {
+          "name": "/Finance/Investing/Other",
+          "count": 2
+        }
+      ],
+      "topTaxonomies": [
+        {
+          "name": "/News/Business News/Financial Markets News"
+        },
+        {
+          "name": "/Finance/Investing/Stocks & Bonds"
+        },
+        {
+          "name": "/News/Business News/Company News"
+        }
+      ],
+      "people": [
+        {
+          "wikidataId": "Q532423",
+          "name": "Bob Iger",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q69598904",
+          "name": "Josh D'Amaro",
+          "count": 1
+        }
+      ],
+      "topPeople": [],
+      "companies": [
+        {
+          "id": "1a59812a10fc46f99472b26a10bf0eb0",
+          "name": "The Walt Disney Company",
+          "domains": [
+            "thewaltdisneycompany.com"
+          ],
+          "symbols": [
+            "DIS",
+            "WDP.DE"
+          ],
+          "count": 7
+        },
+        {
+          "id": "79c2a8a3303b4851afbe2f0e76f7cf23",
+          "name": "Disney Experiences",
+          "domains": [
+            "disneyconnect.com"
+          ],
+          "symbols": [],
+          "count": 3
+        },
+        {
+          "id": "ecbfcaea0620412194e6a4aeb3c11d3e",
+          "name": "ESPN Inc.",
+          "domains": [
+            "espn.com"
+          ],
+          "symbols": [],
+          "count": 4
+        },
+        {
+          "id": "51973eed5468486bbc7113a937fbd2bd",
+          "name": "Victory Capital Holdings, Inc.",
+          "domains": [
+            "vcm.com"
+          ],
+          "symbols": [
+            "VCTR"
+          ],
+          "count": 1
+        },
+        {
+          "id": "435e0daa7ea443ba89f0dd39e95dd71d",
+          "name": "Amazon.com, Inc.",
+          "domains": [
+            "amazon.com"
+          ],
+          "symbols": [
+            "AMZ.DE",
+            "AMZN"
+          ],
+          "count": 1
+        },
+        {
+          "id": "7093bcf6610d4ea3b5aef129cafbc6f6",
+          "name": "Warner Bros. Entertainment",
+          "domains": [
+            "warnerbros.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "14344799bb5e4342aedbc9cabe80cf3b",
+          "name": "Netflix, Inc.",
+          "domains": [
+            "netflix.com"
+          ],
+          "symbols": [
+            "NFC.DE",
+            "NFLX"
+          ],
+          "count": 2
+        },
+        {
+          "id": "6d688831f698495281098a1d24465e33",
+          "name": "OpenAI",
+          "domains": [
+            "openai.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "4a361ff3de1545828f9f8a3ba450ceb3",
+          "name": "Bank of America Corporation",
+          "domains": [
+            "bankofamerica.com"
+          ],
+          "symbols": [
+            "BAC",
+            "BAC-PB",
+            "BAC-PE",
+            "BAC-PK",
+            "BAC-PL",
+            "BAC-PM",
+            "BAC-PN",
+            "BAC-PO",
+            "BAC-PP",
+            "BAC-PQ",
+            "BAC-PS",
+            "BAC.SW",
+            "BML-PG",
+            "BML-PH",
+            "BML-PJ",
+            "BML-PL",
+            "NCB.DE"
+          ],
+          "count": 1
+        },
+        {
+          "id": "78f3ea32165846fcafc08c9d4e8e5c3c",
+          "name": "Bank of America Merrill Lynch",
+          "domains": [
+            "bofaml.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "c8068c325593495bbebc0a94b93d82b3",
+          "name": "Pixar",
+          "domains": [
+            "pixar.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "bee5c6c6453a443c99f32e7bb111b9b0",
+          "name": "ByteDance",
+          "domains": [
+            "bytedance.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "09b275bad8a94f33865bb611c81b8264",
+          "name": "Morgan Stanley",
+          "domains": [
+            "morganstanley.com"
+          ],
+          "symbols": [
+            "0QYU.L",
+            "DWD.DE",
+            "MS",
+            "MS-PA",
+            "MS-PE",
+            "MS-PF",
+            "MS-PI",
+            "MS-PK",
+            "MS-PL",
+            "MS-PO"
+          ],
+          "count": 1
+        },
+        {
+          "id": "1be352317dba41c7b5c2a065b0d682a6",
+          "name": "Marvel Entertainment",
+          "domains": [
+            "marvel.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "c3dcab4b4e4742749b00ec3b400ea9b1",
+          "name": "Citibank",
+          "domains": [
+            "citi.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "04591add74704eec90f7770d5034c22d",
+          "name": "fuboTV Inc.",
+          "domains": [
+            "fubo.tv"
+          ],
+          "symbols": [
+            "FUBO"
+          ],
+          "count": 1
+        }
+      ],
+      "topCompanies": [
+        {
+          "id": "1a59812a10fc46f99472b26a10bf0eb0",
+          "name": "The Walt Disney Company",
+          "domains": [
+            "thewaltdisneycompany.com"
+          ],
+          "symbols": [
+            "DIS",
+            "WDP.DE"
+          ]
+        }
+      ],
+      "locations": [],
+      "topLocations": []
+    },
+    {
+      "createdAt": "2026-03-02T11:51:37.778674+00:00",
+      "updatedAt": "2026-03-05T14:54:58.950733+00:00",
+      "initializedAt": "2026-03-02T21:59:10.912652+00:00",
+      "id": "d7ad05f9812b4b87987cffcd130e5b69",
+      "name": "Aeternum Botnet Exposes On-Chain AI Risks",
+      "summary": "Aeternum C2 operators have been observed embedding encrypted command-and-control instructions in Polygon smart contracts, illustrating how decentralization can frustrate traditional takedown efforts. At the same time, developers and standards groups are advancing on-chain AI agent identity and reputation work — proposals such as ERC-8004 and implementations like the Registry Broker offer immutable EVM registries, signed reviews, TEE attestations and discovery mechanisms to verify who controls agents and what code they run. A Bitcoin Policy Institute study of 36 frontier AI models found a strong preference for bitcoin as a long-term store of value while stablecoins dominated payment and micropayment scenarios. Institutional investors are translating these trends into concentrated bets on AI infrastructure, with Situational Awareness’s latest 13F showing roughly $5.52 billion focused on GPU, power and data-center names as firms pivot to AI workloads. Market participants are increasing use of richer on-chain and social analytics and evolving continuous KYA/KYB/KYC identity strategies to manage fraud and operational risks from agent-driven blockchain activity.",
+      "shortSummary": "Blockchain’s role in AI-driven finance is broadening—from investment flows and infrastructure (Global X’s BKCH ETF pivoting toward AI/HPC exposures across miners and firms like IREN and RIOT, and Sibos 2026’s theme of “Digital Finance for AI‑driven Economies”) to new use cases in AI data integrity and reusable on‑chain identity. However, the convergence also brings security and regulatory risks: sophisticated threats like the Aeternum C2 botnet embed encrypted commands in Polygon smart contracts to evade takedowns, AI can both find and exploit smart‑contract flaws, and evolving EU rules may lower compliance frictions while introducing fresh vulnerabilities.",
+      "summaryReferences": [
+        "47e1203cb66d4bdebb892fa97d5515ca",
+        "acc161dec8aa4b07a75b5dc3916cb6ef",
+        "d0d1d2f378414cdb8341b3511e82e828",
+        "da9e0c9485594dee98d839c6810da6a3",
+        "4115e6faa4bc4c439e0587ee3d837617",
+        "eb954a71ccf84724b77d284fbe8150b4",
+        "235edc32c06a46039031ccc2dcc0c7b5",
+        "632c1e7e98744e25bb32c3ecda6f3047",
+        "2e033d0c96da433cb1d747d67669167d",
+        "5c93f0f5958a4c5ebc3cd911a6414afe"
+      ],
+      "imageUrl": "https://cdn.decrypt.co/wp-content/uploads/2025/05/ai-decrypt-style-10-gID_7.png",
+      "keyPoints": [
+        {
+          "point": "The Registry Broker already implements ERC-8004 today, providing agents with verifiable \"on‑chain business cards\" that map agent IDs to wallet addresses — registration is performed by signing a message — and pairs immutable on‑chain identity with fast HCS‑10 UAIDs for discovery and messaging.",
+          "references": [
+            "d0d1d2f378414cdb8341b3511e82e828"
+          ]
+        },
+        {
+          "point": "The Bitcoin Policy Institute study evaluated 36 models across 9,072 open‑ended monetary scenarios, and found bitcoin selected in 48.3% of all responses and in 79.1% of multi‑year store‑of‑value scenarios.",
+          "references": [
+            "5c93f0f5958a4c5ebc3cd911a6414afe",
+            "47e1203cb66d4bdebb892fa97d5515ca"
+          ]
+        },
+        {
+          "point": "Model‑level variation was large: Anthropic models averaged ~68% bitcoin preference (its Claude Opus 4.5 hit 91.3% individually), while OpenAI models averaged roughly 26% (GPT‑5.2 at ~18.3%), showing developer/architecture differences in monetary choices.",
+          "references": [
+            "5c93f0f5958a4c5ebc3cd911a6414afe"
+          ]
+        },
+        {
+          "point": "Situational Awareness’s portfolio expansion was rapid and concentrated: founder Leopold Aschenbrenner (a former OpenAI superalignment researcher) grew reported U.S. equity positions from roughly $254M in Q4 2024 to about $5.52B in Q4 2025, with large stakes in GPU/cloud and energy/infrastructure names such as CoreWeave, Bloom Energy, Intel, Lumentum and Core Scientific, plus exposure to Bitcoin‑mining/energy plays (IREN, Cipher Mining, Riot, Bitdeer, Applied Digital).",
+          "references": [
+            "632c1e7e98744e25bb32c3ecda6f3047"
+          ]
+        },
+        {
+          "point": "Observers highlighted a practical rationale behind the study results: Bitwise CIO Jeff Park noted a key advantage of stablecoins is convenience but a drawback is central control — “they can be frozen, Bitcoin can’t,” explaining why models favored stablecoins for payments but bitcoin for long‑term stores of value.",
+          "references": [
+            "47e1203cb66d4bdebb892fa97d5515ca",
+            "5c93f0f5958a4c5ebc3cd911a6414afe"
+          ]
+        }
+      ],
+      "sentiment": {
+        "positive": 0.365182,
+        "negative": 0.15443878,
+        "neutral": 0.4803792
+      },
+      "uniqueCount": 81,
+      "reprintCount": 40,
+      "totalCount": 121,
+      "countries": [
+        {
+          "name": "in",
+          "count": 9
+        },
+        {
+          "name": "us",
+          "count": 71
+        },
+        {
+          "name": "cn",
+          "count": 1
+        },
+        {
+          "name": "nl",
+          "count": 5
+        },
+        {
+          "name": "ng",
+          "count": 1
+        },
+        {
+          "name": "sk",
+          "count": 1
+        },
+        {
+          "name": "ua",
+          "count": 1
+        },
+        {
+          "name": "dz",
+          "count": 2
+        },
+        {
+          "name": "mx",
+          "count": 1
+        },
+        {
+          "name": "id",
+          "count": 1
+        },
+        {
+          "name": "de",
+          "count": 1
+        },
+        {
+          "name": "tr",
+          "count": 1
+        },
+        {
+          "name": "ru",
+          "count": 1
+        }
+      ],
+      "topCountries": [
+        "us"
+      ],
+      "topics": [
+        {
+          "name": "Blockchain",
+          "count": 82
+        },
+        {
+          "name": "AI",
+          "count": 94
+        },
+        {
+          "name": "Markets",
+          "count": 5
+        },
+        {
+          "name": "Cryptocurrency",
+          "count": 79
+        },
+        {
+          "name": "Ethereum",
+          "count": 9
+        },
+        {
+          "name": "Altcoins",
+          "count": 9
+        },
+        {
+          "name": "US Politics",
+          "count": 3
+        },
+        {
+          "name": "Bitcoin",
+          "count": 57
+        },
+        {
+          "name": "Data",
+          "count": 17
+        },
+        {
+          "name": "FinTech",
+          "count": 1
+        },
+        {
+          "name": "Corruption",
+          "count": 1
+        },
+        {
+          "name": "Fraud",
+          "count": 1
+        },
+        {
+          "name": "ESG",
+          "count": 2
+        },
+        {
+          "name": "Africa",
+          "count": 1
+        }
+      ],
+      "topTopics": [
+        {
+          "name": "AI"
+        },
+        {
+          "name": "Blockchain"
+        },
+        {
+          "name": "Cryptocurrency"
+        }
+      ],
+      "categories": [
+        {
+          "name": "Tech",
+          "count": 101
+        },
+        {
+          "name": "Finance",
+          "count": 23
+        },
+        {
+          "name": "Business",
+          "count": 2
+        },
+        {
+          "name": "Politics",
+          "count": 3
+        },
+        {
+          "name": "Auto",
+          "count": 21
+        }
+      ],
+      "topCategories": [
+        {
+          "name": "Tech"
+        }
+      ],
+      "taxonomies": [
+        {
+          "name": "/Finance/Investing/Currencies & Foreign Exchange",
+          "count": 95
+        },
+        {
+          "name": "/News/Technology News",
+          "count": 76
+        },
+        {
+          "name": "/Science/Computer Science/Machine Learning & Artificial Intelligence",
+          "count": 34
+        },
+        {
+          "name": "/Computers & Electronics/Computer Security/Network Security",
+          "count": 9
+        },
+        {
+          "name": "/Computers & Electronics/Software/Business & Productivity Software",
+          "count": 11
+        },
+        {
+          "name": "/Internet & Telecom/Web Services/Cloud Storage",
+          "count": 1
+        },
+        {
+          "name": "/Computers & Electronics/Programming/Other",
+          "count": 1
+        },
+        {
+          "name": "/Computers & Electronics/Enterprise Technology/Other",
+          "count": 11
+        },
+        {
+          "name": "/Reference/General Reference/How-To, DIY & Expert Content",
+          "count": 1
+        },
+        {
+          "name": "/News/Business News/Company News",
+          "count": 16
+        },
+        {
+          "name": "/Business & Industrial/Business Operations/Management",
+          "count": 9
+        },
+        {
+          "name": "/Computers & Electronics/Enterprise Technology/Data Management",
+          "count": 5
+        },
+        {
+          "name": "/News/Business News/Financial Markets News",
+          "count": 76
+        },
+        {
+          "name": "/Finance/Investing/Funds",
+          "count": 6
+        },
+        {
+          "name": "/Finance/Investing/Stocks & Bonds",
+          "count": 8
+        },
+        {
+          "name": "/News/Business News/Other",
+          "count": 10
+        },
+        {
+          "name": "/News/Business News/Economy News",
+          "count": 3
+        },
+        {
+          "name": "/Business & Industrial/Business Services/Corporate Events",
+          "count": 2
+        },
+        {
+          "name": "/Finance/Banking/Other",
+          "count": 3
+        },
+        {
+          "name": "/Jobs & Education/Education/Academic Conferences & Publications",
+          "count": 2
+        },
+        {
+          "name": "/Science/Engineering & Technology/Other",
+          "count": 2
+        },
+        {
+          "name": "/Law & Government/Public Safety/Crime & Justice",
+          "count": 2
+        },
+        {
+          "name": "/Shopping/Consumer Resources/Identity Theft Protection",
+          "count": 1
+        },
+        {
+          "name": "/Finance/Investing/Other",
+          "count": 3
+        },
+        {
+          "name": "/Finance/Financial Planning & Management/Other",
+          "count": 1
+        },
+        {
+          "name": "/Finance/Financial Planning & Management/Asset & Portfolio Management",
+          "count": 1
+        },
+        {
+          "name": "/People & Society/Social Issues & Advocacy/Other",
+          "count": 1
+        },
+        {
+          "name": "/Business & Industrial/Advertising & Marketing/Marketing",
+          "count": 1
+        },
+        {
+          "name": "/Business & Industrial/Advertising & Marketing/Other",
+          "count": 1
+        },
+        {
+          "name": "/Law & Government/Government/Other",
+          "count": 2
+        }
+      ],
+      "topTaxonomies": [
+        {
+          "name": "/Finance/Investing/Currencies & Foreign Exchange"
+        },
+        {
+          "name": "/News/Technology News"
+        },
+        {
+          "name": "/News/Business News/Financial Markets News"
+        },
+        {
+          "name": "/Science/Computer Science/Machine Learning & Artificial Intelligence"
+        }
+      ],
+      "people": [
+        {
+          "wikidataId": "Q16735003",
+          "name": "Ramesh Raskar",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q52714313",
+          "name": "Changpeng Zhao",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q22686",
+          "name": "Donald Trump",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q3713655",
+          "name": "Donald Trump Jr.",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q3731533",
+          "name": "Eric Trump",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q45302539",
+          "name": "Prashant Khemka",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q19837",
+          "name": "Steve Jobs",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q305177",
+          "name": "Jensen Huang",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q456064",
+          "name": "Cynthia Lummis",
+          "count": 2
+        },
+        {
+          "wikidataId": "Q64705310",
+          "name": "Brian Armstrong",
+          "count": 1
+        },
+        {
+          "wikidataId": "Q6831501",
+          "name": "Michael J. Saylor",
+          "count": 1
+        }
+      ],
+      "topPeople": [],
+      "companies": [
+        {
+          "id": "0576df84f44440c6bfa3d059175eec8b",
+          "name": "Cloudflare, Inc.",
+          "domains": [
+            "cloudflare.com"
+          ],
+          "symbols": [
+            "NET"
+          ],
+          "count": 1
+        },
+        {
+          "id": "f1d262a1353b4567858f806721fe8cb8",
+          "name": "Google",
+          "domains": [
+            "about.google"
+          ],
+          "symbols": [],
+          "count": 35
+        },
+        {
+          "id": "98cc6cf314e24478ab7b9fd5179500e1",
+          "name": "Dropbox, Inc.",
+          "domains": [
+            "dropbox.com"
+          ],
+          "symbols": [
+            "0SGO.L",
+            "DBX"
+          ],
+          "count": 1
+        },
+        {
+          "id": "6d688831f698495281098a1d24465e33",
+          "name": "OpenAI",
+          "domains": [
+            "openai.com"
+          ],
+          "symbols": [],
+          "count": 33
+        },
+        {
+          "id": "efe0ad82b3374610bb0237a1e21dd401",
+          "name": "Paradigm",
+          "domains": [
+            "paradigm.co"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "4afb790f172c46bd832bd785e17ca2ec",
+          "name": "European Union",
+          "domains": [
+            "european-union.europa.eu"
+          ],
+          "symbols": [],
+          "count": 3
+        },
+        {
+          "id": "0b65f222d1cb44beb68d4ff113f54920",
+          "name": "Polygon",
+          "domains": [
+            "polygon.technology"
+          ],
+          "symbols": [],
+          "count": 2
+        },
+        {
+          "id": "5dee4fc4aba14a45927ad3363ed3ca17",
+          "name": "Ethereum",
+          "domains": [
+            "ethereum.org"
+          ],
+          "symbols": [],
+          "count": 17
+        },
+        {
+          "id": "d38285866a884d8984a4bf116d504e2a",
+          "name": "Riot Blockchain, Inc.",
+          "domains": [
+            "riotblockchain.com"
+          ],
+          "symbols": [
+            "RIOT"
+          ],
+          "count": 1
+        },
+        {
+          "id": "4de51cf8472b4ce7a5aecdf52a1de4c0",
+          "name": "Microsoft Corporation",
+          "domains": [
+            "microsoft.com"
+          ],
+          "symbols": [
+            "4338.HK",
+            "MSF.BR",
+            "MSF.DE",
+            "MSFT"
+          ],
+          "count": 4
+        },
+        {
+          "id": "252e4aeeb078410e8d0a44edb3816bfd",
+          "name": "Marathon Digital Holdings, Inc.",
+          "domains": [
+            "marathondh.com"
+          ],
+          "symbols": [
+            "MARA",
+            "MARA.MX"
+          ],
+          "count": 3
+        },
+        {
+          "id": "95fb597bcd66458e897d94721cfd3f9a",
+          "name": "Iris Energy Limited",
+          "domains": [
+            "iren.com"
+          ],
+          "symbols": [
+            "IREN"
+          ],
+          "count": 5
+        },
+        {
+          "id": "ac771d35ef074b18869e81c4c5a7f2d7",
+          "name": "Ant Group Co., Ltd.",
+          "domains": [
+            "antgroup.com"
+          ],
+          "symbols": [
+            "6688.HK"
+          ],
+          "count": 1
+        },
+        {
+          "id": "1bbd35dc39534e43a931c5beef85b3e0",
+          "name": "Forrester Research, Inc.",
+          "domains": [
+            "forrester.com"
+          ],
+          "symbols": [
+            "FORR"
+          ],
+          "count": 1
+        },
+        {
+          "id": "9c0e5ff08b87453b8f6fa108a73b57b5",
+          "name": "Stripe",
+          "domains": [
+            "stripe.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "61e5af8ad535453b9d4d0011b25ef676",
+          "name": "Standard Chartered PLC",
+          "domains": [
+            "sc.com"
+          ],
+          "symbols": [
+            "2888.HK",
+            "STAN.L",
+            "SCBFY"
+          ],
+          "count": 1
+        },
+        {
+          "id": "4734ba1feb6244babc5add180cf36b66",
+          "name": "Mastercard Incorporated",
+          "domains": [
+            "mastercard.com"
+          ],
+          "symbols": [
+            "M4I.DE",
+            "MA"
+          ],
+          "count": 2
+        },
+        {
+          "id": "b6f9fe12292e4491bc5d75b931c21361",
+          "name": "HSBC",
+          "domains": [
+            "hsbc.co.uk"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "f9eeeb5ecf944bac97bb41f3df35727b",
+          "name": "Boston University",
+          "domains": [
+            "bu.edu"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "1c0c38b94ad3494ca86719f54b71aea5",
+          "name": "Massachusetts Institute of Technology (MIT)",
+          "domains": [
+            "mit.edu"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "a9c49e7cf72f43eca21e1805905058d8",
+          "name": "Solana",
+          "domains": [
+            "solana.com"
+          ],
+          "symbols": [],
+          "count": 5
+        },
+        {
+          "id": "0310069dc2454e4087c51a390e3a9c89",
+          "name": "Bitget",
+          "domains": [
+            "bitget.com"
+          ],
+          "symbols": [],
+          "count": 6
+        },
+        {
+          "id": "35b3844b3797476da37a6301544e55e6",
+          "name": "Coinbase Global, Inc.",
+          "domains": [
+            "coinbase.com"
+          ],
+          "symbols": [
+            "COIN"
+          ],
+          "count": 7
+        },
+        {
+          "id": "05cc7db990bf4a9880ba58505832dc36",
+          "name": "OKX",
+          "domains": [
+            "okx.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "f1d2da9df02d4e0a93ca1f1bb263af62",
+          "name": "Binance",
+          "domains": [
+            "binance.com"
+          ],
+          "symbols": [],
+          "count": 9
+        },
+        {
+          "id": "2ed9ba935fe345acb0f58a7e536bb951",
+          "name": "Enigma.io",
+          "domains": [
+            "enigma.io"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "61438de7c996480b8aae241de858b3ed",
+          "name": "KYB Corporation",
+          "domains": [
+            "kyb.co.jp"
+          ],
+          "symbols": [
+            "7242.T"
+          ],
+          "count": 1
+        },
+        {
+          "id": "8d457ef196714cbb911d37914f8d9e1c",
+          "name": "Trulioo",
+          "domains": [
+            "trulioo.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "de5dc68ed4bc4cd0aaa209e950b1ed34",
+          "name": "Nasdaq, Inc.",
+          "domains": [
+            "nasdaq.com"
+          ],
+          "symbols": [
+            "0K4T.L",
+            "NDAQ"
+          ],
+          "count": 2
+        },
+        {
+          "id": "efd54f40380240fda767e0be3aaecb1e",
+          "name": "Visa Inc.",
+          "domains": [
+            "visa.com"
+          ],
+          "symbols": [
+            "VISA.NE",
+            "V.BA",
+            "V",
+            "3V64.DE"
+          ],
+          "count": 4
+        },
+        {
+          "id": "ab053cbf51bd4817a2774cebf9a70d7a",
+          "name": "Gartner, Inc.",
+          "domains": [
+            "gartner.com"
+          ],
+          "symbols": [
+            "0ITV.L",
+            "IT"
+          ],
+          "count": 2
+        },
+        {
+          "id": "ec5dbe61709a44f483bf917706a18344",
+          "name": "CoinDesk",
+          "domains": [
+            "coindesk.com"
+          ],
+          "symbols": [],
+          "count": 4
+        },
+        {
+          "id": "94724010b9c34175a053363a53124b5c",
+          "name": "Institute of Electrical and Electronics Engineers",
+          "domains": [
+            "ieee.org"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "66974688468b4faa897c59e958f9b030",
+          "name": "Crunchbase",
+          "domains": [
+            "crunchbase.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "3e470e759f7640fdbf5d22e2dffa277c",
+          "name": "Anthropic",
+          "domains": [
+            "anthropic.com"
+          ],
+          "symbols": [],
+          "count": 28
+        },
+        {
+          "id": "254bb0fdf63a4fab92e6f976f7ba8abb",
+          "name": "KPMG",
+          "domains": [
+            "kpmg.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "c59a185721e148af868fda9360040abe",
+          "name": "Zoho Corporation",
+          "domains": [
+            "zohocorp.com",
+            "zoho.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "929d30be06f64956ab3e96e77c1e1369",
+          "name": "International Business Machines Corporation",
+          "domains": [
+            "ibm.com"
+          ],
+          "symbols": [
+            "IBM",
+            "IBM.DE",
+            "IBM.L"
+          ],
+          "count": 1
+        },
+        {
+          "id": "1672b2be0392455bbd7b337e8e998003",
+          "name": "Tether",
+          "domains": [
+            "tether.to"
+          ],
+          "symbols": [],
+          "count": 2
+        },
+        {
+          "id": "83356ed1fc4d46a3bab299ac1e85861b",
+          "name": "Core Scientific, Inc.",
+          "domains": [
+            "corescientific.com"
+          ],
+          "symbols": [
+            "CORZ"
+          ],
+          "count": 4
+        },
+        {
+          "id": "6fb949ea3e464ff99779360166f3d242",
+          "name": "Stanford University",
+          "domains": [
+            "stanford.edu"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "e4b67a2e0fbd4429b7bac8e4311a09ab",
+          "name": "Gemini",
+          "domains": [
+            "gemini.com"
+          ],
+          "symbols": [],
+          "count": 4
+        },
+        {
+          "id": "36e252bb1f234fdcb11f1f5c942bc97b",
+          "name": "Yahoo Inc.",
+          "domains": [
+            "yahoo.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "81644bb92df34244a0d538fe0a3fdf0a",
+          "name": "DBS Group Holdings Ltd",
+          "domains": [
+            "dbs.com"
+          ],
+          "symbols": [
+            "D05.SI",
+            "DBSDY"
+          ],
+          "count": 1
+        },
+        {
+          "id": "c1f120162a294d8095d1fdfbd8296f2d",
+          "name": "Bank of Singapore",
+          "domains": [
+            "bankofsingapore.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "2fb9b57e30c7434eabebae8619381458",
+          "name": "International Data Corporation",
+          "domains": [
+            "idc.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "2e6aa32adb304b148ae42ed177ca1767",
+          "name": "Alibaba Group Holding Limited",
+          "domains": [
+            "alibabagroup.com"
+          ],
+          "symbols": [
+            "9988.HK",
+            "AHLA.DE",
+            "BABA",
+            "BABA.SW"
+          ],
+          "count": 1
+        },
+        {
+          "id": "bf47ca40d4eb475a938b86b6349a8bfd",
+          "name": "Mara Group",
+          "domains": [
+            "mara.com"
+          ],
+          "symbols": [],
+          "count": 3
+        },
+        {
+          "id": "0956c21497ea43e3aa4735056cd5dc5e",
+          "name": "Cipher Mining Inc.",
+          "domains": [
+            "ciphermining.com"
+          ],
+          "symbols": [
+            "CIFR"
+          ],
+          "count": 4
+        },
+        {
+          "id": "57c9089ba7b14a77b65016109134695f",
+          "name": "Lumentum Holdings Inc.",
+          "domains": [
+            "lumentum.com"
+          ],
+          "symbols": [
+            "0JVV.L",
+            "LITE"
+          ],
+          "count": 3
+        },
+        {
+          "id": "42c02bb01003487ebfc524e65ef0c02e",
+          "name": "Intel Corporation",
+          "domains": [
+            "intel.com"
+          ],
+          "symbols": [
+            "4335.HK",
+            "INCO.BR",
+            "INL.DE",
+            "INTC"
+          ],
+          "count": 3
+        },
+        {
+          "id": "356f4df867244fc9901f1836ecd51621",
+          "name": "Exaion",
+          "domains": [
+            "exaion.edf.fr"
+          ],
+          "symbols": [],
+          "count": 3
+        },
+        {
+          "id": "dc836d2d6e5f46f0912900309777737c",
+          "name": "Bitdeer Technologies Group",
+          "domains": [
+            "bitdeer.com"
+          ],
+          "symbols": [
+            "BTDR"
+          ],
+          "count": 3
+        },
+        {
+          "id": "e6fedf1aeb214350aaf7f41b3d195aea",
+          "name": "Bloom Energy Corporation",
+          "domains": [
+            "bloomenergy.com"
+          ],
+          "symbols": [
+            "BE"
+          ],
+          "count": 3
+        },
+        {
+          "id": "b7ef7018b2e94cd9ac991d783800f4d3",
+          "name": "Block, Inc.",
+          "domains": [
+            "block.xyz"
+          ],
+          "symbols": [
+            "0L95.L",
+            "SQ2.AX",
+            "SQ3.F",
+            "XYZ"
+          ],
+          "count": 3
+        },
+        {
+          "id": "39e0e05c89994e10b6c72c53be78f240",
+          "name": "Future\\Perfect Ventures",
+          "domains": [
+            "futureperfectventures.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "7cd4b22b56d3425192c8c5d78eb05931",
+          "name": "Banco Santander, S.A.",
+          "domains": [
+            "santander.com"
+          ],
+          "symbols": [
+            "BNC.L",
+            "BSD2.DE",
+            "SAN",
+            "SAN.MC",
+            "SAN.MX",
+            "SANTA.BR"
+          ],
+          "count": 1
+        },
+        {
+          "id": "fe8cea50c294434081b91e50b1e00f6c",
+          "name": "Kucoin",
+          "domains": [
+            "kucoin.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "f0dfb8871f684f398c6161ab472c7c2c",
+          "name": "JPMorgan Chase & Co.",
+          "domains": [
+            "jpmorganchase.com"
+          ],
+          "symbols": [
+            "CMC.DE",
+            "JPM",
+            "JPM-PC",
+            "JPM-PD",
+            "JPM-PJ",
+            "JPM-PK",
+            "JPM-PL",
+            "JPM-PM"
+          ],
+          "count": 1
+        },
+        {
+          "id": "74f1b1de6ba04156a9bd58750a59a7f2",
+          "name": "Hut 8 Mining Corp.",
+          "domains": [
+            "hut8mining.com"
+          ],
+          "symbols": [
+            "HUT",
+            "HUT.TO"
+          ],
+          "count": 1
+        },
+        {
+          "id": "ad66c4be7dba499097686c791fb95fbd",
+          "name": "Vanguard",
+          "domains": [
+            "vanguardngr.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "c89b49487624491d8f46288946ae293f",
+          "name": "The Goldman Sachs Group, Inc.",
+          "domains": [
+            "goldmansachs.com"
+          ],
+          "symbols": [
+            "GS",
+            "GS-PA",
+            "GS-PD",
+            "GS-PJ",
+            "GS-PK",
+            "GS.SW",
+            "GOS.DE"
+          ],
+          "count": 1
+        },
+        {
+          "id": "94bbd0512cd04cc4b7041d78d9d4cf73",
+          "name": "NVIDIA Corporation",
+          "domains": [
+            "nvidia.com"
+          ],
+          "symbols": [
+            "NVD.DE",
+            "NVDA"
+          ],
+          "count": 3
+        },
+        {
+          "id": "5aa0618f4d7643fba5fb84a93708d4a9",
+          "name": "Advanced Micro Devices, Inc.",
+          "domains": [
+            "amd.com"
+          ],
+          "symbols": [
+            "AMD",
+            "AMD.DE",
+            "AMD.SW"
+          ],
+          "count": 1
+        },
+        {
+          "id": "7370738c372f4463a5aa79b53e5dd1df",
+          "name": "TeraWulf Inc.",
+          "domains": [
+            "terawulf.com"
+          ],
+          "symbols": [
+            "WULF"
+          ],
+          "count": 1
+        },
+        {
+          "id": "fd0fb62263024ea488e8bffcb061366d",
+          "name": "Citadel Enterprise Americas LLC",
+          "domains": [
+            "citadel.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "4eaeb06b6f2645edb3493dff3156acde",
+          "name": "Kraken",
+          "domains": [
+            "kraken.com"
+          ],
+          "symbols": [],
+          "count": 5
+        },
+        {
+          "id": "b8b028234c574db99efcdc72e75414ea",
+          "name": "TRON",
+          "domains": [
+            "tron.network"
+          ],
+          "symbols": [],
+          "count": 2
+        },
+        {
+          "id": "30eaa81a29cb4ab9a2bd2e728f2742e7",
+          "name": "Snowflake Inc.",
+          "domains": [
+            "snowflake.com"
+          ],
+          "symbols": [
+            "SNOW"
+          ],
+          "count": 1
+        },
+        {
+          "id": "55a6fa0bc5b44dd09cb7d9e801e34c42",
+          "name": "Chainlink Labs",
+          "domains": [
+            "chain.link"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "1dbdefeb99c94cf3a1a6b890a70fff01",
+          "name": "UniSwap",
+          "domains": [
+            "uniswap.org"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "b005af7e9d6348bb9f7d5338f964c6eb",
+          "name": "Central Reserve Bank of El Salvador",
+          "domains": [
+            "bcr.gob.sv"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "e4d74ce7f47f46a2bddd0302376b2b31",
+          "name": "Amazon Web Services",
+          "domains": [
+            "aws.amazon.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "c47db6d390e940dcbd3b5825bafd7d45",
+          "name": "China Fortune Tech Capital",
+          "domains": [
+            "cftcapital.com"
+          ],
+          "symbols": [],
+          "count": 2
+        },
+        {
+          "id": "71d5b5030ea0472895094943442d53b5",
+          "name": "Federal Deposit Insurance Corporation",
+          "domains": [
+            "fdic.gov"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "31a234eaaec949c785a2d4e3eb5e8d45",
+          "name": "Minimax",
+          "domains": [
+            "minimax.de"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "be7ef2b4291648c0879a541592aad042",
+          "name": "CoinTelegraph",
+          "domains": [
+            "cointelegraph.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "bfed203737c640a8849225c2e98e62f2",
+          "name": "BitGo",
+          "domains": [
+            "bitgo.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "18fcd01b84e74d809bebf8468384b0e1",
+          "name": "Avalanche",
+          "domains": [
+            "avax.network"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "5ee6defb230b4c04bf535230161aa5b3",
+          "name": "ByBit",
+          "domains": [
+            "bybit.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "89ed83fe779b47909391279deb7c66e3",
+          "name": "BlackRock, Inc.",
+          "domains": [
+            "blackrock.com"
+          ],
+          "symbols": [
+            "0QZZ.L",
+            "BLK",
+            "BLK.SW",
+            "BLQA.DE"
+          ],
+          "count": 1
+        },
+        {
+          "id": "df4dc9cf32f0453fb60f8099ee65e7c1",
+          "name": "Sushi",
+          "domains": [
+            "sushi.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "def18d067a794b09b3868d3c9e23bbde",
+          "name": "WinterMute",
+          "domains": [
+            "wintermute.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "d3e629c5b4e64b63a03c9d92ed6b0511",
+          "name": "Fidelity Investments",
+          "domains": [
+            "fidelity.com"
+          ],
+          "symbols": [],
+          "count": 2
+        },
+        {
+          "id": "f3311fcd804e46e7ae82ad5005c86c5d",
+          "name": "CoinMarketCap",
+          "domains": [
+            "coinmarketcap.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "b197732527b64024bd04bece3567566f",
+          "name": "Oracle Corporation",
+          "domains": [
+            "oracle.com"
+          ],
+          "symbols": [
+            "ORC.DE",
+            "ORCL",
+            "ORCL.SW"
+          ],
+          "count": 1
+        },
+        {
+          "id": "6a1ea70990684130bbdf74e5cd2e997d",
+          "name": "OSL",
+          "domains": [
+            "osl.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "7b013b00035e4c0794d2b8da061f70ae",
+          "name": "Bitpanda",
+          "domains": [
+            "bitpanda.com"
+          ],
+          "symbols": [],
+          "count": 1
+        },
+        {
+          "id": "538927eb43114339bd2b999eccf2403c",
+          "name": "Interactive Brokers Group, Inc.",
+          "domains": [
+            "interactivebrokers.com"
+          ],
+          "symbols": [
+            "IBKR"
+          ],
+          "count": 1
+        },
+        {
+          "id": "a97274b5cf6b4356aee25223ded8f3a9",
+          "name": "Administration of the Patrimony of the Apostolic See",
+          "domains": [
+            "vatican.va"
+          ],
+          "symbols": [],
+          "count": 1
+        }
+      ],
+      "topCompanies": [
+        {
+          "id": "f1d262a1353b4567858f806721fe8cb8",
+          "name": "Google",
+          "domains": [
+            "about.google"
+          ],
+          "symbols": []
+        },
+        {
+          "id": "6d688831f698495281098a1d24465e33",
+          "name": "OpenAI",
+          "domains": [
+            "openai.com"
+          ],
+          "symbols": []
+        },
+        {
+          "id": "3e470e759f7640fdbf5d22e2dffa277c",
+          "name": "Anthropic",
+          "domains": [
+            "anthropic.com"
+          ],
+          "symbols": []
+        }
+      ],
+      "locations": [
+        {
+          "state": "FL",
+          "city": "Miami",
+          "count": 1
+        },
+        {
+          "state": "MA",
+          "city": "Boston",
+          "count": 1
+        },
+        {
+          "state": "34",
+          "count": 1
+        },
+        {
+          "city": "Singapore",
+          "count": 1
+        },
+        {
+          "state": "30",
+          "count": 1
+        }
+      ],
+      "topLocations": []
+    }
+  ]
+}
