@@ -42,7 +42,7 @@ def format_2week_playtime_to_notion_data(raw_playtime_dbid,game_data):
     two_weeks_ago = (datetime.utcnow() - timedelta(days=14)).strftime('%Y-%m-%d')
     if game_data['name']:
         properties = {
-            "Name": {"title": [{"text": {"content": game_data['name']}}]},
+            "Name": {"title": [{"text": {"content": f'{game_data['']}_{today}'}}]},
             "AppId": {"rich_text": [{"text": {"content": str(game_data['appid'])}}]},
             "Date Range": {"date": {"start": two_weeks_ago, "end":today}},
             "playtime_2weeks": {"number": game_data['playtime_2weeks']},
