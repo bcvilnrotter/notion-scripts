@@ -190,13 +190,13 @@ def adjust_notion_video_game_stat_data(video_game_stats_dbid,institutions_dbid,p
     else:
         print(f' ... Video Game page data for {title} not found.')
     
-    pt_yesterday = search_for_previous_playtime(headers,pt_dbid,title,yesterday)
+    pt_yesterday = search_for_previous_playtime(headers,pt_dbid,f'{title}_{yesterday}',yesterday)
     if pt_yesterday:
         format_data[
             'properties'][
                 'Raw Playtime (-1 day)'] = format_notion_single_relation(pt_yesterday)
     
-    pt_two_weeks_ago = search_for_previous_playtime(headers,pt_dbid,title,two_weeks_ago)
+    pt_two_weeks_ago = search_for_previous_playtime(headers,pt_dbid,f'{title}_{two_weeks_ago}',two_weeks_ago)
     if pt_two_weeks_ago:
         format_data[
             'properties'][
