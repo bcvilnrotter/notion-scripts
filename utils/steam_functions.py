@@ -175,7 +175,7 @@ def adjust_notion_video_game_stat_data(video_game_stats_dbid,institutions_dbid,p
     title = format_data.get('properties').get('Name').get('title')[0].get('text').get('content').split('_')[0]
     appid = format_data.get('properties').get('AppId').get('rich_text')[0].get('text').get('content')
 
-    two_weeks_ago = (datetime.utcnow() - timedelta(days=14)).strftime('%Y-%m-%d')
+    two_weeks_ago = (datetime.utcnow() - timedelta(days=15)).strftime('%Y-%m-%d')
     yesterday = (datetime.utcnow() - timedelta(days=1)).strftime('%Y-%m-%d')
     
     game_data_response = requests.get(f"https://store.steampowered.com/api/appdetails?appids={appid}")
