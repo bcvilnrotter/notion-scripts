@@ -7,6 +7,7 @@ from utils.notion.database_functions import *
 from utils.notion.property_formatting import *
 from utils.perigon.perigon_basic_functions import *
 from utils.perigon.perigon_institutions_functions import *
+from utils.perigon.perigon_stories_functions import *
 
 import pandas as pd
 
@@ -57,3 +58,40 @@ def enrich_institutions_perigon(institutions_dbid,perigon_token,perigon_app_id):
         print(f'... {len(failed)} failed records:')
         for name in failed:
             print(f'    - {name}')
+
+def pull_stories_by_institution(
+        institution_dbid, stories_dbid,perigon_token,perigon_app_id):
+    
+    keychain = get_keychain(
+        ['NOTION_TOKEN',institution_dbid,stories_dbid,
+         perigon_token,perigon_app_id])
+    headers = get_notion_header_scalable(keychain['NOTION_TOKEN'])
+
+    institutions = get_institution_pages(headers,keychain[institution_dbid])
+    inm = pd.DataFrame({
+        'length': [len(get_perigon_id_from_notion_page(i)) for i in institutions],
+        'name': [get_perigon_id_from_notion_page(i) for i in institutions],
+        'used': [False for i in institutions]
+    })
+
+    two_months_ago = pd.Timestamp.now() - pd.DateOffset(months=2)
+    url_base = 'https://api.perigon.io/v1/stories/all?companyId='
+    #url_base += f'from={two_months_ago.strftime("%Y-%m-%d")}'
+    #url_base += f'&updatedFrom={two_months_ago.strftime("%Y-%m-%d")}'
+    
+    url_list = [i for i in build_url_perigon(
+        inm[inm['length'] > 0],
+        keychain[perigon_token],first=url_base,stories=True)]
+
+    print(url_list)
+    
+    perigon_json = [
+        record 
+        for url in url_list
+        for record in pull_perigon_data(url)
+        ]
+    
+    print(f'... Pulled {len(perigon_json)}'
+            f' records from Perigon data.')
+    
+    print_json_to_file(perigon_json,'perigon_stories_03292026.json')

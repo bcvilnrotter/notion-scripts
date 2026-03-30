@@ -20,9 +20,12 @@ def convert_to_url(text):
 def convert_block_to_query(block):
     return '%20OR%20'.join(convert_to_url(name) for name in block)
 
+def convert_block_to_comma(block):
+    return ','.join(block)
+
 def build_url_perigon(
         data,token,limit=2000,
-        first='https://api.perigon.io/v1/companies/all?name=',):
+        first='https://api.perigon.io/v1/companies/all?name=',stories=False):
     last_piece = f'&apiKey={token}'
     data = data.copy()
 
@@ -34,7 +37,9 @@ def build_url_perigon(
 
         for idx,row in unused.iterrows():
             names.append(row['name'])
-            query = convert_block_to_query(names)
+            cbtq = convert_block_to_query
+            cbtc = convert_block_to_comma
+            query = cbtq(names) if not stories else cbtc(names)
             url = f'{first}{query}{last_piece}'
 
             if len(url) > limit:
@@ -58,3 +63,12 @@ def pull_perigon_data(url):
     
     for item in response.json().get('results'):
         yield item
+
+def get_perigon_id_from_notion_page(page):
+    try:
+        return page.get(
+            'properties').get(
+                'Perigon.id').get(
+                    'rich_text')[0].get('text').get('content')
+    except:
+        return ""
