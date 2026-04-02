@@ -292,9 +292,8 @@ def format_perigon_record(p_record,n_record,perigon_page_id):
             payload['properties']['Perigon.industry'] = format_notion_multi_select(
             industry_list)
     
-    if n_prop.get('Perigon.revenue').get(
-        'rich_text') != [{'text':{'content':p_record.get('revenue')}}]:
-        payload['properties']['Perigon.revenue'] = format_notion_text(
+    if n_prop.get('Perigon.revenue').get('select') != {'name':p_record.get('revenue')}:
+        payload['properties']['Perigon.revenue'] = format_notion_select(
             p_record.get('revenue'))
     
     if n_prop.get('Perigon.description').get(

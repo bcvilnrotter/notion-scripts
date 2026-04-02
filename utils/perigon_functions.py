@@ -23,11 +23,19 @@ def enrich_institutions_perigon(institutions_dbid,perigon_token,perigon_app_id):
         'used': [False for i in institutions]
     })
     
-    url_list = [i for i in build_url_perigon(inm,keychain[perigon_token])]
+    url_base = 'https://api.perigon.io/v1/companies/all?'
+    url_base += 'size=100'
+    url_base += '&name='
+    
+    url_list = [
+        i 
+        for i in build_url_perigon(inm,keychain[perigon_token],first=url_base)]
+    print(f'... Built {len(url_list)} Perigon API URLs for institution retrieval.')
+    
     perigon_json = [
         record 
         for url in url_list
-        for record in pull_perigon_data(url)
+        for record in pull_perigon_data(url,verbose=True)
         ]
 
     print(f'... Pulled {len(perigon_json)}'
@@ -74,24 +82,28 @@ def pull_stories_by_institution(
         'used': [False for i in institutions]
     })
 
-    two_months_ago = pd.Timestamp.now() - pd.DateOffset(months=2)
-    url_base = 'https://api.perigon.io/v1/stories/all?companyId='
-    #url_base += f'from={two_months_ago.strftime("%Y-%m-%d")}'
-    #url_base += f'&updatedFrom={two_months_ago.strftime("%Y-%m-%d")}'
+    create_time = pd.Timestamp.now() - pd.DateOffset(months=1)
+    url_base = 'https://api.perigon.io/v1/stories/all?'
+    url_base += f'initializedFrom={create_time.strftime("%Y-%m-%d")}'
+    url_base += f'&updatedFrom={create_time.strftime("%Y-%m-%d")}'
+    url_base += '&showNumResults=true'
+    url_base += '&size=100'
+    url_base += '&companyId='
     
     url_list = [i for i in build_url_perigon(
         inm[inm['length'] > 0],
         keychain[perigon_token],first=url_base,stories=True)]
 
     print(url_list)
+    print(f'... Built {len(url_list)} Perigon API URLs for story retrieval.')
     
     perigon_json = [
         record 
         for url in url_list
-        for record in pull_perigon_data(url)
+        for record in pull_perigon_data(url,verbose=True,paginated=True)
         ]
     
     print(f'... Pulled {len(perigon_json)}'
             f' records from Perigon data.')
     
-    print_json_to_file(perigon_json,'perigon_stories_03292026.json')
+    print_json_to_file(perigon_json,'perigon_stories_04022026.json')
