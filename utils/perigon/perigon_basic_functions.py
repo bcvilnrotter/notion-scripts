@@ -1,4 +1,4 @@
-import requests
+import requests,re
 
 def convert_to_url(text):
     text = f'%22{text.strip()}%22'
@@ -24,7 +24,7 @@ def convert_block_to_comma(block):
     return ','.join(block)
 
 def build_url_perigon(
-        data,token,limit=1990, # save 10 characters for page parameter
+        data,token,limit=2000,
         first='https://api.perigon.io/v1/companies/all?name=',stories=False):
     last_piece = f'&apiKey={token}'
     data = data.copy()
@@ -60,25 +60,37 @@ def build_url_perigon(
 def pull_perigon_data(url,verbose=False):
     response = requests.get(url,headers={'Accept':'application/json'})
     response.raise_for_status()
+    token_used = 1
 
     if verbose:
-        print_string = f"  ... Found {response.json().get('numResults')} "
-        print_string += "from Perigon link."
+        print_string = f"  ... Found {response.json().get('numResults')}"
+        print_string += " items from Perigon link."
         print(print_string)
     
     page = 0
     full_results = response.json().get('numResults')
     cur_results = len(response.json().get('results'))
 
-    while cur_results < full_results:
-        for article in response.json().get('results'):
-            yield article
+    if cur_results < full_results:
+        while cur_results < full_results:
+            print(f"  ... Pulling page {page} of Perigon results.")
+            for item in response.json().get('results'):
+                yield item
 
-        page += 1
-        url += f'&page={page}' # TODO: it looks like page cannot be appended to end of url, need to find a work around.
-        response = requests.get(url,headers={'Accept':'application/json'})
-        response.raise_for_status()
-        cur_results += len(response.json().get('results'))
+            page += 1
+            url = re.sub(r'&page=\d+', f'&page={page}', url)
+            response = requests.get(url,headers={'Accept':'application/json'})
+            response.raise_for_status()
+            cur_results += len(response.json().get('results'))
+            print(f"  ... Pulled {cur_results} of {full_results} total items.")
+            token_used += 1
+    else:
+        for item in response.json().get('results'):
+            yield item
+    
+    token_used_ps = f"   > Used {token_used}"
+    token_used_ps += f" API token{'s' if token_used > 1 else ''}."
+    print(token_used_ps)
 
 def get_perigon_id_from_notion_page(page):
     try:

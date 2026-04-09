@@ -25,6 +25,7 @@ def enrich_institutions_perigon(institutions_dbid,perigon_token,perigon_app_id):
     
     url_base = 'https://api.perigon.io/v1/companies/all?'
     url_base += 'size=100'
+    url_base += '&page=0'
     url_base += '&name='
     
     url_list = [
@@ -88,6 +89,7 @@ def pull_stories_by_institution(
     url_base += f'&updatedFrom={create_time.strftime("%Y-%m-%d")}'
     url_base += '&showNumResults=true'
     url_base += '&size=100'
+    url_base += '&page=0'
     url_base += '&companyId='
     
     url_list = [i for i in build_url_perigon(
@@ -100,10 +102,11 @@ def pull_stories_by_institution(
     perigon_json = [
         record 
         for url in url_list
-        for record in pull_perigon_data(url,verbose=True,paginated=True)
+        for record in pull_perigon_data(url,verbose=True)
         ]
     
     print(f'... Pulled {len(perigon_json)}'
             f' records from Perigon data.')
     
-    print_json_to_file(perigon_json,'perigon_stories_04022026.json')
+    nowTime = pd.Timestamp.now().strftime("%Y_%m_%d_%H_%M_%S")
+    print_json_to_file(perigon_json,f'perigon_stories_{nowTime}.json')
