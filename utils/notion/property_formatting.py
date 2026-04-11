@@ -1,10 +1,10 @@
 import pandas as pd
 from datetime import datetime
 
-def format_notion_number(number):
+def format_notion_number(number,float=False):
     if number is None:
         return {"number":None}
-    return {"number": int(number)}
+    return {"number": int(number) if not float else number}
 
 def format_notion_number_outer(number_format):
     return format_notion_number(number_format.get('number'))
@@ -63,7 +63,12 @@ def format_notion_select(selection):
     return {"select": {"name": selection}}
 
 def format_notion_select_outer(select_format):
-    return format_notion_select(select_format.get('select').get('name')) if select_format.get('select') != None else format_notion_select(select_format.get('select'))
+    return format_notion_select(
+        select_format.get(
+            'select').get(
+                'name')) if select_format.get(
+                    'select') != None else format_notion_select(
+                        select_format.get('select'))
 
 def format_notion_multi_select(selections):
     if not selections:

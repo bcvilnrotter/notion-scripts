@@ -17,6 +17,9 @@ def get_notion_page_name(headers,pageid):
     return response.json().get(
         'properties').get(
             'Name').get('title')[0].get('text').get('content')
+
+def get_notion_page_id(page_data):
+    return page_data.get('id') if page_data else None
     
 def search_for_notion_page_by_title(
         headers,dbid,title,
@@ -98,7 +101,7 @@ def get_new_empty_notion_page(dbid,title):
 def new_entry_to_notion_database(headers,data):
     response = requests.post(
         'https://api.notion.com/v1/pages',
-        headers=headers, data=json.dumps(data))
+        headers=headers, json=data)
     response.raise_for_status()
     name = response.json().get(
         'properties').get(

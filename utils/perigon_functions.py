@@ -76,6 +76,7 @@ def pull_stories_by_institution(
          perigon_token,perigon_app_id])
     headers = get_notion_header_scalable(keychain['NOTION_TOKEN'])
 
+    """
     institutions = get_institution_pages(headers,keychain[institution_dbid])
     inm = pd.DataFrame({
         'length': [len(get_perigon_id_from_notion_page(i)) for i in institutions],
@@ -110,3 +111,56 @@ def pull_stories_by_institution(
     
     nowTime = pd.Timestamp.now().strftime("%Y_%m_%d_%H_%M_%S")
     print_json_to_file(perigon_json,f'perigon_stories_{nowTime}.json')
+    """
+
+    from pathlib import Path
+    
+    filename = 'perigon_stories_2026_04_09_10_34_02.json'
+    with open(Path(__file__).parent.parent / "tmp" / filename,"r") as f:
+        perigon_json = json.load(f)
+
+    print(len(perigon_json))
+
+    institution_pages = get_institution_pages(
+        headers,keychain[institution_dbid])
+    
+    notion_records = [
+        format_perigon_story_record(
+            perigon_record=i,
+            stories_dbid=keychain[stories_dbid],
+            institutions_pages=institution_pages,
+            headers=headers,
+            perigon_pid=keychain[perigon_app_id]
+        ) for i in perigon_json
+    ]
+
+    print_string = f"... Formatted {len(notion_records)}"
+    print_string += " Notion records from Perigon data."
+    print(print_string)
+
+    """
+    nowTime = pd.Timestamp.now().strftime("%Y_%m_%d_%H_%M_%S")
+    print_json_to_file(
+        notion_records,
+        f'notion_formatted_stories_{nowTime}.json')
+    """
+        
+    results = [
+        (j.get(
+            'properties').get(
+                'Name').get(
+                    'title')[0].get(
+                        'text').get(
+                            'content'),new_entry_to_notion_database(
+            headers=headers,
+            data=j).status_code) for j in tqdm(
+            notion_records,total=len(notion_records),
+            desc='... Uploading Perigon stories to Notion.'
+        )
+    ]
+
+    failed = [name for name,status in results if status != 200]
+    if failed:
+        print(f'... {len(failed)} failed records:')
+        for name in failed:
+            print(f'    - {name}')

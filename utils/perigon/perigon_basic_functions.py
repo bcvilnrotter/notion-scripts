@@ -100,3 +100,19 @@ def get_perigon_id_from_notion_page(page):
                     'rich_text')[0].get('text').get('content')
     except:
         return ""
+
+def find_page_by_perigon_id(dbid,perigon_id,headers):
+    query = {
+        "filter": {
+            "property": "Perigon.id",
+            "rich_text": {
+                "equals": perigon_id.strip()
+            }
+        }
+    }
+    response = requests.post(
+        f'https://api.notion.com/v1/databases/{dbid}/query',
+        headers=headers,json=query)
+    response.raise_for_status()
+    results = response.json().get('results')
+    return results[0] if results else None
