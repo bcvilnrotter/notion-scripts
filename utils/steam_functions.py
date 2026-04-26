@@ -34,15 +34,13 @@ def pull_data_from_steam():
     recent_playtime = requests.get(steam_url)
     return recent_playtime.json()
 
-
-
-# %%
 def format_2week_playtime_to_notion_data(raw_playtime_dbid,game_data):
     today = datetime.utcnow().strftime('%Y-%m-%d')
     two_weeks_ago = (datetime.utcnow() - timedelta(days=14)).strftime('%Y-%m-%d')
     if game_data['name']:
+        page_name = f'{game_data["name"]}_{today}'
         properties = {
-            "Name": {"title": [{"text": {"content": game_data['name']}}]},
+            "Name": {"title": [{"text": {"content": page_name}}]},
             "AppId": {"rich_text": [{"text": {"content": str(game_data['appid'])}}]},
             "Date Range": {"date": {"start": two_weeks_ago, "end":today}},
             "playtime_2weeks": {"number": game_data['playtime_2weeks']},
@@ -171,7 +169,7 @@ def search_for_previous_playtime(
         return False
 
 def adjust_notion_video_game_stat_data(video_game_stats_dbid,institutions_dbid,pt_dbid,spage_id,headers,format_data):
-    title = format_data.get('properties').get('Name').get('title')[0].get('text').get('content')
+    title = format_data.get('properties').get('Name').get('title')[0].get('text').get('content').split('_')[0]
     appid = format_data.get('properties').get('AppId').get('rich_text')[0].get('text').get('content')
 
     two_weeks_ago = (datetime.utcnow() - timedelta(days=14)).strftime('%Y-%m-%d')
@@ -189,13 +187,13 @@ def adjust_notion_video_game_stat_data(video_game_stats_dbid,institutions_dbid,p
     else:
         print(f' ... Video Game page data for {title} not found.')
     
-    pt_yesterday = search_for_previous_playtime(headers,pt_dbid,title,yesterday)
+    pt_yesterday = search_for_previous_playtime(headers,pt_dbid,f'{title}_{yesterday}',yesterday)
     if pt_yesterday:
         format_data[
             'properties'][
                 'Raw Playtime (-1 day)'] = format_notion_single_relation(pt_yesterday)
     
-    pt_two_weeks_ago = search_for_previous_playtime(headers,pt_dbid,title,two_weeks_ago)
+    pt_two_weeks_ago = search_for_previous_playtime(headers,pt_dbid,f'{title}_{two_weeks_ago}',two_weeks_ago)
     if pt_two_weeks_ago:
         format_data[
             'properties'][
