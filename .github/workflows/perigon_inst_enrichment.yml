@@ -29,3 +29,13 @@ jobs:
                 NOTION_INSTITUTIONS_DBID: ${{ secrets.NOTION_INSTITUTIONS_DBID }}
               run:
                 python enrich_institutions_perigon.py
+            
+            - name: Run Stories Script
+              env:
+                NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+                PERIGON_TOKEN: ${{ secrets.PERIGON_TOKEN }}
+                PERIGON_APP_PAGE_ID: ${{ secrets.PERIGON_APP_PAGE_ID }}
+                NOTION_INSTITUTIONS_DBID: ${{ secrets.NOTION_INSTITUTIONS_DBID }}
+                NOTION_STORIES_DBID: ${{ secrets.NOTION_STORIES_DBID }}
+              run:
+                python perigon_stories_functions.py

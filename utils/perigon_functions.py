@@ -1,5 +1,6 @@
 from utils.basic_functions import *
 from utils.notion.basic_functions import *
+from utils.notion.sessions_functions import *
 from utils.notion.database_functions import *
 from utils.notion.property_formatting import *
 from utils.perigon.perigon_basic_functions import *
@@ -76,8 +77,8 @@ def pull_stories_by_institution(
          perigon_token,perigon_app_id])
     headers = get_notion_header_scalable(keychain['NOTION_TOKEN'])
 
-    """
     institutions = get_institution_pages(headers,keychain[institution_dbid])
+    stories_pages = get_stories_pages(headers,keychain[stories_dbid])
     inm = pd.DataFrame({
         'length': [len(get_perigon_id_from_notion_page(i)) for i in institutions],
         'name': [get_perigon_id_from_notion_page(i) for i in institutions],
@@ -109,10 +110,10 @@ def pull_stories_by_institution(
     print(f'... Pulled {len(perigon_json)}'
             f' records from Perigon data.')
     
+    """
     nowTime = pd.Timestamp.now().strftime("%Y_%m_%d_%H_%M_%S")
     print_json_to_file(perigon_json,f'perigon_stories_{nowTime}.json')
-    """
-
+    
     from pathlib import Path
     
     filename = 'perigon_stories_2026_04_09_10_34_02.json'
@@ -122,10 +123,8 @@ def pull_stories_by_institution(
     print(len(perigon_json))
 
     institution_pages = get_institution_pages(headers,keychain[institution_dbid])
-    stories_pages = get_stories_pages(headers,keychain[stories_dbid])
     print_json_to_file(stories_pages,'stories_pages.json')
     
-    """
     notion_records = [
         format_perigon_story_record(
             perigon_record=i,
@@ -136,10 +135,11 @@ def pull_stories_by_institution(
         ) for i in perigon_json
     ]
     """
+
     notion_records = update_record_stories(
         perigon_pages=perigon_json,
         stories_dbid=keychain[stories_dbid],
-        institutions_pages=institution_pages,
+        institutions_pages=institutions,
         stories_pages=stories_pages,
         perigon_pid=keychain[perigon_app_id]
     )
@@ -153,12 +153,12 @@ def pull_stories_by_institution(
     print_string2 = f"... > Of these, {len(notion_new_records)} are new records,"
     print(print_string2)
 
-    print_json_to_file(notion_new_records,'notion_new_records.json')
+    #print_json_to_file(notion_new_records,'notion_new_records.json')
 
     print_string3 = f"...   and {len(notion_updated_records)} are updated records."
     print(print_string3)
 
-    print_json_to_file(notion_updated_records,'notion_updated_records.json')
+    #print_json_to_file(notion_updated_records,'notion_updated_records.json')
 
     """
     nowTime = pd.Timestamp.now().strftime("%Y_%m_%d_%H_%M_%S")
