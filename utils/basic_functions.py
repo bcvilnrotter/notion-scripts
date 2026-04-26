@@ -9,8 +9,8 @@ from pandas.api.types import *
 def get_secret(secret_key):
     if not os.getenv(secret_key):
         print(f"Loading .env for {secret_key}")
-        env_path = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..\..','.gitignore\.env'))
-        #env_path = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..\..\..','.gitignore\.env'))
+        #env_path = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..\..','.gitignore\.env'))
+        env_path = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..\..\..','.gitignore\.env'))
         load_dotenv(dotenv_path=env_path)
 
     value = os.getenv(secret_key)
@@ -22,10 +22,14 @@ def get_secret(secret_key):
 def get_keychain(keys):
     return {key:get_secret(key) for key in keys}
 
-def print_json_to_file(data,filename):
+def print_json_to_file(data,filename,return_value=False):
     with open(Path(__file__).parent.parent / "tmp" / filename,"w") as f:
         json.dump(data,f)
+    if return_value:
+        return True
 
-def print_data_to_file(data,filename):
+def print_data_to_file(data,filename,return_value=False):
     with open(Path(__file__).parent.parent / "tmp" / filename,"w") as f:
         f.write(data)
+    if return_value:
+        return True
