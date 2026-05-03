@@ -167,12 +167,15 @@ def pull_stories_by_institution(
     """
 
     def _upsert_one(page_id,data):
-        name = data.get(
-            'properties').get('Name').get('title')[0].get('text').get('content')
-        status = upsert_entry_to_notion_database(
-            headers=headers,
-            data=data,page_id=page_id).status_code
-        return (name,status)
+        name = '<unknown>'
+        try:
+            name = data.get('properties', {}).get('Name', {}).get('title', [{}])[0].get('text', {}).get('content', '<unknown>')
+            status = upsert_entry_to_notion_database(
+                headers=headers,
+                data=data,page_id=page_id).status_code
+            return (name,status)
+        except Exception:
+            return (name,None)
 
     with ThreadPoolExecutor(max_workers=1) as ex:
         futures = [ex.submit(
