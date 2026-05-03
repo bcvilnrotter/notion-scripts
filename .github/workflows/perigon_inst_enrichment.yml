@@ -38,4 +38,4 @@ jobs:
                 NOTION_INSTITUTIONS_DBID: ${{ secrets.NOTION_INSTITUTIONS_DBID }}
                 NOTION_STORIES_DBID: ${{ secrets.NOTION_STORIES_DBID }}
               run:
-                python perigon_stories_functions.py
+                python update_perigon_stories.py
