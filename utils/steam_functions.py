@@ -81,8 +81,9 @@ def format_video_game_stats_page(video_game_stats_dbid,institutions_dbid,headers
     
     properties_data['Publishers'] = format_notion_multi_relation(
         collect_video_game_relations(institutions_dbid,headers,data,'publishers',appid))
-    properties_data['Developers']= format_notion_multi_relation(
+    properties_data['Developers'] = format_notion_multi_relation(
         collect_video_game_relations(institutions_dbid,headers,data,'developers',appid))
+    properties_data['app_id'] = format_notion_number(appid)
 
     if data.json().get(appid).get('data').get('price_overview'):
         properties_data['price_overview_initial'] = format_notion_number(
@@ -125,6 +126,7 @@ def format_video_game_stats_page(video_game_stats_dbid,institutions_dbid,headers
                 "url":get_banner_url_from_appid(appid)
             }
         },
+        "template": {"type": "default"},
         "properties":properties_data
     }
 
