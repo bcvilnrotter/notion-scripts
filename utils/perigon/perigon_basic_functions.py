@@ -57,40 +57,51 @@ def build_url_perigon(
                 yield last_valid_url
                 data.loc[last_valid_indices,'used'] = True
 
-def pull_perigon_data(url,verbose=False):
-    response = requests.get(url,headers={'Accept':'application/json'})
-    response.raise_for_status()
+def pull_perigon_data(url, verbose=False):
+    def _get(u):
+        r = requests.get(u, headers={'Accept': 'application/json'})
+        if not r.ok:
+            # surface Perigon's actual reason instead of a bare 400
+            print(f"    ! Perigon {r.status_code} for {u.split('&apiKey=')[0]}")
+            print(f"    ! body: {r.text[:500]}")
+        r.raise_for_status()
+        return r.json()
+
+    data = _get(url)
     token_used = 1
-
+    full_results = data.get('numResults')
     if verbose:
-        print_string = f"  ... Found {response.json().get('numResults')}"
-        print_string += " items from Perigon link."
-        print(print_string)
-    
+        print(f" ... Found {full_results} items from Perigon link.")
+
     page = 0
-    full_results = response.json().get('numResults')
-    cur_results = len(response.json().get('results'))
+    pulled = 0
+    size = 100  # matches &size=100 in url_base
 
-    if cur_results < full_results:
-        while cur_results < full_results:
-            print(f"  ... Pulling page {page} of Perigon results.")
-            for item in response.json().get('results'):
-                yield item
-
-            page += 1
-            url = re.sub(r'&page=\d+', f'&page={page}', url)
-            response = requests.get(url,headers={'Accept':'application/json'})
-            response.raise_for_status()
-            cur_results += len(response.json().get('results'))
-            print(f"  ... Pulled {cur_results} of {full_results} total items.")
-            token_used += 1
-    else:
-        for item in response.json().get('results'):
+    while True:
+        results = data.get('results') or []
+        print(f" ... Pulling page {page} of Perigon results.")
+        for item in results:
             yield item
-    
-    token_used_ps = f"   > Used {token_used}"
-    token_used_ps += f" API token{'s' if token_used > 1 else ''}."
-    print(token_used_ps)
+        pulled += len(results)
+        print(f" ... Pulled {pulled} of {full_results} total items.")
+
+        # stop conditions: short/empty page = we've hit the real end
+        if len(results) < size or (full_results and pulled >= full_results):
+            break
+
+        page += 1
+        next_url = re.sub(r'&page=\d+', f'&page={page}', url)
+        try:
+            data = _get(next_url)
+            token_used += 1
+        except requests.exceptions.HTTPError as e:
+            # Perigon 400s an out-of-range page instead of returning []
+            if e.response is not None and e.response.status_code == 400:
+                print(f" ... Reached Perigon's last available page at page {page}. Stopping.")
+                break
+            raise
+
+    print(f" > Used {token_used} API token{'s' if token_used > 1 else ''}.")
 
 def get_perigon_id_from_notion_page(page):
     try:
