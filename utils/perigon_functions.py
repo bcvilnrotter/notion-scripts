@@ -24,7 +24,7 @@ def enrich_institutions_perigon(institutions_dbid,perigon_token,perigon_app_id):
     })
     
     url_base = 'https://api.perigon.io/v1/companies/all?'
-    url_base += 'size=1000'
+    url_base += 'size=100'
     url_base += '&page=0'
     url_base += '&name='
     
