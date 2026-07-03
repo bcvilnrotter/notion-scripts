@@ -57,68 +57,40 @@ def build_url_perigon(
                 yield last_valid_url
                 data.loc[last_valid_indices,'used'] = True
 
-def pull_perigon_data(url, verbose=False):
-    """
-    Fetch results for a Perigon URL. Uses requests.get(base, params=...)
-    and yields individual result items. If a Perigon request returns a
-    4xx error, log full response and stop yielding for that URL (do not raise).
-    """
-    parsed = urlparse(url)
-    base = f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
-    # parse_qs -> lists; convert to single values where appropriate
-    raw_qs = parse_qs(parsed.query)
-    params = {k: (','.join(v) if len(v) > 1 else v[0]) for k, v in raw_qs.items()}
-
-    try:
-        response = requests.get(base, headers={'Accept': 'application/json'}, params=params, timeout=30)
-        response.raise_for_status()
-    except requests.exceptions.HTTPError:
-        # Log details and stop iterating this URL instead of raising
-        print(f"Perigon request failed: status={getattr(response,'status_code',None)} url={getattr(response,'url',url)}")
-        print("Response body:", getattr(response, 'text', '<no body>'))
-        return
-    except requests.exceptions.RequestException as e:
-        # Network/timeout/etc — log and stop iterating this URL
-        print(f"Perigon request error for url={url}: {e}")
-        return
+def pull_perigon_data(url,verbose=False):
+    response = requests.get(url,headers={'Accept':'application/json'})
+    response.raise_for_status()
+    token_used = 1
 
     if verbose:
-        print(f"  ... Found {response.json().get('numResults')} items from Perigon link.")
+        print_string = f"  ... Found {response.json().get('numResults')}"
+        print_string += " items from Perigon link."
+        print(print_string)
+    
+    page = 0
+    full_results = response.json().get('numResults')
+    cur_results = len(response.json().get('results'))
 
-    page = int(params.get('page', 0))
-    full_results = response.json().get('numResults', 0)
-    cur_results = len(response.json().get('results', []))
+    if cur_results < full_results:
+        while cur_results < full_results:
+            print(f"  ... Pulling page {page} of Perigon results.")
+            for item in response.json().get('results'):
+                yield item
 
-    # yield items from first page
-    for item in response.json().get('results', []):
-        yield item
-
-    token_used = 1
-    # if there are more pages, fetch them by updating params['page']
-    while cur_results < full_results:
-        page += 1
-        params['page'] = page
-        print(f"  ... Pulling page {page} of Perigon results.")
-        try:
-            response = requests.get(base, headers={'Accept': 'application/json'}, params=params, timeout=30)
+            page += 1
+            url = re.sub(r'&page=\d+', f'&page={page}', url)
+            response = requests.get(url,headers={'Accept':'application/json'})
             response.raise_for_status()
-        except requests.exceptions.HTTPError:
-            print(f"Perigon request failed on page {page}: status={getattr(response,'status_code',None)} url={getattr(response,'url')}")
-            print("Response body:", getattr(response, 'text', '<no body>'))
-            return
-        except requests.exceptions.RequestException as e:
-            print(f"Perigon request error while fetching page {page} for url={base} params={params}: {e}")
-            return
-
-        results = response.json().get('results', [])
-        for item in results:
+            cur_results += len(response.json().get('results'))
+            print(f"  ... Pulled {cur_results} of {full_results} total items.")
+            token_used += 1
+    else:
+        for item in response.json().get('results'):
             yield item
-
-        cur_results += len(results)
-        token_used += 1
-        print(f"  ... Pulled {cur_results} of {full_results} total items.")
-
-    print(f"   > Used {token_used} API token{'s' if token_used > 1 else ''}.")
+    
+    token_used_ps = f"   > Used {token_used}"
+    token_used_ps += f" API token{'s' if token_used > 1 else ''}."
+    print(token_used_ps)
 
 def get_perigon_id_from_notion_page(page):
     try:
