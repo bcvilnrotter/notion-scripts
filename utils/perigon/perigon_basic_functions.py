@@ -59,7 +59,7 @@ def build_url_perigon(
 
 def pull_perigon_data(url,verbose=False):
     response = requests.get(url,headers={'Accept':'application/json'})
-    #response.raise_for_status()
+    response.raise_for_status()
     token_used = 1
 
     if verbose:
@@ -80,7 +80,7 @@ def pull_perigon_data(url,verbose=False):
             page += 1
             url = re.sub(r'&page=\d+', f'&page={page}', url)
             response = requests.get(url,headers={'Accept':'application/json'})
-            #response.raise_for_status()
+            response.raise_for_status()
             cur_results += len(response.json().get('results'))
             print(f"  ... Pulled {cur_results} of {full_results} total items.")
             token_used += 1
