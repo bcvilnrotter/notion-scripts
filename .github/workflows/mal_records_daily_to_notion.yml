@@ -1,4 +1,4 @@
-name: Steam Playtime Sync
+name: MAL Daily Record Push
 
 on:
     schedule:
