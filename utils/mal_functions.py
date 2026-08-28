@@ -28,7 +28,7 @@ def pull_todays_records_useranimelist_from_mal(mal_user,headers,date):
         except Exception as e:
             print(f"[!]: {e}")
             break
-    print(f"[+]: Found {len(records)} records for {mal_user} updated on {date}")
+    print(f"[+]: Found {len(records)} records updated on {date}")
     return records
 
 def build_notion_mal_entries_new_page(mal_record,keychain):
@@ -40,6 +40,15 @@ def build_notion_mal_entries_new_page(mal_record,keychain):
             "type": "external",
             "external": {
                 "url": mal_record['node']['main_picture']['medium']
+            }
+        },
+        "properties": {
+            'Name': {
+                'title': [{
+                        'text': {
+                            'content': mal_record['node']['title']
+                        }
+                }]
             }
         }
     }
@@ -64,7 +73,7 @@ def build_notion_mal_record(mal_record,keychain,headers,date,dry_run=False):
 
     if mal_record['node']['id']:
         update_data['properties']['node.id'] = format_notion_text(
-            mal_record['node']['id'])
+            str(mal_record['node']['id']))
     if mal_record['node']['title']:
         update_data['properties']['node.title'] = format_notion_text(
             mal_record['node']['title'])
@@ -75,15 +84,16 @@ def build_notion_mal_record(mal_record,keychain,headers,date,dry_run=False):
         update_data['properties']['list_status.score'] = format_notion_number(
             mal_record['list_status']['score'])
     if mal_record['list_status']['num_episodes_watched']:
-        update_data['properties']['list_status.num_episodes_watched'] = format_notion_number(
+        update_data['properties'][
+            'list_status.num_episodes_watched'] = format_notion_number(
             mal_record['list_status']['num_episodes_watched'])
     if mal_record['list_status']['updated_at']:
-        update_data['properties']['list_status.updated_at'] = format_notion_date_outer(
-            format_notion_date(
-                mal_record['list_status']['updated_at'],
-                string_pattern='%Y-%m-%d'))
+        update_data['properties'][
+            'list_status.updated_at'] = format_notion_date(
+                mal_record['list_status']['updated_at'])
     if mal_record['list_status']['is_rewatching'] is not None:
-        update_data['properties']['list_status.is_rewatching'] = format_notion_checkbox(
+        update_data['properties'][
+            'list_status.is_rewatching'] = format_notion_checkbox(
             mal_record['list_status']['is_rewatching'])
 
     entries_page_id = search_for_notion_page_by_title(
@@ -91,13 +101,19 @@ def build_notion_mal_record(mal_record,keychain,headers,date,dry_run=False):
         headers=headers,
         title=mal_record['node']['title'],)
 
+    print(f"[+]: Found MAL Entries page for {mal_record['node']['title']}: {entries_page_id}") if entries_page_id else print(f"[!]: No MAL Entries page found for {mal_record['node']['title']}")
+
     if entries_page_id:
         update_data['properties'][
             'MAL Entries'] = format_notion_single_relation(entries_page_id)
+        print(f"[+]: Linking to existing MAL Entries page for {mal_record['node']['title']}")
     else:
         if dry_run:
             print(f"[DRY RUN]: Would create new page in MAL Entries database for {mal_record['node']['title']}")
         else:
+
+            print(f"[+]: Creating new page in MAL Entries database for {mal_record['node']['title']}")
+
             update_data['properties'][
                 'MAL Entries'] = format_notion_single_relation(
                     new_entry_to_notion_database(
@@ -106,14 +122,19 @@ def build_notion_mal_record(mal_record,keychain,headers,date,dry_run=False):
                     )
                 )
 
+    update_data['properties'][
+        '🌦️ App Ecosystem Database'] = format_notion_single_relation(
+            keychain['MAL_APP_PAGE_ID'])
+
     return update_data
 
 def upload_mal_to_notion(
         dry_run=False,
-        mal_user='the_Fizzgig',
+        mal_user='MAL_USER',
         mal_client_id='MAL_CLIENT_ID',
         notion_mal_entries_dbid='NOTION_MAL_ENTRIES_DBID',
         notion_mal_records_dbid='NOTION_MAL_RECORDS_DBID',
+        mal_app_page_id='MAL_APP_PAGE_ID',
         date='today'
     ):
     if date == 'today':
@@ -123,6 +144,7 @@ def upload_mal_to_notion(
         'NOTION_TOKEN',
         notion_mal_entries_dbid,
         notion_mal_records_dbid,
+        mal_app_page_id,
         mal_client_id])
 
     daily_useranimelist_records = pull_todays_records_useranimelist_from_mal(
@@ -132,7 +154,7 @@ def upload_mal_to_notion(
     )
 
     if len(daily_useranimelist_records) == 0:
-        print(f"[!]: No records found for {mal_user} updated on {date}. Exiting.")
+        print(f"[!]: No records found updated on {date}. Exiting.")
         return
 
     headers = get_notion_header_scalable(
@@ -141,5 +163,12 @@ def upload_mal_to_notion(
     for record in daily_useranimelist_records:
         notion_record = build_notion_mal_record(
             record,keychain,headers,date,dry_run=dry_run)
+
         if dry_run:
             print(f"[DRY RUN]: {notion_record}")
+            return
+
+        new_entry_to_notion_database(
+            headers=headers,
+            data=notion_record
+        )

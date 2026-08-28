@@ -101,15 +101,18 @@ def get_new_empty_notion_page(dbid,title):
 }
 
 def new_entry_to_notion_database(headers,data):
-    response = requests.post(
-        'https://api.notion.com/v1/pages',
-        headers=headers, json=data)
-    response.raise_for_status()
-    name = response.json().get(
-        'properties').get(
-            'Name').get('title')[0].get('text').get('content')
-    print(f' ... Created new page in database {data} with name "{name}"')
-    return response
+    try:
+        response = requests.post(
+            'https://api.notion.com/v1/pages',
+            headers=headers, json=data)
+        response.raise_for_status()
+        name = response.json().get(
+            'properties').get(
+                'Name').get('title')[0].get('text').get('content')
+        print(f' ... Created new page in database {data} with name "{name}"')
+        return response
+    except Exception as e:
+        print(f"[!]: Error creating new page in database {data}. Error: {e}")
 
 def get_records_from_notion_database(header,database_id,paginated=False):
     url = f'https://api.notion.com/v1/databases/{database_id}/query'
