@@ -1,0 +1,33 @@
+name: Steam Playtime Sync
+
+on:
+    schedule:
+        - cron: "0 23 * * *"
+    workflow_dispatch:
+
+jobs:
+    add_daily_mal_records:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+            
+            - name: Setup Python
+              uses: actions/setup-python@v4
+              with:
+                python-version: "3.10"
+            
+            - name: Install dependencies
+              run: pip install -r requirements.txt
+
+            - name: Run MAL Records Script
+              env:
+                MAL_CLIENT_ID: ${{ secrets.MAL_CLIENT_ID }}
+                NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+                NOTION_MAL_ENTRIES_DBID: ${{ secrets.NOTION_MAL_ENTRIES_DBID }}
+                NOTION_MAL_RECORDS_DBID: ${{ secrets.NOTION_MAL_RECORDS_DBID }}
+                MAL_APP_PAGE_ID: ${{ secrets.MAL_APP_PAGE_ID }}
+                MAL_USER: ${{ secrets.MAL_USER }}
+              run:
+                python add_daily_mal_records.py
