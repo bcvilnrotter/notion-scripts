@@ -101,7 +101,10 @@ def build_notion_mal_record(mal_record,keychain,headers,date,dry_run=False):
         headers=headers,
         title=mal_record['node']['title'],)
 
-    print(f"[+]: Found MAL Entries page for {mal_record['node']['title']}: {entries_page_id}") if entries_page_id else print(f"[!]: No MAL Entries page found for {mal_record['node']['title']}")
+    print(
+        f"[+]: Found MAL Entries page for {mal_record['node']['title']}: {entries_page_id}"
+    ) if entries_page_id else print(
+        f"[!]: No MAL Entries page found for {mal_record['node']['title']}")
 
     if entries_page_id:
         update_data['properties'][
@@ -121,6 +124,21 @@ def build_notion_mal_record(mal_record,keychain,headers,date,dry_run=False):
                         build_notion_mal_entries_new_page(mal_record,keychain)
                     )
                 )
+
+    last_page_id = search_for_last_created_notion_page(
+        dbid=keychain['NOTION_MAL_RECORDS_DBID'],
+        headers=headers,
+        title=mal_record['node']['title'],
+        prop_name='node.title')
+
+    if last_page_id:
+        update_data['properties'][
+            '(Relation) Last Record'] = format_notion_single_relation(last_page_id)
+        print(
+            f"[+]: Linking to last created record for {mal_record['node']['title']}")
+    else:
+        update_data['properties'][
+            '(Check) No Last Record'] = format_notion_checkbox(True)
 
     update_data['properties'][
         '🌦️ App Ecosystem Database'] = format_notion_single_relation(

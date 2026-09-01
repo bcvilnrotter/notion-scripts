@@ -13,8 +13,8 @@ def get_notion_page_data(headers,pageid):
     return response.json()
 
 def get_notion_page_name(headers,pageid):
-    response = requests.get('https://api.notion.com/v1/pages/{}'.format(
-        pageid=pageid),headers=headers)
+    response = requests.get(
+        f'https://api.notion.com/v1/pages/{pageid}',headers=headers)
     response.raise_for_status()
     return response.json().get(
         'properties').get(
@@ -55,6 +55,34 @@ def search_for_notion_page_by_datetime(headers,dbid,datetime):
                 "equals": datetime
             }
         }
+    }
+
+    response = requests.post(query_url,headers=headers,json=payload)
+    if response.status_code == 200 and response.json()['results'] != []:
+        return response.json()["results"][0]["id"]
+    else:
+        return False
+
+def search_for_last_created_notion_page(
+        headers,
+        dbid,
+        title,
+        prop_name="Name"):
+    query_url = f"https://api.notion.com/v1/databases/{dbid}/query"
+
+    payload = {
+        "filter": {
+            "property": prop_name,
+            "title": {
+                "equals": title
+            }
+        },
+        "sorts": [
+            {
+                "property": "created_time",
+                "direction": "descending"
+            }
+        ]
     }
 
     response = requests.post(query_url,headers=headers,json=payload)
