@@ -138,7 +138,7 @@ def build_notion_mal_record(mal_record,keychain,headers,date,dry_run=False):
             f"[+]: Linking to last created record for {mal_record['node']['title']}")
     else:
         update_data['properties'][
-            '(Checkbox) No Last Record'] = format_notion_checkbox(True)
+            '(Check) No Last Record'] = format_notion_checkbox(True)
 
     update_data['properties'][
         '🌦️ App Ecosystem Database'] = format_notion_single_relation(
