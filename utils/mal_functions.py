@@ -1,14 +1,34 @@
 import pathlib, sys, json
-from datetime import datetime as dt
+from datetime import date, datetime as dt
 from utils.basic_functions import *
 from utils.notion.basic_functions import *
 from utils.notion.database_functions import *
 from utils.notion.property_formatting import *
 
-def pull_todays_records_useranimelist_from_mal(mal_user,headers,date):
-    
+def _as_date(value):
+    """Accept a date, or a 'YYYY-MM-DD' / RFC3339 string, and return a date."""
+
+    print(f"[+]: Converting value to date: {value}")
+    if isinstance(value, date) and not isinstance(value, datetime):
+        print(f"[+]: Value is already a date: {value}")
+        return value
+    if isinstance(value, datetime):
+        print(f"[+]: Converting datetime to date: {value}")
+        return value.date()
+
+    return datetime.fromisoformat(str(value).replace("Z", "+00:00")).date()
+
+def pull_todays_records_useranimelist_from_mal(
+        mal_user,headers,start_date,end_date):
+
+    start = _as_date(start_date)
+    end = _as_date(end_date)
+    if start > end:
+        raise ValueError(f"start_date {start} is after end_date {end}")
+
     url = f'https://api.myanimelist.net/v2/users/{mal_user}/animelist?fields=list_status&limit=100'
 
+    print(f"[+]: Pulling records from MAL for user {mal_user} between {start_date} and {end_date}")
     records = []
     while True:
         try:
@@ -16,7 +36,7 @@ def pull_todays_records_useranimelist_from_mal(mal_user,headers,date):
             response.raise_for_status()
             date_data = [
                 n for n in response.json()['data'] 
-                if date in n['list_status']['updated_at']
+                if start < _as_date(n["list_status"]["updated_at"]) <= end
             ]
             records.extend(date_data)
 
@@ -28,7 +48,7 @@ def pull_todays_records_useranimelist_from_mal(mal_user,headers,date):
         except Exception as e:
             print(f"[!]: {e}")
             break
-    print(f"[+]: Found {len(records)} records updated on {date}")
+    print(f"[+]: Found {len(records)} records updated between {start_date} and {end_date}")
     return records
 
 def build_notion_mal_entries_new_page(mal_record,keychain):
@@ -156,7 +176,7 @@ def upload_mal_to_notion(
         date='today'
     ):
     if date == 'today':
-        date = dt.now().strftime('%Y-%m-%d')
+        end_date = dt.now().strftime('%Y-%m-%dT%H:%M:%S%z')
 
     keychain = get_keychain([
         'NOTION_TOKEN',
@@ -165,22 +185,36 @@ def upload_mal_to_notion(
         mal_app_page_id,
         mal_client_id])
 
-    daily_useranimelist_records = pull_todays_records_useranimelist_from_mal(
-        mal_user=mal_user,
-        headers={'X-MAL-CLIENT-ID': keychain[mal_client_id]},
-        date=date
-    )
-
-    if len(daily_useranimelist_records) == 0:
-        print(f"[!]: No records found updated on {date}. Exiting.")
-        return
-
     headers = get_notion_header_scalable(
         notion_token=keychain['NOTION_TOKEN'])
 
+    start_date = get_last_created_notion_page_date(
+        headers=headers,
+        dbid=keychain[notion_mal_records_dbid]
+    )
+
+    print(f"[+]: Last created record in Notion database {notion_mal_records_dbid} was on {start_date}")
+
+    daily_useranimelist_records = pull_todays_records_useranimelist_from_mal(
+        mal_user=mal_user,
+        headers={'X-MAL-CLIENT-ID': keychain[mal_client_id]},
+        start_date=start_date,
+        end_date=end_date
+    )
+
+    if len(daily_useranimelist_records) == 0:
+        print(f"[!]: No records found updated between {start_date} and {end_date}. Exiting.")
+        return
+
     for record in daily_useranimelist_records:
         notion_record = build_notion_mal_record(
-            record,keychain,headers,date,dry_run=dry_run)
+            record,
+            keychain,
+            headers,
+            dt.fromisoformat(
+                str(end_date).replace("Z", "+00:00")).date().isoformat(),
+            dry_run=dry_run
+        )
 
         if dry_run:
             print(f"[DRY RUN]: {notion_record}")

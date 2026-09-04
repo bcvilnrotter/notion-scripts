@@ -79,7 +79,7 @@ def search_for_last_created_notion_page(
         },
         "sorts": [
             {
-                "property": "created_time",
+                "timestamp": "created_time", 
                 "direction": "descending"
             }
         ]
@@ -88,6 +88,24 @@ def search_for_last_created_notion_page(
     response = requests.post(query_url,headers=headers,json=payload)
     if response.status_code == 200 and response.json()['results'] != []:
         return response.json()["results"][0]["id"]
+    else:
+        return False
+
+def get_last_created_notion_page_date(headers,dbid):
+    query_url = f"https://api.notion.com/v1/databases/{dbid}/query"
+
+    payload = {
+        "sorts": [
+            {
+                "timestamp": "created_time", 
+                "direction": "descending"
+            }
+        ]
+    }
+
+    response = requests.post(query_url,headers=headers,json=payload)
+    if response.status_code == 200 and response.json()['results'] != []:
+        return response.json()["results"][0]["created_time"]
     else:
         return False
 
