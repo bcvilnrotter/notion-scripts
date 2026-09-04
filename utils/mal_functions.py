@@ -8,7 +8,6 @@ from utils.notion.property_formatting import *
 def _as_date(value):
     """Accept a date, or a 'YYYY-MM-DD' / RFC3339 string, and return a date."""
 
-    print(f"[+]: Converting value to date: {value}")
     if isinstance(value, date) and not isinstance(value, datetime):
         print(f"[+]: Value is already a date: {value}")
         return value
