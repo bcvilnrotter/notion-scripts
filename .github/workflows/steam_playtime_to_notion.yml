@@ -23,6 +23,7 @@ jobs:
 
             - name: Run Steam Playtime Script
               env:
+                PYTHONUNBUFFERED: "1"
                 STEAM_KEY: ${{ secrets.STEAM_KEY }}
                 STEAM_USER: ${{ secrets.STEAM_USER }}
                 NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
