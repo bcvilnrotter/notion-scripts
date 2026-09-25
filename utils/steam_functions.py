@@ -1,4 +1,4 @@
-import requests, json
+import requests, json, time
 from datetime import datetime, timedelta
 from utils.notion.property_formatting import *
 from utils.notion.database_functions import *
@@ -22,7 +22,7 @@ def get_all_page_atts(headers,database_id):
         return {}
 
 def get_banner_url_from_appid(appid):
-    sleep(5)
+    time.sleep(5)
     game_url = f'https://store.steampowered.com/api/appdetails?appids={appid}'
     response = requests.get(game_url,stream=True)
     if check_video_game_page_exists(response,appid):
