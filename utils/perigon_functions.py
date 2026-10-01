@@ -11,17 +11,48 @@ from utils.perigon.perigon_basic_functions import *
 from utils.perigon.perigon_institutions_functions import *
 from utils.perigon.perigon_stories_functions import *
 
+CORP_SUFFIXES = {
+    'inc','inc.','llc','ltd','ltd.','limited','corp','corp.','co','co.',
+    's.a.','sa','ab','oyj','oy','gmbh','plc','pty','pte','a/s','as','kk','k.k.'
+}
+
+def _variant(name):
+    words = name.split()
+    if len(words) >= 3 or (len(words) == 2 and words[-1].lower() in CORP_SUFFIXES):
+        return ' '.join(words[:-1])
+    return None
+
 def enrich_institutions_perigon(institutions_dbid,perigon_token,perigon_app_id):
     keychain = get_keychain(
         ['NOTION_TOKEN',institutions_dbid,perigon_token,perigon_app_id])
     headers = get_notion_header_scalable(keychain['NOTION_TOKEN'])
 
+    # pulling a list of names into a corpus for pulling from perigon
     institutions = get_institution_pages(headers,keychain[institutions_dbid])    
     inm = pd.DataFrame({
         'length': [len(get_name_from_notion_page(i)) for i in institutions],
         'name': [get_name_from_notion_page(i) for i in institutions],
         'used': [False for i in institutions]
     })
+
+    # Adding variants to institution names based on number of words and common suffix
+    seen = {n.lower().strip() for n in inm['name']}
+    variants = []
+    for n in inm['name']:
+        v = _variant(n)
+        if v and v.lower() not in seen:
+            seen.add(v.lower())
+            variants.append(v)
+    
+    if variants:
+        inm = pd.concat([inm, pd.DataFrame({
+            'length': [len(v) for v in variants],
+            'name': variants,
+            'used': False,
+        })], ignore_index=True)
+
+    # logging the added variants before making urls
+    print(f'... Added {len(variants)} truncated name variants ({len(inm)} query terms).')
     
     url_base = 'https://api.perigon.io/v1/companies/all?'
     url_base += 'size=100'
