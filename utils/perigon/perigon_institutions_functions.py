@@ -21,7 +21,10 @@ def find_perigon_matches(data,inst_names):
                 if not p_trunc or not db_trunc:
                     continue
                 if p_trunc == db_trunc:
-                    return {'matched_name': ' '.join(db_trunc)}
+                    trunc_name = ' '.join(db_trunc)
+                    if trunc_name in lower_names:
+                        return {'matched_name': trunc_name}
+                    return {'matched_name': db_name}
         return None
 
     def add_string_comp_name(comp_name,lower_names):
